@@ -1,0 +1,150 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+// ---------- Enums ----------
+enum UserRole {
+  ADMIN
+  CUSTOMER
+  OPERATOR
+}
+
+enum AddressType {
+  HOME
+  BILLING
+  SHIPPING
+  OTHER
+}
+
+enum Relationship {
+  SPOUSE
+  CHILD
+  PARTNER
+  PARENT
+  OTHER
+}
+
+enum DocumentKind {
+  CPF
+  RG
+  CNH
+  PROOF_OF_ADDRESS
+  MARRIAGE_CERTIFICATE
+  OTHER
+}
+
+model Customer {
+  id        String   @id @default(uuid())
+  name      String
+  cpf       String?  @unique
+  email     String?  @unique
+  phone     String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // relations
+  addresses  Address[]
+  dependents Dependent[]
+  users      User[] // customer portal users (role=CUSTOMER)
+  documents  Document[]  @relation("CustomerDocuments")
+
+  @@index([name])
+  @@index([cpf])
+}
+
+model Address {
+  id         String      @id @default(uuid())
+  customerId String
+  type       AddressType @default(HOME)
+  street     String
+  number     String?
+  complement String?
+  district   String? // bairro
+  city       String
+  state      String // e.g. "SP"
+  zipcode    String // CEP, digits only
+  country    String      @default("BR")
+  isDefault  Boolean     @default(false)
+  createdAt  DateTime    @default(now())
+  updatedAt  DateTime    @updatedAt
+
+  customer Customer @relation(fields: [customerId], references: [id])
+  // NOTE: single "default address" per customer would need a partial unique index in SQL.
+
+  @@index([customerId, isDefault])
+  @@index([zipcode])
+  @@index([city, state])
+}
+
+model Dependent {
+  id           String       @id @default(uuid())
+  customerId   String
+  name         String
+  cpf          String?      @unique // optional for minors; unique when present
+  birthDate    DateTime?
+  relationship Relationship
+  createdAt    DateTime     @default(now())
+  updatedAt    DateTime     @updatedAt
+
+  customer  Customer   @relation(fields: [customerId], references: [id])
+  documents Document[] @relation("DependentDocuments")
+
+  @@index([customerId])
+  @@index([relationship])
+}
+
+model User {
+  id           String    @id @default(uuid())
+  email        String    @unique
+  passwordHash String
+  role         UserRole
+  // If role=CUSTOMER, link to the owning customer; for ADMIN/OPERATOR this is NULL
+  customerId   String?
+  isActive     Boolean   @default(true)
+  lastLoginAt  DateTime?
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  customer          Customer?  @relation(fields: [customerId], references: [id])
+  uploadedDocuments Document[] @relation("DocumentsUploadedByUser")
+
+  @@index([role])
+  @@index([customerId])
+}
+
+// ---------- Documents ----------
+// A single table that can belong to either a Customer OR a Dependent.
+// Exactly one of (customerId, dependentId) SHOULD be non-null.
+// Prisma doesn't support check constraints natively; see note below.
+model Document {
+  id           String       @id @default(uuid())
+  kind         DocumentKind
+  description  String?
+  fileName     String
+  filePath     String // path/URL or storage key (e.g., s3://... or /uploads/...)
+  mimeType     String?
+  sizeBytes    BigInt?
+  checksum     String? // e.g., SHA-256 for dedup
+  uploadedById String? // User who uploaded
+  uploadedAt   DateTime     @default(now())
+  updatedAt    DateTime     @updatedAt
+
+  // Ownership (polymorphic: one of these should be set)
+  customerId  String?
+  dependentId String?
+
+  // Relations
+  customer   Customer?  @relation("CustomerDocuments", fields: [customerId], references: [id])
+  dependent  Dependent? @relation("DependentDocuments", fields: [dependentId], references: [id])
+  uploadedBy User?      @relation("DocumentsUploadedByUser", fields: [uploadedById], references: [id])
+
+  @@index([customerId])
+  @@index([dependentId])
+  @@index([kind])
+  @@index([uploadedAt])
+}
