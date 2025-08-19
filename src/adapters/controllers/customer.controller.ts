@@ -1,11 +1,11 @@
 import { CreateCustomerUseCase } from "@/application/use-cases/customer/create-customer";
-import { findCustomerByIdUseCase } from "@/application/use-cases/customer/find-customer-by-id";
+import { FindCustomerByIdUseCase } from "@/application/use-cases/customer/find-customer-by-id";
 import IHttpServer from "@/shared/interfaces/http/http-server";
 
 export class CustomerController {
   constructor(
     private readonly httpServer: IHttpServer,
-    private readonly findCustomerById: findCustomerByIdUseCase,
+    private readonly findCustomerById: FindCustomerByIdUseCase,
     private readonly createCustomer: CreateCustomerUseCase
   ) {}
 

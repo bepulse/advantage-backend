@@ -1,6 +1,5 @@
 import { Customer } from "@prisma/client"
+import { IDatabaseRepository } from "./databaseRepository"
 
-export interface ICustomerRepository{
-    save(data: Customer) : Promise<void>
-    findById(id: string) : Promise<Customer | null>
+export interface ICustomerRepository extends IDatabaseRepository<Customer>{
 }

@@ -1,4 +1,3 @@
-
 import { ICustomerRepository } from "@/domain/repositories/customer-repository";
 import { Customer } from "@prisma/client";
 

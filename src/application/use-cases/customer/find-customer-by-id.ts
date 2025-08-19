@@ -1,6 +1,6 @@
 import { ICustomerRepository } from "@/domain/repositories/customer-repository";
 
-export class findCustomerByIdUseCase {
+export class FindCustomerByIdUseCase {
   constructor(private readonly customerRepository: ICustomerRepository) {}
 
   async execute(id: string) {
