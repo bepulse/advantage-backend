@@ -87,6 +87,7 @@ model Dependent {
   name         String
   cpf          String?      @unique // optional for minors; unique when present
   birthDate    DateTime?
+  eligible     Boolean      @default(false)
   relationship Relationship
   createdAt    DateTime     @default(now())
   updatedAt    DateTime     @updatedAt

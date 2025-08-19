@@ -11,6 +11,12 @@ import { CreateUserUseCase } from './application/use-cases/user/create-user';
 import { FindUserByIdUseCase } from './application/use-cases/user/find-user-by-id';
 import { UpdateUserUseCase } from './application/use-cases/user/update-user';
 import { UserController } from './adapters/controllers/user.controller';
+import { DependentRepository } from './infrastructure/database/repositories/dependent-repository';
+import { CreateDependentUseCase } from './application/use-cases/dependent/create-dependent';
+import { FindDependentByCustomerIdUseCase } from './application/use-cases/dependent/find-dependent-by-customerId';
+import { UpdateDependentEligibilityUseCase } from './application/use-cases/dependent/update-dependent-eligibility';
+import { UpdateDependentUseCase } from './application/use-cases/dependent/update-dependent';
+import { DependentController } from './adapters/controllers/dependent.controller';
 
 const container = createContainer({
   injectionMode: InjectionMode.CLASSIC,
@@ -25,17 +31,25 @@ container.register({
     //Repositories
     customerRepository: asClass(CustomerRepository).singleton(),
     userRepository: asClass(UserRepository).singleton(),
+    dependentRepository: asClass(DependentRepository).singleton(),
 
     //UseCases
     createCustomer: asClass(CreateCustomerUseCase).singleton(),
     findCustomerById: asClass(FindCustomerByIdUseCase).singleton(),
+
     createUser: asClass(CreateUserUseCase).singleton(),
     findUserById:asClass(FindUserByIdUseCase).singleton(),
     updateUser: asClass(UpdateUserUseCase).singleton(),
+    
+    createDependent: asClass(CreateDependentUseCase).singleton(),
+    findDependentByCustomerId: asClass(FindDependentByCustomerIdUseCase).singleton(),
+    updateDependentEligibility: asClass(UpdateDependentEligibilityUseCase).singleton(),
+    updateDependent: asClass(UpdateDependentUseCase).singleton(),
 
     //Controller
     customerController: asClass(CustomerController).singleton(),
     userController: asClass(UserController).singleton(),
+    dependentController: asClass(DependentController).singleton(),
 });
 
 export default container;
