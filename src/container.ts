@@ -17,6 +17,10 @@ import { FindDependentByCustomerIdUseCase } from './application/use-cases/depend
 import { UpdateDependentEligibilityUseCase } from './application/use-cases/dependent/update-dependent-eligibility';
 import { UpdateDependentUseCase } from './application/use-cases/dependent/update-dependent';
 import { DependentController } from './adapters/controllers/dependent.controller';
+import { DocumentRepository } from './infrastructure/database/repositories/document-repository';
+import { CreateDocumentUseCase } from './application/use-cases/document/create-document';
+import { FindDocumentByIdUseCase } from './application/use-cases/document/find-document-by-id';
+import { DocumentController } from './adapters/controllers/document.controller';
 
 const container = createContainer({
   injectionMode: InjectionMode.CLASSIC,
@@ -32,6 +36,7 @@ container.register({
     customerRepository: asClass(CustomerRepository).singleton(),
     userRepository: asClass(UserRepository).singleton(),
     dependentRepository: asClass(DependentRepository).singleton(),
+    documentRepository: asClass(DocumentRepository).singleton(),
 
     //UseCases
     createCustomer: asClass(CreateCustomerUseCase).singleton(),
@@ -46,10 +51,15 @@ container.register({
     updateDependentEligibility: asClass(UpdateDependentEligibilityUseCase).singleton(),
     updateDependent: asClass(UpdateDependentUseCase).singleton(),
 
+    createDocument: asClass(CreateDocumentUseCase).singleton(),
+    findDocumentById: asClass(FindDocumentByIdUseCase).singleton(),
+    deleteDocument: asClass(CreateDocumentUseCase).singleton(),
+
     //Controller
     customerController: asClass(CustomerController).singleton(),
     userController: asClass(UserController).singleton(),
     dependentController: asClass(DependentController).singleton(),
+    documentController: asClass(DocumentController).singleton(),
 });
 
 export default container;
