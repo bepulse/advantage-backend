@@ -1,5 +1,5 @@
-import { CreateCustomerUseCase } from "@/application/use-cases/customer/create-customer";
 import { CreateUserUseCase } from "@/application/use-cases/user/create-user";
+import { FindUserByEmailUseCase } from "@/application/use-cases/user/find-user-by-email";
 import { FindUserByIdUseCase } from "@/application/use-cases/user/find-user-by-id";
 import { UpdateUserUseCase } from "@/application/use-cases/user/update-user";
 import IHttpServer from "@/shared/interfaces/http/http-server";
@@ -9,8 +9,9 @@ export class UserController {
     private readonly httpServer: IHttpServer,
     private readonly createUser: CreateUserUseCase,
     private readonly updateUser: UpdateUserUseCase,
-    private readonly findUserById: FindUserByIdUseCase
-  ) {}
+    private readonly findUserById: FindUserByIdUseCase,
+    private readonly findUserByEmail: FindUserByEmailUseCase
+  ) { }
 
   registerRoutes() {
     this.httpServer.register("post", "/user", async (params, body) => {
@@ -21,8 +22,16 @@ export class UserController {
       return await this.updateUser.execute(body);
     });
 
-    this.httpServer.register("get", "/user/:userId", async (params, body) => {
-      return await this.findUserById.execute(params.userId);
+    this.httpServer.register("get", "/user", async (params, body, query) => {
+      if (query.userId) {
+        return await this.findUserById.execute(query.userId);
+      }
+
+      if (query.email) {
+        return await this.findUserByEmail.execute(query.email);
+      }
+
+      throw new Error("Either userId or email query parameter is required");
     });
   }
 }

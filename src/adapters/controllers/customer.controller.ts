@@ -7,7 +7,7 @@ export class CustomerController {
     private readonly httpServer: IHttpServer,
     private readonly findCustomerById: FindCustomerByIdUseCase,
     private readonly createCustomer: CreateCustomerUseCase
-  ) {}
+  ) { }
 
   registerRoutes() {
     this.httpServer.register(
@@ -19,6 +19,10 @@ export class CustomerController {
     );
 
     this.httpServer.register("post", "/customer", async (params, body) => {
+      return await this.createCustomer.execute(body);
+    });
+
+    this.httpServer.register("put", "/customer", async (params, body) => {
       return await this.createCustomer.execute(body);
     });
   }

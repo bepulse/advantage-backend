@@ -1,9 +1,9 @@
-import { IDependentRepository } from "@/domain/repositories/dependent-repository";
+import { IDependentRepository } from "@/domain/repositories/dependent.repository";
 import { Dependent, Prisma } from "@prisma/client";
 import { PrismaClient } from "@prisma/client/extension";
 
 export class DependentRepository implements IDependentRepository {
-  constructor(private readonly prisma: PrismaClient) {}
+  constructor(private readonly prisma: PrismaClient) { }
 
   async findById(id: string): Promise<Dependent | null> {
     return await this.prisma.dependent.findMany({
@@ -11,8 +11,8 @@ export class DependentRepository implements IDependentRepository {
     });
   }
 
-  async save(data: Dependent): Promise<void> {
-    await this.prisma.dependent.create({ data });
+  async save(data: Dependent): Promise<Dependent> {
+    return await this.prisma.dependent.create({ data });
   }
 
   async update(data: Dependent): Promise<Dependent> {

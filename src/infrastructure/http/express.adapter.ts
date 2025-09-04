@@ -1,7 +1,7 @@
 import express from 'express';
 import IHttpServer from '@/shared/interfaces/http/http-server';
 import HttpError from '@/shared/errors/http.error';
-// import cors from 'cors';
+import cors from 'cors';
 
 export class ExpressAdapter implements IHttpServer {
     app: any;
@@ -9,16 +9,16 @@ export class ExpressAdapter implements IHttpServer {
     constructor() {
         this.app = express();
         this.app.use(express.json());
-        // this.app.use(cors({
-        //     origin: 'http://localhost:3000',
-        //     credentials: true,
-        // }));
+        this.app.use(cors({
+            origin: '*',
+            credentials: true,
+        }));
     }
 
     register(method: string, url: string, callback: Function): void {
         this.app[method](url, async (req: any, res: any) => {
             try {
-                const output = await callback(req.params, req.body);
+                const output = await callback(req.params, req.body, req.query);
                 res.json(output);
             } catch (error: any) {
                 if (error instanceof HttpError) {

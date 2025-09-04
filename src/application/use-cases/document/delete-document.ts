@@ -1,4 +1,4 @@
-import { DocumentRepository } from "@/infrastructure/database/repositories/document-repository";
+import { DocumentRepository } from "@/infrastructure/database/repositories/document.repository";
 
 export class DeleteDocumentUseCase {
   constructor(private readonly documentRepository: DocumentRepository) {}

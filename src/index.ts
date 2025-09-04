@@ -17,6 +17,6 @@ dependentController.registerRoutes();
 documentController.registerRoutes();
 userController.registerRoutes();
 
-httpServer.listen(process.env.PORT);
+httpServer.listen(process.env.PORT, '0.0.0.0');
 
 console.log(`Server is running on port ${process.env.PORT}`);
