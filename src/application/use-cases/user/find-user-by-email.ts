@@ -5,14 +5,13 @@ import { User } from "@prisma/client";
 export class FindUserByEmailUseCase {
   constructor(private readonly userRepository: IUserRepository) { }
 
-  async execute(email: string): Promise<Omit<User, "passwordHash"> | null> {
+  async execute(email: string): Promise<User> {
     const user = await this.userRepository.findByEmail(email);
-    
+
     if (!user) {
       throw new NotFoundError("User not found");
     }
 
-    const { passwordHash, ...userWithoutPassword } = user;
-    return userWithoutPassword;
+    return user;
   }
 }

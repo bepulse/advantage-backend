@@ -5,7 +5,7 @@ import { Dependent } from "@prisma/client";
 export class FindDependentByCustomerIdUseCase {
   constructor(private readonly dependentRepository: IDependentRepository) { }
 
-  async execute(id: string): Promise<Dependent | null> {
+  async execute(id: string): Promise<Dependent> {
     const dependent = await this.dependentRepository.findById(id);
 
     if (!dependent) {

@@ -41,14 +41,15 @@ enum DocumentKind {
 model Customer {
   id        String   @id @default(uuid())
   name      String
-  cpf       String?  @unique
-  email     String?  @unique
-  phone     String?
+  cpf       String  @unique
+  birthDate DateTime?
+  email     String  @unique
+  phone     String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  // relations
-  addresses  Address[]
+  // relations - mudança para relação 1:1
+  address    Address?
   dependents Dependent[]
   users      User[] // customer portal users (role=CUSTOMER)
   documents  Document[]  @relation("CustomerDocuments")
@@ -58,25 +59,22 @@ model Customer {
 }
 
 model Address {
-  id         String      @id @default(uuid())
-  customerId String
+  customerId String      @id // customerId agora é a chave primária
   type       AddressType @default(HOME)
   street     String
-  number     String?
+  number     String
   complement String?
-  district   String? // bairro
+  district   String // bairro
   city       String
   state      String // e.g. "SP"
   zipcode    String // CEP, digits only
   country    String      @default("BR")
-  isDefault  Boolean     @default(false)
+  isDefault  Boolean     @default(true) // sempre true em relação 1:1
   createdAt  DateTime    @default(now())
   updatedAt  DateTime    @updatedAt
 
-  customer Customer @relation(fields: [customerId], references: [id])
-  // NOTE: single "default address" per customer would need a partial unique index in SQL.
+  customer Customer @relation(fields: [customerId], references: [id], onDelete: Cascade)
 
-  @@index([customerId, isDefault])
   @@index([zipcode])
   @@index([city, state])
 }
@@ -102,7 +100,6 @@ model Dependent {
 model User {
   id           String    @id @default(uuid())
   email        String    @unique
-  passwordHash String
   role         UserRole
   // If role=CUSTOMER, link to the owning customer; for ADMIN/OPERATOR this is NULL
   customerId   String?

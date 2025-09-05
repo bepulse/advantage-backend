@@ -15,6 +15,7 @@ CREATE TABLE "public"."Customer" (
     "id" TEXT NOT NULL,
     "name" TEXT NOT NULL,
     "cpf" TEXT,
+    "birthDate" TIMESTAMP(3),
     "email" TEXT,
     "phone" TEXT,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -61,7 +62,6 @@ CREATE TABLE "public"."Dependent" (
 CREATE TABLE "public"."User" (
     "id" TEXT NOT NULL,
     "email" TEXT NOT NULL,
-    "passwordHash" TEXT NOT NULL,
     "role" "public"."UserRole" NOT NULL,
     "customerId" TEXT,
     "isActive" BOOLEAN NOT NULL DEFAULT true,

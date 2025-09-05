@@ -23,6 +23,9 @@ import { FindDocumentByIdUseCase } from './application/use-cases/document/find-d
 import { DocumentController } from './adapters/controllers/document.controller';
 import { UpdateCustomerUseCase } from './application/use-cases/customer/update-customer';
 import { FindUserByEmailUseCase } from './application/use-cases/user/find-user-by-email';
+import { AddressController } from './adapters/controllers/address.controller';
+import { UpdateAddressUseCase } from './application/use-cases/address/update-address';
+import { AddressRepository } from './infrastructure/database/repositories/address.repository';
 
 const container = createContainer({
   injectionMode: InjectionMode.CLASSIC,
@@ -39,8 +42,11 @@ container.register({
   userRepository: asClass(UserRepository).singleton(),
   dependentRepository: asClass(DependentRepository).singleton(),
   documentRepository: asClass(DocumentRepository).singleton(),
+  addressRepository: asClass(AddressRepository).singleton(),
 
   //UseCases
+  updateAddress: asClass(UpdateAddressUseCase).singleton(),
+
   updateCustomer: asClass(UpdateCustomerUseCase).singleton(),
   createCustomer: asClass(CreateCustomerUseCase).singleton(),
   findCustomerById: asClass(FindCustomerByIdUseCase).singleton(),
@@ -60,6 +66,7 @@ container.register({
   deleteDocument: asClass(CreateDocumentUseCase).singleton(),
 
   //Controller
+  addressController: asClass(AddressController).singleton(),
   customerController: asClass(CustomerController).singleton(),
   userController: asClass(UserController).singleton(),
   dependentController: asClass(DependentController).singleton(),
