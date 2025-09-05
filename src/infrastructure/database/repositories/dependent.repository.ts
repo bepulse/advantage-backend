@@ -2,6 +2,8 @@ import { IDependentRepository } from "@/domain/repositories/dependent.repository
 import { Dependent, Prisma } from "@prisma/client";
 import { PrismaClient } from "@prisma/client/extension";
 
+type DependentCreateInput = Omit<Dependent, 'id' | 'createdAt' | 'updatedAt'>;
+
 export class DependentRepository implements IDependentRepository {
   constructor(private readonly prisma: PrismaClient) { }
 
@@ -11,8 +13,19 @@ export class DependentRepository implements IDependentRepository {
     });
   }
 
-  async save(data: Dependent): Promise<Dependent> {
-    return await this.prisma.dependent.create({ data });
+  async save(data: DependentCreateInput): Promise<Dependent> {
+    const cleanDependentData: DependentCreateInput = {
+      customerId: data.customerId,
+      name: data.name,
+      cpf: data.cpf,
+      birthDate: data.birthDate,
+      eligible: data.eligible ?? false,
+      relationship: data.relationship
+    };
+
+    return await this.prisma.dependent.create({
+      data: cleanDependentData
+    });
   }
 
   async update(data: Dependent): Promise<Dependent> {
