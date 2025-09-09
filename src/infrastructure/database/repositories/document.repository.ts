@@ -1,4 +1,5 @@
 import { IDocumentRepository } from "@/domain/repositories/document.repository";
+import { AuditContext } from "@/application/dto/audit-context.dto";
 import { Document } from "@prisma/client";
 import { PrismaClient } from "@prisma/client/extension";
 
@@ -15,11 +16,23 @@ export class DocumentRepository implements IDocumentRepository {
     return await this.prisma.document.findUnique({ where: { id } });
   }
 
-  async save(data: Document): Promise<Document> {
-    return await this.prisma.document.create({ data });
+  async save(data: Document, auditContext?: AuditContext): Promise<Document> {
+    return await this.prisma.document.create({ 
+      data: {
+        ...data,
+        ...(auditContext?.userEmail && { createdBy: auditContext.userEmail, updatedBy: auditContext.userEmail })
+      }
+    });
   }
 
-  update(data: Document): Promise<Document> {
-    throw new Error("Method not implemented.");
+  async update(data: Document, auditContext?: AuditContext): Promise<Document> {
+    const { id, ...updateData } = data;
+    return await this.prisma.document.update({
+      where: { id },
+      data: {
+        ...updateData,
+        ...(auditContext?.userEmail && { updatedBy: auditContext.userEmail })
+      }
+    });
   }
 }

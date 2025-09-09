@@ -1,8 +1,9 @@
 import { ICustomerRepository } from "@/domain/repositories/customer.repository";
+import { AuditContext } from "@/application/dto/audit-context.dto";
 import { Address, Customer, PrismaClient } from "@prisma/client";
 
-type CustomerCreateInput = Omit<Customer, 'id' | 'createdAt' | 'updatedAt'>;
-type AddressCreateInput = Omit<Address, 'customerId' | 'createdAt' | 'updatedAt'>;
+type CustomerCreateInput = Omit<Customer, 'id' | 'createdAt' | 'updatedAt' | 'createdBy' | 'updatedBy'>;
+type AddressCreateInput = Omit<Address, 'customerId' | 'createdAt' | 'updatedAt' | 'createdBy' | 'updatedBy'>;
 
 export class CustomerRepository implements ICustomerRepository {
   constructor(private prisma: PrismaClient) {}
@@ -20,7 +21,7 @@ export class CustomerRepository implements ICustomerRepository {
     return customer;
   }
 
-  async save(data: CustomerCreateInput & { address?: AddressCreateInput }): Promise<Customer> {
+  async save(data: CustomerCreateInput & { address?: AddressCreateInput }, auditContext?: AuditContext): Promise<Customer> {
     const { address, ...customerData } = data;
 
     const cleanCustomerData: CustomerCreateInput = {
@@ -47,6 +48,7 @@ export class CustomerRepository implements ICustomerRepository {
     return await this.prisma.customer.create({
       data: {
         ...cleanCustomerData,
+        ...(auditContext?.userEmail && { createdBy: auditContext.userEmail, updatedBy: auditContext.userEmail }),
         address: cleanAddressData ? {
           create: cleanAddressData
         } : undefined
@@ -57,10 +59,14 @@ export class CustomerRepository implements ICustomerRepository {
     });
   }
 
-  async update(data: Customer): Promise<Customer> {
+  async update(data: Customer, auditContext?: AuditContext): Promise<Customer> {
+    const { id, createdAt, updatedAt, ...updateData } = data;
     return await this.prisma.customer.update({
-      where: { id: data.id },
-      data
+      where: { id },
+      data: {
+        ...updateData,
+        ...(auditContext?.userEmail && { updatedBy: auditContext.userEmail })
+      }
     });
   }
 }

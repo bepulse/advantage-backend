@@ -1,4 +1,5 @@
 import { IAddressRepository } from "@/domain/repositories/address.repository";
+import { AuditContext } from "@/application/dto/audit-context.dto";
 import { Address, PrismaClient } from "@prisma/client";
 
 export class AddressRepository implements IAddressRepository {
@@ -10,16 +11,25 @@ export class AddressRepository implements IAddressRepository {
     });
   }
 
-  async save(data: Address): Promise<Address> {
-    return await this.prisma.address.create({ data });
+  async save(data: Address, auditContext?: AuditContext): Promise<Address> {
+    return await this.prisma.address.create({ 
+      data: {
+        ...data,
+        ...(auditContext?.userEmail && { createdBy: auditContext.userEmail, updatedBy: auditContext.userEmail })
+      }
+    });
   }
 
-  async update(data: Address): Promise<Address> {
+  async update(data: Address, auditContext?: AuditContext): Promise<Address> {
+    const { createdAt, updatedAt, ...updateData } = data;
     return await this.prisma.address.update({
       where: {
         customerId: data.customerId,
       },
-      data,
+      data: {
+        ...updateData,
+        ...(auditContext?.userEmail && { updatedBy: auditContext.userEmail })
+      },
     });
   }
 

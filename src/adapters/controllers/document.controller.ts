@@ -1,6 +1,7 @@
 import { FindCustomerByIdUseCase } from "@/application/use-cases/customer/find-customer-by-id";
 import { CreateDocumentUseCase } from "@/application/use-cases/document/create-document";
 import { DeleteDocumentUseCase } from "@/application/use-cases/document/delete-document";
+import { AuditContext } from "@/application/dto/audit-context.dto";
 import IHttpServer from "@/shared/interfaces/http/http-server";
 import { HttpMethod } from "@/shared/types/http-method.enum";
 
@@ -13,8 +14,9 @@ export class DocumentController {
   ) { }
 
   registerRoutes() {
-    this.httpServer.register(HttpMethod.POST, "/document", async ({ body }) => {
-      await this.createDocument.execute(body);
+    this.httpServer.register(HttpMethod.POST, "/document", async ({ body, user }) => {
+      const auditContext: AuditContext = { userEmail: user?.email };
+      await this.createDocument.execute(body, auditContext);
     });
 
     this.httpServer.register(HttpMethod.GET, "/document/:id", async ({ params }) => {

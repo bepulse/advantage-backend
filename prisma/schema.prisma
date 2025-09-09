@@ -47,6 +47,8 @@ model Customer {
   phone     String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  createdBy String? // Email of user who created this record
+  updatedBy String? // Email of user who last updated this record
 
   // relations - mudança para relação 1:1
   address    Address?
@@ -72,6 +74,8 @@ model Address {
   isDefault  Boolean     @default(true) // sempre true em relação 1:1
   createdAt  DateTime    @default(now())
   updatedAt  DateTime    @updatedAt
+  createdBy  String? // Email of user who created this record
+  updatedBy  String? // Email of user who last updated this record
 
   customer Customer @relation(fields: [customerId], references: [id], onDelete: Cascade)
 
@@ -89,6 +93,8 @@ model Dependent {
   relationship Relationship
   createdAt    DateTime     @default(now())
   updatedAt    DateTime     @updatedAt
+  createdBy    String? // Email of user who created this record
+  updatedBy    String? // Email of user who last updated this record
 
   customer  Customer   @relation(fields: [customerId], references: [id])
   documents Document[] @relation("DependentDocuments")
@@ -107,6 +113,8 @@ model User {
   lastLoginAt  DateTime?
   createdAt    DateTime  @default(now())
   updatedAt    DateTime  @updatedAt
+  createdBy    String? // Email of user who created this record
+  updatedBy    String? // Email of user who last updated this record
 
   customer          Customer?  @relation(fields: [customerId], references: [id])
   uploadedDocuments Document[] @relation("DocumentsUploadedByUser")
@@ -131,6 +139,8 @@ model Document {
   uploadedById String? // User who uploaded
   uploadedAt   DateTime     @default(now())
   updatedAt    DateTime     @updatedAt
+  createdBy    String? // Email of user who created this record
+  updatedBy    String? // Email of user who last updated this record
 
   // Ownership (polymorphic: one of these should be set)
   customerId  String?

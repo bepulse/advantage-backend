@@ -46,7 +46,6 @@ container.register({
 
   //UseCases
   updateAddress: asClass(UpdateAddressUseCase).singleton(),
-
   updateCustomer: asClass(UpdateCustomerUseCase).singleton(),
   createCustomer: asClass(CreateCustomerUseCase).singleton(),
   findCustomerById: asClass(FindCustomerByIdUseCase).singleton(),
