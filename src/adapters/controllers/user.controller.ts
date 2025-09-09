@@ -3,6 +3,7 @@ import { FindUserByEmailUseCase } from "@/application/use-cases/user/find-user-b
 import { FindUserByIdUseCase } from "@/application/use-cases/user/find-user-by-id";
 import { UpdateUserUseCase } from "@/application/use-cases/user/update-user";
 import IHttpServer from "@/shared/interfaces/http/http-server";
+import { HttpMethod } from "@/shared/types/http-method.enum";
 
 export class UserController {
   constructor(
@@ -14,16 +15,15 @@ export class UserController {
   ) { }
 
   registerRoutes() {
-    this.httpServer.register("post", "/user", async ({ body }) => {
+    this.httpServer.register(HttpMethod.POST, "/user", async ({ body }) => {
       return await this.createUser.execute(body);
     });
 
-    this.httpServer.register("put", "/user", async ({ body }) => {
+    this.httpServer.register(HttpMethod.PUT, "/user", async ({ body }) => {
       return await this.updateUser.execute(body);
     });
 
-    this.httpServer.register("get", "/user", async ({ user, query }) => {
-      console.log(user)
+    this.httpServer.register(HttpMethod.GET, "/user", async ({ user, query }) => {
       if (query.userId) {
         return await this.findUserById.execute(query.userId);
       }

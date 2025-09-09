@@ -1,5 +1,6 @@
 import { UpdateAddressUseCase } from "@/application/use-cases/address/update-address";
 import IHttpServer from "@/shared/interfaces/http/http-server";
+import { HttpMethod } from "@/shared/types/http-method.enum";
 
 export class AddressController {
   constructor(
@@ -8,7 +9,7 @@ export class AddressController {
   ) { }
 
   registerRoutes() {
-    this.httpServer.register("put", "/address", async ({ body }) => {
+    this.httpServer.register(HttpMethod.PUT, "/address", async ({ body }) => {
       await this.updateAddress.execute(body);
     });
   }

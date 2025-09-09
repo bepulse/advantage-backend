@@ -2,6 +2,7 @@ import { FindCustomerByIdUseCase } from "@/application/use-cases/customer/find-c
 import { CreateDocumentUseCase } from "@/application/use-cases/document/create-document";
 import { DeleteDocumentUseCase } from "@/application/use-cases/document/delete-document";
 import IHttpServer from "@/shared/interfaces/http/http-server";
+import { HttpMethod } from "@/shared/types/http-method.enum";
 
 export class DocumentController {
   constructor(
@@ -12,15 +13,15 @@ export class DocumentController {
   ) { }
 
   registerRoutes() {
-    this.httpServer.register("post", "/document", async ({ body }) => {
+    this.httpServer.register(HttpMethod.POST, "/document", async ({ body }) => {
       await this.createDocument.execute(body);
     });
 
-    this.httpServer.register("get", "/document/:id", async ({ params }) => {
+    this.httpServer.register(HttpMethod.GET, "/document/:id", async ({ params }) => {
       return await this.findDocumentById.execute(params.id);
     });
 
-    this.httpServer.register("delete", "/document/:id", async ({ params }) => {
+    this.httpServer.register(HttpMethod.DELETE, "/document/:id", async ({ params }) => {
       return await this.deleteDocument.execute(params.id);
     });
   }
