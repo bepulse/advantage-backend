@@ -14,15 +14,16 @@ export class UserController {
   ) { }
 
   registerRoutes() {
-    this.httpServer.register("post", "/user", async (params, body) => {
+    this.httpServer.register("post", "/user", async ({ body }) => {
       return await this.createUser.execute(body);
     });
 
-    this.httpServer.register("put", "/user", async (params, body) => {
+    this.httpServer.register("put", "/user", async ({ body }) => {
       return await this.updateUser.execute(body);
     });
 
-    this.httpServer.register("get", "/user", async (params, body, query) => {
+    this.httpServer.register("get", "/user", async ({ user, query }) => {
+      console.log(user)
       if (query.userId) {
         return await this.findUserById.execute(query.userId);
       }

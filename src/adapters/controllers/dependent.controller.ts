@@ -11,7 +11,7 @@ export class DependentController {
     private readonly findDependentByCustomerId: FindDependentByCustomerIdUseCase,
     private readonly updateDependentEligibility: UpdateDependentEligibilityUseCase,
     private readonly updateDependent: UpdateDependentUseCase
-  ) {}
+  ) { }
 
   registerRoutes() {
     this.httpServer.register(
@@ -22,17 +22,17 @@ export class DependentController {
       }
     );
 
-    this.httpServer.register("get", "/dependent/:customerId", async (params, body) => {
-        return await this.findDependentByCustomerId.execute(params.customerId);
+    this.httpServer.register("get", "/dependent/:customerId", async ({ params }) => {
+      return await this.findDependentByCustomerId.execute(params.customerId);
     });
 
-    this.httpServer.register("put", "/dependent/eligible-dependent", async (params, body) => {
-        const {id, eligibility} = body;
-        return await this.updateDependentEligibility.execute(id, eligibility);
+    this.httpServer.register("put", "/dependent/eligible-dependent", async ({ body }) => {
+      const { id, eligibility } = body;
+      return await this.updateDependentEligibility.execute(id, eligibility);
     });
 
-    this.httpServer.register("put", "/dependent", async (params, body) => {
-        return await this.updateDependent.execute(body);
+    this.httpServer.register("put", "/dependent", async ({ body }) => {
+      return await this.updateDependent.execute(body);
     });
   }
 }

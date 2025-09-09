@@ -9,18 +9,18 @@ export class DocumentController {
     private readonly createDocument: CreateDocumentUseCase,
     private readonly deleteDocument: DeleteDocumentUseCase,
     private readonly findDocumentById: FindCustomerByIdUseCase
-  ) {}
+  ) { }
 
   registerRoutes() {
-    this.httpServer.register("post", "/document", async (params, body) => {
+    this.httpServer.register("post", "/document", async ({ body }) => {
       await this.createDocument.execute(body);
     });
 
-    this.httpServer.register("get", "/document/:id", async (params, body) => {
+    this.httpServer.register("get", "/document/:id", async ({ params }) => {
       return await this.findDocumentById.execute(params.id);
     });
 
-    this.httpServer.register("delete", "/document/:id", async (params, body) => {
+    this.httpServer.register("delete", "/document/:id", async ({ params }) => {
       return await this.deleteDocument.execute(params.id);
     });
   }

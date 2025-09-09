@@ -13,16 +13,16 @@ export class CustomerController {
     this.httpServer.register(
       "get",
       "/customer/:customerId",
-      async (params, body) => {
+      async ({ params }) => {
         return await this.findCustomerById.execute(params.customerId);
       }
     );
 
-    this.httpServer.register("post", "/customer", async (params, body) => {
+    this.httpServer.register("post", "/customer", async ({ body }) => {
       return await this.createCustomer.execute(body);
     });
 
-    this.httpServer.register("put", "/customer", async (params, body) => {
+    this.httpServer.register("put", "/customer", async ({ body }) => {
       return await this.createCustomer.execute(body);
     });
   }

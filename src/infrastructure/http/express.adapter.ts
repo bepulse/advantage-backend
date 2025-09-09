@@ -2,6 +2,7 @@ import express from 'express';
 import IHttpServer from '@/shared/interfaces/http/http-server';
 import HttpError from '@/shared/errors/http.error';
 import cors from 'cors';
+import { AuthGuard } from '../middlewares/auth.middleware';
 
 export class ExpressAdapter implements IHttpServer {
     app: any;
@@ -9,6 +10,7 @@ export class ExpressAdapter implements IHttpServer {
     constructor() {
         this.app = express();
         this.app.use(express.json());
+        this.app.use(AuthGuard);
         this.app.use(cors({
             origin: '*',
             credentials: true,
@@ -18,7 +20,7 @@ export class ExpressAdapter implements IHttpServer {
     register(method: string, url: string, callback: Function): void {
         this.app[method](url, async (req: any, res: any) => {
             try {
-                const output = await callback(req.params, req.body, req.query);
+                const output = await callback(req);
                 res.json(output);
             } catch (error: any) {
                 if (error instanceof HttpError) {

@@ -8,7 +8,7 @@ export class AddressController {
   ) { }
 
   registerRoutes() {
-    this.httpServer.register("put", "/address", async (params, body) => {
+    this.httpServer.register("put", "/address", async ({ body }) => {
       await this.updateAddress.execute(body);
     });
   }
