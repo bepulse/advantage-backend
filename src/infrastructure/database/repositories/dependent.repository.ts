@@ -8,6 +8,12 @@ type DependentCreateInput = Omit<Dependent, 'id' | 'createdAt' | 'updatedAt' | '
 export class DependentRepository implements IDependentRepository {
   constructor(private readonly prisma: PrismaClient) { }
 
+  async delete(id: string): Promise<void> {
+    await this.prisma.dependent.delete({
+      where: id
+    });
+  }
+
   async findById(id: string): Promise<Dependent | null> {
     return await this.prisma.dependent.findMany({
       where: { customerId: id },

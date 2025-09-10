@@ -5,6 +5,7 @@ import { UpdateDependentEligibilityUseCase } from "@/application/use-cases/depen
 import { AuditContext } from "@/application/dto/audit-context.dto";
 import IHttpServer from "@/shared/interfaces/http/http-server";
 import { HttpMethod } from "@/shared/types/http-method.enum";
+import { DeleteDependentUseCase } from "@/application/use-cases/dependent/delete-dependent";
 
 export class DependentController {
   constructor(
@@ -12,13 +13,14 @@ export class DependentController {
     private readonly createDependent: CreateDependentUseCase,
     private readonly findDependentByCustomerId: FindDependentByCustomerIdUseCase,
     private readonly updateDependentEligibility: UpdateDependentEligibilityUseCase,
-    private readonly updateDependent: UpdateDependentUseCase
+    private readonly updateDependent: UpdateDependentUseCase,
+    private readonly deleteDependent: DeleteDependentUseCase
   ) { }
 
   registerRoutes() {
     this.httpServer.register(HttpMethod.POST, "/dependent", async ({ body, user }) => {
       const auditContext: AuditContext = { userEmail: user?.email };
-      await this.createDependent.execute(body, auditContext);
+      return await this.createDependent.execute(body, auditContext);
     });
 
     this.httpServer.register(HttpMethod.GET, "/dependent/:customerId", async ({ params }) => {
@@ -34,6 +36,10 @@ export class DependentController {
     this.httpServer.register(HttpMethod.PUT, "/dependent", async ({ body, user }) => {
       const auditContext: AuditContext = { userEmail: user?.email };
       return await this.updateDependent.execute(body, auditContext);
+    });
+
+    this.httpServer.register(HttpMethod.DELETE, "/dependent/:id", async ({ params }) => {
+      return await this.deleteDependent.execute(params.id);
     });
   }
 }

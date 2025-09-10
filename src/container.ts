@@ -26,6 +26,7 @@ import { FindUserByEmailUseCase } from './application/use-cases/user/find-user-b
 import { AddressController } from './adapters/controllers/address.controller';
 import { UpdateAddressUseCase } from './application/use-cases/address/update-address';
 import { AddressRepository } from './infrastructure/database/repositories/address.repository';
+import { DeleteDependentUseCase } from './application/use-cases/dependent/delete-dependent';
 
 const container = createContainer({
   injectionMode: InjectionMode.CLASSIC,
@@ -56,6 +57,7 @@ container.register({
   updateUser: asClass(UpdateUserUseCase).singleton(),
 
   createDependent: asClass(CreateDependentUseCase).singleton(),
+  deleteDependent: asClass(DeleteDependentUseCase).singleton(),
   findDependentByCustomerId: asClass(FindDependentByCustomerIdUseCase).singleton(),
   updateDependentEligibility: asClass(UpdateDependentEligibilityUseCase).singleton(),
   updateDependent: asClass(UpdateDependentUseCase).singleton(),

@@ -10,11 +10,11 @@ export class ExpressAdapter implements IHttpServer {
     constructor() {
         this.app = express();
         this.app.use(express.json());
-        this.app.use(AuthGuard);
         this.app.use(cors({
-            origin: "http://localhost:5173",
+            origin: "*",
             credentials: true,
         }));
+        this.app.use(AuthGuard);
     }
 
     register(method: string, url: string, callback: Function): void {

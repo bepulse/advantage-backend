@@ -6,7 +6,7 @@ type CustomerCreateInput = Omit<Customer, 'id' | 'createdAt' | 'updatedAt' | 'cr
 type AddressCreateInput = Omit<Address, 'customerId' | 'createdAt' | 'updatedAt' | 'createdBy' | 'updatedBy'>;
 
 export class CustomerRepository implements ICustomerRepository {
-  constructor(private prisma: PrismaClient) {}
+  constructor(private prisma: PrismaClient) { }
 
   async findById(id: string): Promise<Customer | null> {
     const customer = await this.prisma.customer.findUnique({
@@ -23,7 +23,7 @@ export class CustomerRepository implements ICustomerRepository {
 
   async save(data: CustomerCreateInput & { address?: AddressCreateInput }, auditContext?: AuditContext): Promise<Customer> {
     const { address, ...customerData } = data;
-
+  
     const cleanCustomerData: CustomerCreateInput = {
       name: customerData.name,
       cpf: customerData.cpf,
@@ -50,7 +50,10 @@ export class CustomerRepository implements ICustomerRepository {
         ...cleanCustomerData,
         ...(auditContext?.userEmail && { createdBy: auditContext.userEmail, updatedBy: auditContext.userEmail }),
         address: cleanAddressData ? {
-          create: cleanAddressData
+          create: {
+            ...cleanAddressData,
+            ...(auditContext?.userEmail && { createdBy: auditContext.userEmail, updatedBy: auditContext.userEmail })
+          }
         } : undefined
       },
       include: {
