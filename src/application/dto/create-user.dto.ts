@@ -1,4 +1,6 @@
 export interface CreateUserResponse {
     id: string,
-    role: string
+    role: string,
+    email : string,
+    customerId: string | null,
 }

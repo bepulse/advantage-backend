@@ -52,6 +52,7 @@ model Customer {
 
   // relations - mudança para relação 1:1
   address    Address?
+  contract   Contract?
   dependents Dependent[]
   users      User[] // customer portal users (role=CUSTOMER)
   documents  Document[]  @relation("CustomerDocuments")
@@ -155,4 +156,21 @@ model Document {
   @@index([dependentId])
   @@index([kind])
   @@index([uploadedAt])
+}
+
+model Contract {
+  id           String   @id @default(uuid())
+  customerId   String?  @unique
+  envelopeId   String   @unique
+  status       String   // sent, delivered, completed, declined, voided
+  documentType String
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  createdBy    String?
+  updatedBy    String?
+
+  customer  Customer?  @relation(fields: [customerId], references: [id])
+
+  @@index([customerId])
+  @@index([status])
 }

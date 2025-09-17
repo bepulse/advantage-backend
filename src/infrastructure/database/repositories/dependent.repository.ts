@@ -2,6 +2,7 @@ import { IDependentRepository } from "@/domain/repositories/dependent.repository
 import { AuditContext } from "@/application/dto/audit-context.dto";
 import { Dependent, Prisma } from "@prisma/client";
 import { PrismaClient } from "@prisma/client/extension";
+import NotFoundError from "@/shared/errors/not-found.error";
 
 type DependentCreateInput = Omit<Dependent, 'id' | 'createdAt' | 'updatedAt' | 'createdBy' | 'updatedBy'>;
 
@@ -9,8 +10,16 @@ export class DependentRepository implements IDependentRepository {
   constructor(private readonly prisma: PrismaClient) { }
 
   async delete(id: string): Promise<void> {
+    const dependent = await this.prisma.dependent.findUnique({
+      where: { id }
+    });
+
+    if (!dependent) {
+      throw new NotFoundError('Dependent not found');
+    }
+
     await this.prisma.dependent.delete({
-      where: id
+      where: { id }
     });
   }
 

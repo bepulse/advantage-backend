@@ -23,6 +23,7 @@
   "homepage": "https://github.com/bepulse/advantage-backend#readme",
   "devDependencies": {
     "@types/cors": "^2.8.19",
+    "@types/docusign-esign": "^5.19.9",
     "@types/express": "^5.0.3",
     "@types/node": "^24.3.0",
     "nodemon": "^3.1.10",
@@ -38,8 +39,10 @@
     "aws-jwt-verify": "^5.1.0",
     "axios": "^1.11.0",
     "cors": "^2.8.5",
+    "docusign-esign": "^8.4.0",
     "dotenv": "^17.2.1",
     "express": "^5.1.0",
-    "lodash": "^4.17.21"
+    "lodash": "^4.17.21",
+    "zod": "^4.1.8"
   }
 }

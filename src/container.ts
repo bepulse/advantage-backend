@@ -27,6 +27,7 @@ import { AddressController } from './adapters/controllers/address.controller';
 import { UpdateAddressUseCase } from './application/use-cases/address/update-address';
 import { AddressRepository } from './infrastructure/database/repositories/address.repository';
 import { DeleteDependentUseCase } from './application/use-cases/dependent/delete-dependent';
+import { ContractRepository } from './infrastructure/database/repositories/contract.repository';
 
 const container = createContainer({
   injectionMode: InjectionMode.CLASSIC,
@@ -44,6 +45,7 @@ container.register({
   dependentRepository: asClass(DependentRepository).singleton(),
   documentRepository: asClass(DocumentRepository).singleton(),
   addressRepository: asClass(AddressRepository).singleton(),
+  contractRepository: asClass(ContractRepository).singleton(),
 
   //UseCases
   updateAddress: asClass(UpdateAddressUseCase).singleton(),

@@ -13,6 +13,8 @@ export class CreateUserUseCase {
     return {
       id: data.id,
       role: data.role,
+      email: data.email,
+      customerId: data.customerId,
     }
   }
 }
