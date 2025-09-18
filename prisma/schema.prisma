@@ -110,6 +110,7 @@ model User {
   role         UserRole
   // If role=CUSTOMER, link to the owning customer; for ADMIN/OPERATOR this is NULL
   customerId   String?
+  subscriptionId   String?
   isActive     Boolean   @default(true)
   lastLoginAt  DateTime?
   createdAt    DateTime  @default(now())

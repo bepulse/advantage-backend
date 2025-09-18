@@ -64,6 +64,7 @@ CREATE TABLE "public"."User" (
     "email" TEXT NOT NULL,
     "role" "public"."UserRole" NOT NULL,
     "customerId" TEXT,
+    "subscriptionId" TEXT,
     "isActive" BOOLEAN NOT NULL DEFAULT true,
     "lastLoginAt" TIMESTAMP(3),
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,

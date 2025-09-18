@@ -7,10 +7,12 @@ export class CreateCustomerUseCase {
   constructor(private readonly customerRepository: ICustomerRepository) { }
 
   async execute(customer: Customer, auditContext?: AuditContext): Promise<CreateCustomerResponse> {
-    const data = await this.customerRepository.save(customer, auditContext);
-
-    return {
-      id: data.id,
+    const existingCustomer = await this.customerRepository.findByCpfOrEmail(customer.cpf, customer.email);
+    if (existingCustomer) {
+      return { id: existingCustomer.id };
     }
+
+    const savedCustomer = await this.customerRepository.save(customer, auditContext);
+    return { id: savedCustomer.id };
   }
 }
