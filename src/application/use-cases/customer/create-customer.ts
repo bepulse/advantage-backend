@@ -9,10 +9,18 @@ export class CreateCustomerUseCase {
   async execute(customer: Customer, auditContext?: AuditContext): Promise<CreateCustomerResponse> {
     const existingCustomer = await this.customerRepository.findByCpfOrEmail(customer.cpf, customer.email);
     if (existingCustomer) {
-      return { id: existingCustomer.id };
+      return {
+        id: existingCustomer.id,
+        cpf: existingCustomer.cpf,
+        email: existingCustomer.email
+      };
     }
 
     const savedCustomer = await this.customerRepository.save(customer, auditContext);
-    return { id: savedCustomer.id };
+    return {
+      id: savedCustomer.id,
+      cpf: savedCustomer.cpf,
+      email: savedCustomer.email
+    };
   }
 }

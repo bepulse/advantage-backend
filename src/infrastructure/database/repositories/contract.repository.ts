@@ -37,7 +37,13 @@ export class ContractRepository implements IContractRepository {
 
   async delete(id: string): Promise<void> {
     await this.prisma.contract.delete({
-      where: { id },
+      where: { id }
+    });
+  }
+
+  async findByEnvelopeId(envelopeId: string): Promise<Contract[]> {
+    return await this.prisma.contract.findMany({
+      where: { envelopeId }
     });
   }
 }

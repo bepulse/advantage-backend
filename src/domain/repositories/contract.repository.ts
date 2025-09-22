@@ -6,4 +6,5 @@ type ContractCreateInput = Omit<Contract, 'id' | 'createdAt' | 'updatedAt' | 'cr
 
 export interface IContractRepository extends IDatabaseRepository<Contract>{
   save(data: ContractCreateInput, auditContext?: AuditContext): Promise<Contract>;
+  findByEnvelopeId(envelopeId: string): Promise<Contract[]>;
 }

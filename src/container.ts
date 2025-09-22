@@ -21,6 +21,8 @@ import { DocumentRepository } from './infrastructure/database/repositories/docum
 import { CreateDocumentUseCase } from './application/use-cases/document/create-document';
 import { FindDocumentByIdUseCase } from './application/use-cases/document/find-document-by-id';
 import { DocumentController } from './adapters/controllers/document.controller';
+import { ContractController } from './adapters/controllers/contract.controller';
+import { WebhookController } from './adapters/controllers/webhook.controller';
 import { UpdateCustomerUseCase } from './application/use-cases/customer/update-customer';
 import { FindUserByEmailUseCase } from './application/use-cases/user/find-user-by-email';
 import { AddressController } from './adapters/controllers/address.controller';
@@ -28,6 +30,12 @@ import { UpdateAddressUseCase } from './application/use-cases/address/update-add
 import { AddressRepository } from './infrastructure/database/repositories/address.repository';
 import { DeleteDependentUseCase } from './application/use-cases/dependent/delete-dependent';
 import { ContractRepository } from './infrastructure/database/repositories/contract.repository';
+import { DocuSignService } from './infrastructure/external/docusign.service';
+import { CreateEnvelopeUseCase } from '@/application/use-cases/contract/create-envelope';
+import { GetEnvelopeStatusUseCase } from '@/application/use-cases/contract/get-envelope-status';
+import { DownloadDocumentUseCase } from '@/application/use-cases/contract/download-document';
+import { UpdateContractStatusUseCase } from '@/application/use-cases/contract/update-contract-status';
+import { DeleteDocumentUseCase } from './application/use-cases/document/delete-document';
 
 const container = createContainer({
   injectionMode: InjectionMode.CLASSIC,
@@ -46,6 +54,15 @@ container.register({
   documentRepository: asClass(DocumentRepository).singleton(),
   addressRepository: asClass(AddressRepository).singleton(),
   contractRepository: asClass(ContractRepository).singleton(),
+
+  //External Services
+  documentSignService: asClass(DocuSignService).singleton().inject(() => ({
+    baseUrl: process.env.DOCUSIGN_BASE_URL || 'https://demo.docusign.net/restapi',
+    integrationKey: process.env.DOCUSIGN_INTEGRATION_KEY!,
+    authBasePath: process.env.DOCUSIGN_AUTH_BASE_PATH || 'account-d.docusign.com',
+    userId: process.env.DOCUSIGN_USER_ID!,
+    privateKey: process.env.DOCUSIGN_PRIVATE_KEY!,
+  })),
 
   //UseCases
   updateAddress: asClass(UpdateAddressUseCase).singleton(),
@@ -66,7 +83,12 @@ container.register({
 
   createDocument: asClass(CreateDocumentUseCase).singleton(),
   findDocumentById: asClass(FindDocumentByIdUseCase).singleton(),
-  deleteDocument: asClass(CreateDocumentUseCase).singleton(),
+  deleteDocument: asClass(DeleteDocumentUseCase).singleton(),
+
+  createEnvelope: asClass(CreateEnvelopeUseCase).singleton(),
+  getEnvelopeStatus: asClass(GetEnvelopeStatusUseCase).singleton(),
+  downloadDocument: asClass(DownloadDocumentUseCase).singleton(),
+  updateContractStatus: asClass(UpdateContractStatusUseCase).singleton(),
 
   //Controller
   addressController: asClass(AddressController).singleton(),
@@ -74,6 +96,8 @@ container.register({
   userController: asClass(UserController).singleton(),
   dependentController: asClass(DependentController).singleton(),
   documentController: asClass(DocumentController).singleton(),
+  contractController: asClass(ContractController).singleton(),
+  webhookController: asClass(WebhookController).singleton(),
 });
 
 export default container;
