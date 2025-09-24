@@ -1,6 +1,5 @@
 import { IDocumentSignService } from '@/domain/external/document-sign.service';
 import { IContractRepository } from '@/domain/repositories/contract.repository';
-import { AuditContext } from '@/application/dto/audit-context.dto';
 import NotFoundError from '@/shared/errors/not-found.error';
 
 export interface DownloadDocumentRequest {

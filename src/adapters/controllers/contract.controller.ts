@@ -2,6 +2,8 @@ import { CreateEnvelopeUseCase } from '../../application/use-cases/contract/crea
 import { GetEnvelopeStatusUseCase } from '../../application/use-cases/contract/get-envelope-status';
 import { DownloadDocumentUseCase } from '../../application/use-cases/contract/download-document';
 import { UpdateContractStatusUseCase } from '../../application/use-cases/contract/update-contract-status';
+import { CreateRecipientViewUseCase } from '../../application/use-cases/contract/create-recipient-view';
+import { CreateEnvelopeAndGetSigningUrlUseCase } from '../../application/use-cases/contract/create-envelope-and-signing-url';
 import { AuditContext } from '@/application/dto/audit-context.dto';
 import IHttpServer from '@/shared/interfaces/http/http-server';
 import { HttpMethod } from '@/shared/types/http-method.enum';
@@ -12,27 +14,21 @@ export class ContractController {
     private readonly createEnvelope: CreateEnvelopeUseCase,
     private readonly getEnvelopeStatus: GetEnvelopeStatusUseCase,
     private readonly downloadDocument: DownloadDocumentUseCase,
-    private readonly updateContractStatus: UpdateContractStatusUseCase
+    private readonly updateContractStatus: UpdateContractStatusUseCase,
+    private readonly createRecipientView: CreateRecipientViewUseCase,
+    private readonly createEnvelopeAndGetSigningUrl: CreateEnvelopeAndGetSigningUrlUseCase
   ) { }
 
   registerRoutes() {
-    this.httpServer.register(HttpMethod.POST, "/webhook/docusign", async ({ body }) => {
-      const auditContext: AuditContext = { userEmail: "webhook-contract@docusign.com" };
-      return await this.createEnvelope.execute(body, auditContext);
-    });
-
-    // Criar envelope para assinatura
     this.httpServer.register(HttpMethod.POST, "/contract/envelope", async ({ body, user }) => {
       const auditContext: AuditContext = { userEmail: user?.email };
       return await this.createEnvelope.execute(body, auditContext);
     });
 
-    // Obter status do envelope
     this.httpServer.register(HttpMethod.GET, "/contract/:envelopeId/status", async ({ params }) => {
       return await this.getEnvelopeStatus.execute({ envelopeId: params.envelopeId });
     });
 
-    // Download do documento assinado
     this.httpServer.register(HttpMethod.GET, "/contract/:envelopeId/download", async ({ params, query, response }) => {
       const request = {
         envelopeId: params.envelopeId,
@@ -45,7 +41,6 @@ export class ContractController {
       return result.document;
     });
 
-    // Atualizar status do contrato
     this.httpServer.register(HttpMethod.PUT, "/contract/:envelopeId/status", async ({ params, body, user }) => {
       const request = {
         envelopeId: params.envelopeId,
@@ -53,6 +48,31 @@ export class ContractController {
         updatedBy: user?.email
       };
       return await this.updateContractStatus.execute(request);
+    });
+
+    // Criar URL de assinatura embarcada
+    this.httpServer.register(HttpMethod.POST, "/contract/:envelopeId/signing-url", async ({ params, body }) => {
+      const request = {
+        envelopeId: params.envelopeId,
+        recipientEmail: body.recipientEmail,
+        recipientName: body.recipientName,
+        returnUrl: body.returnUrl
+      };
+      return await this.createRecipientView.execute(request);
+    });
+
+    // Criar envelope e retornar URL de assinatura em uma única chamada
+    this.httpServer.register(HttpMethod.POST, "/contract/create-and-sign", async ({ body, user }) => {
+      const request = {
+        customerId: body.customerId,
+        documentType: body.documentType,
+        recipientEmail: body.recipientEmail,
+        recipientName: body.recipientName,
+        returnUrl: body.returnUrl
+      };
+      
+      const auditContext = user ? { userEmail: user.email } : undefined;
+      return await this.createEnvelopeAndGetSigningUrl.execute(request, auditContext);
     });
   }
 }

@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon",
-    "build": "tsc",
+    "build": "npm run clean && tsc",
+    "clean": "find src -name '*.js' -type f -delete && rm -rf dist",
     "start": "node dist/index.js",
     "test": "jest",
     "test:watch": "jest --watch"
@@ -34,6 +35,8 @@
     "typescript": "^5.9.2"
   },
   "dependencies": {
+    "@aws-sdk/client-s3": "^3.896.0",
+    "@aws-sdk/s3-request-presigner": "^3.896.0",
     "@prisma/client": "^6.15.0",
     "awilix": "^12.0.5",
     "aws-jwt-verify": "^5.1.0",

@@ -4,20 +4,25 @@ import { UpdateCustomerUseCase } from "@/application/use-cases/customer/update-c
 import { AuditContext } from "@/application/dto/audit-context.dto";
 import IHttpServer from "@/shared/interfaces/http/http-server";
 import { HttpMethod } from "@/shared/types/http-method.enum";
+import { FindPendingsUseCase } from "@/application/use-cases/customer/find-pendings";
 
 export class CustomerController {
   constructor(
     private readonly httpServer: IHttpServer,
     private readonly findCustomerById: FindCustomerByIdUseCase,
     private readonly createCustomer: CreateCustomerUseCase,
-    private readonly updateCustomer: UpdateCustomerUseCase
+    private readonly updateCustomer: UpdateCustomerUseCase,
+    private readonly findPendings: FindPendingsUseCase,
   ) { }
 
   registerRoutes() {
+    this.httpServer.register(HttpMethod.GET, "/customer-pendings/:customerId", async ({ params }) => {
+      return await this.findPendings.execute(params.customerId);
+    });
+
     this.httpServer.register(HttpMethod.GET, "/customer/:customerId", async ({ params }) => {
       return await this.findCustomerById.execute(params.customerId);
-    }
-    );
+    });
 
     this.httpServer.register(HttpMethod.POST, "/customer", async ({ body, user }) => {
       const auditContext: AuditContext = { userEmail: user?.email };

@@ -14,7 +14,7 @@ export class ContractRepository implements IContractRepository {
   }
 
   async save(data: ContractCreateInput, auditContext?: AuditContext): Promise<Contract> {
-    return await this.prisma.contract.create({ 
+    return await this.prisma.contract.create({
       data: {
         ...data,
         ...(auditContext?.userEmail && { createdBy: auditContext.userEmail, updatedBy: auditContext.userEmail })
@@ -44,6 +44,12 @@ export class ContractRepository implements IContractRepository {
   async findByEnvelopeId(envelopeId: string): Promise<Contract[]> {
     return await this.prisma.contract.findMany({
       where: { envelopeId }
+    });
+  }
+
+  async findByCustomerId(customerId: string): Promise<Contract[]> {
+    return await this.prisma.contract.findMany({
+      where: { customerId }
     });
   }
 }

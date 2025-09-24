@@ -1,4 +1,5 @@
-import { IDependentRepository } from "@/domain/repositories/dependent.repository";
+import { IDependentRepository, DependentWithDocuments } from "@/domain/repositories/dependent.repository";
+import { IDocumentRepository } from "@/domain/repositories/document.repository";
 import { AuditContext } from "@/application/dto/audit-context.dto";
 import { Dependent, Prisma } from "@prisma/client";
 import { PrismaClient } from "@prisma/client/extension";
@@ -7,7 +8,10 @@ import NotFoundError from "@/shared/errors/not-found.error";
 type DependentCreateInput = Omit<Dependent, 'id' | 'createdAt' | 'updatedAt' | 'createdBy' | 'updatedBy'>;
 
 export class DependentRepository implements IDependentRepository {
-  constructor(private readonly prisma: PrismaClient) { }
+  constructor(
+    private readonly prisma: PrismaClient,
+    private readonly documentRepository: IDocumentRepository
+  ) { }
 
   async delete(id: string): Promise<void> {
     const dependent = await this.prisma.dependent.findUnique({
@@ -27,6 +31,30 @@ export class DependentRepository implements IDependentRepository {
     return await this.prisma.dependent.findMany({
       where: { customerId: id },
     });
+  }
+
+  async findByCustomerId(customerId: string): Promise<Dependent[]> {
+    return await this.prisma.dependent.findMany({
+      where: { customerId },
+    });
+  }
+
+  async findByIdWithDocuments(customerId: string): Promise<DependentWithDocuments[]> {
+    const dependents = await this.prisma.dependent.findMany({
+      where: { customerId },
+    });
+
+    const dependentsWithDocuments = await Promise.all(
+      dependents.map(async (dependent: Dependent) => {
+        const documents = await this.documentRepository.findByDependentId(dependent.id);
+        return {
+          ...dependent,
+          documents
+        };
+      })
+    );
+
+    return dependentsWithDocuments;
   }
 
   async save(data: DependentCreateInput, auditContext?: AuditContext): Promise<Dependent> {

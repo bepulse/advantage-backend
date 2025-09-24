@@ -1,10 +1,22 @@
 import { IDocumentRepository } from "@/domain/repositories/document.repository";
 import { AuditContext } from "@/application/dto/audit-context.dto";
-import { Document } from "@prisma/client";
+import { Document, Prisma } from "@prisma/client";
 import { PrismaClient } from "@prisma/client/extension";
 
 export class DocumentRepository implements IDocumentRepository {
   constructor(private readonly prisma: PrismaClient) { }
+
+  async findByCustomerId(customerId: string): Promise<Document[]> {
+    return await this.prisma.document.findMany({
+      where: { customerId },
+    });
+  }
+
+  async findByDependentId(dependentId: string): Promise<Document[]> {
+    return await this.prisma.document.findMany({
+      where: { dependentId },
+    });
+  }
 
   async delete(id: string): Promise<void> {
     await this.prisma.document.delete({
@@ -17,7 +29,7 @@ export class DocumentRepository implements IDocumentRepository {
   }
 
   async save(data: Document, auditContext?: AuditContext): Promise<Document> {
-    return await this.prisma.document.create({ 
+    return await this.prisma.document.create({
       data: {
         ...data,
         ...(auditContext?.userEmail && { createdBy: auditContext.userEmail, updatedBy: auditContext.userEmail })
@@ -33,6 +45,12 @@ export class DocumentRepository implements IDocumentRepository {
         ...updateData,
         ...(auditContext?.userEmail && { updatedBy: auditContext.userEmail })
       }
+    });
+  }
+
+  async createDocument(data: Prisma.DocumentCreateInput): Promise<Document> {
+    return await this.prisma.document.create({
+      data
     });
   }
 }

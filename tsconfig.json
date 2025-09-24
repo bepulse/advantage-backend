@@ -10,11 +10,24 @@
     "strict": true,
     "skipLibCheck": true,
     "baseUrl": ".",
+    "outDir": "./dist",
+    "rootDir": "./src",
     "paths": {
       "@/*": [
         "src/*"
       ]
     },
-    "isolatedModules": true
-  }
+    "isolatedModules": true,
+    "declaration": false,
+    "removeComments": true
+  },
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "**/*.test.ts",
+    "**/*.spec.ts"
+  ]
 }

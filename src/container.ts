@@ -14,6 +14,7 @@ import { UserController } from './adapters/controllers/user.controller';
 import { DependentRepository } from './infrastructure/database/repositories/dependent.repository';
 import { CreateDependentUseCase } from './application/use-cases/dependent/create-dependent';
 import { FindDependentByCustomerIdUseCase } from './application/use-cases/dependent/find-dependent-by-customerId';
+import { FindDependentWithDocumentsByCustomerIdUseCase } from './application/use-cases/dependent/find-dependent-with-documents-by-customerId';
 import { UpdateDependentEligibilityUseCase } from './application/use-cases/dependent/update-dependent-eligibility';
 import { UpdateDependentUseCase } from './application/use-cases/dependent/update-dependent';
 import { DependentController } from './adapters/controllers/dependent.controller';
@@ -35,7 +36,25 @@ import { CreateEnvelopeUseCase } from '@/application/use-cases/contract/create-e
 import { GetEnvelopeStatusUseCase } from '@/application/use-cases/contract/get-envelope-status';
 import { DownloadDocumentUseCase } from '@/application/use-cases/contract/download-document';
 import { UpdateContractStatusUseCase } from '@/application/use-cases/contract/update-contract-status';
+import { CreateRecipientViewUseCase } from '@/application/use-cases/contract/create-recipient-view';
+import { CreateEnvelopeAndGetSigningUrlUseCase } from '@/application/use-cases/contract/create-envelope-and-signing-url';
 import { DeleteDocumentUseCase } from './application/use-cases/document/delete-document';
+import { UploadDocumentUseCase } from './application/use-cases/document/upload-document';
+import { DownloadDocumentUseCase as DocumentDownloadUseCase } from './application/use-cases/document/download-document';
+import { GetPresignedDownloadUrlUseCase } from './application/use-cases/document/get-presigned-download-url';
+import { AWSS3Service } from './infrastructure/external/aws-s3.service';
+
+const {
+  DOCUSIGN_BASE_URL,
+  DOCUSIGN_INTEGRATION_KEY,
+  DOCUSIGN_AUTH_BASE_PATH,
+  DOCUSIGN_USER_ID,
+  DOCUSIGN_PRIVATE_KEY_BASE64,
+  AWS_REGION,
+  AWS_ACCESS_KEY_ID,
+  AWS_SECRET_ACCESS_KEY,
+  AWS_S3_BUCKET_NAME
+} = process.env;
 
 const container = createContainer({
   injectionMode: InjectionMode.CLASSIC,
@@ -55,13 +74,20 @@ container.register({
   addressRepository: asClass(AddressRepository).singleton(),
   contractRepository: asClass(ContractRepository).singleton(),
 
-  //External Services
+  // Services
   documentSignService: asClass(DocuSignService).singleton().inject(() => ({
-    baseUrl: process.env.DOCUSIGN_BASE_URL || 'https://demo.docusign.net/restapi',
-    integrationKey: process.env.DOCUSIGN_INTEGRATION_KEY!,
-    authBasePath: process.env.DOCUSIGN_AUTH_BASE_PATH || 'account-d.docusign.com',
-    userId: process.env.DOCUSIGN_USER_ID!,
-    privateKey: process.env.DOCUSIGN_PRIVATE_KEY!,
+    baseUrl: DOCUSIGN_BASE_URL || 'https://demo.docusign.net/restapi',
+    integrationKey: DOCUSIGN_INTEGRATION_KEY!,
+    authBasePath: DOCUSIGN_AUTH_BASE_PATH || 'account-d.docusign.com',
+    userId: DOCUSIGN_USER_ID!,
+    privateKey: DOCUSIGN_PRIVATE_KEY_BASE64!,
+  })),
+
+  awsS3Service: asClass(AWSS3Service).singleton().inject(() => ({
+    region: AWS_REGION || 'us-east-1',
+    accessKeyId: AWS_ACCESS_KEY_ID!,
+    secretAccessKey: AWS_SECRET_ACCESS_KEY!,
+    bucketName: AWS_S3_BUCKET_NAME!,
   })),
 
   //UseCases
@@ -78,17 +104,23 @@ container.register({
   createDependent: asClass(CreateDependentUseCase).singleton(),
   deleteDependent: asClass(DeleteDependentUseCase).singleton(),
   findDependentByCustomerId: asClass(FindDependentByCustomerIdUseCase).singleton(),
+  findDependentWithDocumentsByCustomerId: asClass(FindDependentWithDocumentsByCustomerIdUseCase).singleton(),
   updateDependentEligibility: asClass(UpdateDependentEligibilityUseCase).singleton(),
   updateDependent: asClass(UpdateDependentUseCase).singleton(),
 
   createDocument: asClass(CreateDocumentUseCase).singleton(),
   findDocumentById: asClass(FindDocumentByIdUseCase).singleton(),
   deleteDocument: asClass(DeleteDocumentUseCase).singleton(),
+  uploadDocument: asClass(UploadDocumentUseCase).singleton(),
+  downloadDocumentFile: asClass(DocumentDownloadUseCase).singleton(),
+  getPresignedDownloadUrl: asClass(GetPresignedDownloadUrlUseCase).singleton(),
 
   createEnvelope: asClass(CreateEnvelopeUseCase).singleton(),
   getEnvelopeStatus: asClass(GetEnvelopeStatusUseCase).singleton(),
   downloadDocument: asClass(DownloadDocumentUseCase).singleton(),
   updateContractStatus: asClass(UpdateContractStatusUseCase).singleton(),
+  createRecipientView: asClass(CreateRecipientViewUseCase).singleton(),
+  createEnvelopeAndGetSigningUrl: asClass(CreateEnvelopeAndGetSigningUrlUseCase).singleton(),
 
   //Controller
   addressController: asClass(AddressController).singleton(),
