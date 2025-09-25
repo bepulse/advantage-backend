@@ -19,19 +19,17 @@ export interface UploadDocumentResponse {
 
 export class UploadDocumentUseCase {
   constructor(
-    private documentRepository: IDocumentRepository,
-    private awsS3Service: AWSS3Service
+    private readonly documentRepository: IDocumentRepository,
+    private readonly awsS3Service: AWSS3Service
   ) {}
 
   async execute(request: UploadDocumentRequest): Promise<UploadDocumentResponse> {
     const { customerId, dependentId, kind, filename, mimetype, buffer, uploadedBy } = request;
 
-    // Validar que pelo menos customerId ou dependentId foi fornecido
     if (!customerId && !dependentId) {
       throw new Error('É necessário fornecer customerId ou dependentId');
     }
 
-    // Gerar chave única para o documento no S3
     const s3Key = this.awsS3Service.generateDocumentKey(
       customerId || '', 
       dependentId || null, 
@@ -39,7 +37,6 @@ export class UploadDocumentUseCase {
       filename
     );
     
-    // Fazer upload do arquivo para o S3
     const uploadResult = await this.awsS3Service.uploadFile(
       s3Key,
       buffer,
@@ -53,7 +50,6 @@ export class UploadDocumentUseCase {
       }
     );
 
-    // Criar registro do documento no banco de dados
     const documentData: Prisma.DocumentCreateInput = {
       kind,
       fileName: filename,
@@ -65,7 +61,6 @@ export class UploadDocumentUseCase {
       updatedBy: uploadedBy
     };
 
-    // Adicionar relação com customer ou dependent
     if (customerId) {
       documentData.customer = { connect: { id: customerId } };
     }

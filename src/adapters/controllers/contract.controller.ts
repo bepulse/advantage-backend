@@ -50,7 +50,6 @@ export class ContractController {
       return await this.updateContractStatus.execute(request);
     });
 
-    // Criar URL de assinatura embarcada
     this.httpServer.register(HttpMethod.POST, "/contract/:envelopeId/signing-url", async ({ params, body }) => {
       const request = {
         envelopeId: params.envelopeId,
@@ -61,7 +60,6 @@ export class ContractController {
       return await this.createRecipientView.execute(request);
     });
 
-    // Criar envelope e retornar URL de assinatura em uma única chamada
     this.httpServer.register(HttpMethod.POST, "/contract/create-and-sign", async ({ body, user }) => {
       const request = {
         customerId: body.customerId,

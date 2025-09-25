@@ -17,29 +17,26 @@ export interface DownloadResult {
   lastModified?: Date;
 }
 
-export interface S3Config {
-  region: string;
-  accessKeyId: string;
-  secretAccessKey: string;
-  bucket: string;
-  urlExpirationSeconds?: number;
-}
-
 export class AWSS3Service {
   private s3Client: S3Client;
   private bucket: string;
   private urlExpirationSeconds: number;
 
-  constructor(config: S3Config) {
+  constructor(
+    private readonly region: string,
+    private readonly accessKeyId: string,
+    private readonly secretAccessKey: string,
+    private readonly bucketName: string,
+  ) {
     this.s3Client = new S3Client({
-      region: config.region,
+      region: region,
       credentials: {
-        accessKeyId: config.accessKeyId,
-        secretAccessKey: config.secretAccessKey,
+        accessKeyId: accessKeyId,
+        secretAccessKey: secretAccessKey,
       },
     });
-    this.bucket = config.bucket;
-    this.urlExpirationSeconds = config.urlExpirationSeconds || 3600; // 1 hour default
+    this.bucket = bucketName;
+    this.urlExpirationSeconds = 3600; // 1 hour default
   }
 
   /**
@@ -180,10 +177,10 @@ export class AWSS3Service {
   ): string {
     const timestamp = Date.now();
     const extension = originalFileName.split('.').pop();
-    const basePath = dependentId 
-      ? `customers/${customerId}/dependents/${dependentId}` 
+    const basePath = dependentId
+      ? `customers/${customerId}/dependents/${dependentId}`
       : `customers/${customerId}`;
-    
+
     return `${basePath}/${documentKind}/${timestamp}-${originalFileName}`;
   }
 }

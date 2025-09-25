@@ -43,6 +43,7 @@ import { UploadDocumentUseCase } from './application/use-cases/document/upload-d
 import { DownloadDocumentUseCase as DocumentDownloadUseCase } from './application/use-cases/document/download-document';
 import { GetPresignedDownloadUrlUseCase } from './application/use-cases/document/get-presigned-download-url';
 import { AWSS3Service } from './infrastructure/external/aws-s3.service';
+import { FindPendingsUseCase } from './application/use-cases/customer/find-pendings';
 
 const {
   DOCUSIGN_BASE_URL,
@@ -95,6 +96,7 @@ container.register({
   updateCustomer: asClass(UpdateCustomerUseCase).singleton(),
   createCustomer: asClass(CreateCustomerUseCase).singleton(),
   findCustomerById: asClass(FindCustomerByIdUseCase).singleton(),
+  findPendings: asClass(FindPendingsUseCase).singleton(),
 
   createUser: asClass(CreateUserUseCase).singleton(),
   findUserById: asClass(FindUserByIdUseCase).singleton(),
