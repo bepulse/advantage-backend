@@ -22,13 +22,11 @@ export class DownloadDocumentUseCase {
   async execute(request: DownloadDocumentRequest): Promise<DownloadDocumentResponse> {
     const { envelopeId, documentId } = request;
 
-    // Verificar se o contrato existe
     const contracts = await this.contractRepository.findByEnvelopeId(envelopeId);
     if (contracts.length === 0) {
       throw new NotFoundError('Contrato não encontrado');
     }
 
-    // Baixar documento do DocuSign
     const documentBuffer = await this.documentSignService.downloadDocument(envelopeId, documentId);
 
     const contract = contracts[0];

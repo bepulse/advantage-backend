@@ -21,7 +21,6 @@ export class UpdateContractStatusUseCase {
   async execute(request: UpdateContractStatusRequest): Promise<UpdateContractStatusResponse> {
     const { envelopeId, status, updatedBy } = request;
 
-    // Buscar contrato pelo envelopeId
     const contracts = await this.contractRepository.findByEnvelopeId(envelopeId);
     if (contracts.length === 0) {
       throw new NotFoundError('Contrato não encontrado');
@@ -29,7 +28,6 @@ export class UpdateContractStatusUseCase {
 
     const contract = contracts[0];
 
-    // Atualizar status do contrato
     const updatedContract = {
       ...contract,
       status,

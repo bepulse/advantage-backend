@@ -51,6 +51,7 @@ const {
   DOCUSIGN_AUTH_BASE_PATH,
   DOCUSIGN_USER_ID,
   DOCUSIGN_PRIVATE_KEY_BASE64,
+  DOCUSIGN_TEMPLATE_ID,
   AWS_REGION,
   AWS_ACCESS_KEY_ID,
   AWS_SECRET_ACCESS_KEY,
@@ -82,6 +83,7 @@ container.register({
     authBasePath: DOCUSIGN_AUTH_BASE_PATH || 'account-d.docusign.com',
     userId: DOCUSIGN_USER_ID!,
     privateKey: DOCUSIGN_PRIVATE_KEY_BASE64!,
+    templateId: DOCUSIGN_TEMPLATE_ID!,
   })),
 
   awsS3Service: asClass(AWSS3Service).singleton().inject(() => ({

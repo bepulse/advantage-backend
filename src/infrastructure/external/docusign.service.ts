@@ -9,7 +9,7 @@ import {
 
 type JwtCache = {
     accessToken: string | null;
-    expiresAt: number; 
+    expiresAt: number;
 };
 
 export class DocuSignService implements IDocumentSignService {
@@ -23,6 +23,7 @@ export class DocuSignService implements IDocumentSignService {
         private readonly authBasePath: string,
         private readonly userId: string,
         private readonly privateKey: string,
+        private readonly templateId: string,
     ) {
         this.apiClient = new ApiClient();
         this.apiClient.setBasePath(baseUrl);
@@ -43,8 +44,8 @@ export class DocuSignService implements IDocumentSignService {
         const bufferTime = 5 * 60 * 1000; // 5 minutos de buffer
 
         return !!(
-            this.jwt.accessToken && 
-            this.jwt.expiresAt > 0 && 
+            this.jwt.accessToken &&
+            this.jwt.expiresAt > 0 &&
             now < (this.jwt.expiresAt - bufferTime)
         );
     }
@@ -58,22 +59,22 @@ export class DocuSignService implements IDocumentSignService {
                 return await operation();
             } catch (error) {
                 lastError = error as Error;
-                
+
                 // Verificar se é erro de token expirado
                 const isTokenError = this.isTokenExpiredError(error);
-                
+
                 if (isTokenError && attempt < maxRetries) {
                     console.log(`Tentativa ${attempt + 1} falhou com token expirado, forçando renovação...`);
-                    
+
                     // Forçar renovação do token
                     this.jwt.accessToken = null;
                     this.jwt.expiresAt = 0;
-                    
+
                     // Aguardar um pouco antes de tentar novamente
                     await new Promise(resolve => setTimeout(resolve, 1000));
                     continue;
                 }
-                
+
                 // Se não é erro de token ou já esgotou as tentativas, relançar o erro
                 throw error;
             }
@@ -84,10 +85,10 @@ export class DocuSignService implements IDocumentSignService {
 
     private isTokenExpiredError(error: any): boolean {
         if (!error) return false;
-        
+
         const errorMessage = error.message || error.toString() || '';
         const errorName = error.name || '';
-        
+
         return (
             errorName === 'JwtExpiredError' ||
             errorMessage.includes('Token expired') ||
@@ -117,7 +118,7 @@ export class DocuSignService implements IDocumentSignService {
             const jwtLifeSec = 3600; // 1 hora
 
             console.log('Solicitando novo token JWT do DocuSign...');
-            
+
             const tokenResp = await this.apiClient.requestJWTUserToken(
                 this.integrationKey,
                 this.userId,
@@ -142,14 +143,14 @@ export class DocuSignService implements IDocumentSignService {
             this.jwt.expiresAt = Date.now() + (expiresIn * 1000);
 
             console.log(`Token JWT renovado com sucesso. Expira em: ${new Date(this.jwt.expiresAt).toISOString()}`);
-            
+
         } catch (error) {
             console.error('Erro ao configurar autenticação JWT:', error);
-            
+
             // Limpar cache em caso de erro
             this.jwt.accessToken = null;
             this.jwt.expiresAt = 0;
-            
+
             throw new Error(`Falha na autenticação DocuSign: ${error instanceof Error ? error.message : 'Erro desconhecido'}`);
         }
     }
@@ -161,18 +162,26 @@ export class DocuSignService implements IDocumentSignService {
 
             const def: EnvelopeDefinition = {
                 status: envelopeData.status ?? 'sent',
+                templateId: this.templateId,
                 ...envelopeData,
             };
 
-            const result = await this.envelopesApi.createEnvelope(DOCUSIGN_ACCOUNT_ID, {
-                envelopeDefinition: def,
-            });
+            try {
+                const result = await this.envelopesApi.createEnvelope(DOCUSIGN_ACCOUNT_ID, {
+                    envelopeDefinition: def,
+                });
 
-            if (!result.envelopeId) {
-                throw new Error('Failed to create envelope: envelopeId not returned');
+                console.log('✅ Envelope criado com sucesso:', result.envelopeId);
+
+                if (!result.envelopeId) {
+                    throw new Error('Failed to create envelope: envelopeId not returned');
+                }
+
+                return result.envelopeId;
+            } catch (error: any) {
+                const errorMessage = error.response?.data?.message || error.response?.data?.errorDetails?.[0]?.message || error.message;
+                throw new Error(`DocuSign API Error (${error.response?.status}): ${errorMessage}`);
             }
-
-            return result.envelopeId;
         });
     }
 
@@ -217,17 +226,38 @@ export class DocuSignService implements IDocumentSignService {
                 clientUserId: recipientEmail,
             };
 
-            const result = await this.envelopesApi.createRecipientView(
-                DOCUSIGN_ACCOUNT_ID,
-                envelopeId,
-                { recipientViewRequest }
-            );
+            try {
+                const result = await this.envelopesApi.createRecipientView(
+                    DOCUSIGN_ACCOUNT_ID,
+                    envelopeId,
+                    { recipientViewRequest }
+                );
 
-            if (!result.url) {
-                throw new Error('Failed to create recipient view: URL not returned');
+                if (!result.url) {
+                    throw new Error('Failed to create recipient view: URL not returned');
+                }
+
+                return result.url;
+            } catch (error: any) {
+                if (error.response?.status === 400) {
+                    const errorData = error.response?.data;
+                    if (errorData?.errorCode === 'ENVELOPE_NOT_FOUND' || errorData?.message?.includes('envelope')) {
+                        console.error('🚨 Erro específico: Envelope não encontrado ou inválido');
+                    }
+                    if (errorData?.errorCode === 'RECIPIENT_NOT_FOUND' || errorData?.message?.includes('recipient')) {
+                        console.error('🚨 Erro específico: Recipient não encontrado no envelope');
+                    }
+                    if (errorData?.message?.includes('clientUserId')) {
+                        console.error('🚨 Erro específico: Problema com clientUserId');
+                    }
+                }
+
+                const errorMessage = error.response?.data?.message ||
+                    error.response?.data?.errorDetails?.[0]?.message ||
+                    error.response?.data?.errorCode ||
+                    error.message;
+                throw new Error(`DocuSign Recipient View Error (${error.response?.status}): ${errorMessage}`);
             }
-
-            return result.url;
         });
     }
 }
