@@ -76,6 +76,24 @@ export class CustomerRepository implements ICustomerRepository {
     });
   }
 
+  async findByEmail(email: string): Promise<Customer | null> {
+    return await this.prisma.customer.findUnique({
+      where: { email },
+      include: {
+        address: true
+      }
+    });
+  }
+
+  async findByCpf(cpf: string): Promise<Customer | null> {
+    return await this.prisma.customer.findUnique({
+      where: { cpf },
+      include: {
+        address: true
+      }
+    });
+  }
+
   async update(data: Customer, auditContext?: AuditContext): Promise<Customer> {
     const { id, createdAt, updatedAt, ...updateData } = data;
     return await this.prisma.customer.update({
