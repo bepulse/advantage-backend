@@ -1,3 +1,4 @@
+import 'module-alias/register';
 import 'dotenv/config';
 import container from "./container";
 import { CustomerController } from './adapters/controllers/customer.controller';

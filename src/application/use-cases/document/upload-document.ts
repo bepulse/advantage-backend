@@ -1,6 +1,9 @@
 import { IDocumentRepository } from '@/domain/repositories/document.repository';
+import { ICustomerRepository } from '@/domain/repositories/customer.repository';
+import { IDependentRepository } from '@/domain/repositories/dependent.repository';
 import { AWSS3Service } from '@/infrastructure/external/aws-s3.service';
 import { Document, DocumentKind, Prisma } from '@prisma/client';
+import NotFoundError from '@/shared/errors/not-found.error';
 
 export interface UploadDocumentRequest {
   customerId?: string;
@@ -20,6 +23,8 @@ export interface UploadDocumentResponse {
 export class UploadDocumentUseCase {
   constructor(
     private readonly documentRepository: IDocumentRepository,
+    private readonly customerRepository: ICustomerRepository,
+    private readonly dependentRepository: IDependentRepository,
     private readonly awsS3Service: AWSS3Service
   ) {}
 
@@ -28,6 +33,20 @@ export class UploadDocumentUseCase {
 
     if (!customerId && !dependentId) {
       throw new Error('É necessário fornecer customerId ou dependentId');
+    }
+
+    if (customerId) {
+      const customer = await this.customerRepository.findById(customerId);
+      if (!customer) {
+        throw new NotFoundError(`Customer com ID ${customerId} não encontrado`);
+      }
+    }
+
+    if (dependentId) {
+      const dependent = await this.dependentRepository.findById(dependentId);
+      if (!dependent) {
+        throw new NotFoundError(`Dependent com ID ${dependentId} não encontrado`);
+      }
     }
 
     const s3Key = this.awsS3Service.generateDocumentKey(
@@ -55,7 +74,7 @@ export class UploadDocumentUseCase {
       fileName: filename,
       filePath: uploadResult.url,
       mimeType: mimetype,
-      sizeBytes: BigInt(buffer.length),
+      sizeBytes: buffer.length,
       uploadedAt: new Date(),
       createdBy: uploadedBy,
       updatedBy: uploadedBy

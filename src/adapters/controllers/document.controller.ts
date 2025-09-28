@@ -25,9 +25,8 @@ export class DocumentController {
       await this.createDocument.execute(body, auditContext);
     });
 
-    this.httpServer.register(HttpMethod.POST, "/document/upload", async ({ body, files, user }) => {
-      const file = files?.document;
-
+    this.httpServer.register(HttpMethod.POST, "/document/upload", async ({ body, file, user }) => {
+      console.log(file);
       if (!file) {
         throw new Error('Arquivo não fornecido');
       }
@@ -36,7 +35,7 @@ export class DocumentController {
         customerId: body.customerId,
         dependentId: body.dependentId,
         kind: body.kind,
-        filename: file.originalname || file.name,
+        filename: file.originalname,
         mimetype: file.mimetype,
         buffer: file.buffer,
         uploadedBy: user?.email || 'unknown'

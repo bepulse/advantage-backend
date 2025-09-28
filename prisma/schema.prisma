@@ -136,7 +136,7 @@ model Document {
   fileName     String
   filePath     String // path/URL or storage key (e.g., s3://... or /uploads/...)
   mimeType     String?
-  sizeBytes    BigInt?
+  sizeBytes    Int?
   checksum     String? // e.g., SHA-256 for dedup
   uploadedById String? // User who uploaded
   uploadedAt   DateTime     @default(now())
