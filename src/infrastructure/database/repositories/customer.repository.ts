@@ -73,7 +73,8 @@ export class CustomerRepository implements ICustomerRepository {
       include: {
         address: true,
         dependents: true,
-        contract: true
+        contract: true,
+        documents: true
       }
     });
   }

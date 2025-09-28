@@ -42,6 +42,7 @@ import { DeleteDocumentUseCase } from './application/use-cases/document/delete-d
 import { UploadDocumentUseCase } from './application/use-cases/document/upload-document';
 import { DownloadDocumentUseCase as DocumentDownloadUseCase } from './application/use-cases/document/download-document';
 import { GetPresignedDownloadUrlUseCase } from './application/use-cases/document/get-presigned-download-url';
+import { UpdateDocumentApprovalUseCase } from './application/use-cases/document/update-document-approval';
 import { AWSS3Service } from './infrastructure/external/aws-s3.service';
 import { FindPendingsUseCase } from './application/use-cases/customer/find-pendings';
 import { FindCustomerByCPFUseCase } from './application/use-cases/customer/find-customer-by-cpf';
@@ -120,6 +121,7 @@ container.register({
   uploadDocument: asClass(UploadDocumentUseCase).singleton(),
   downloadDocumentFile: asClass(DocumentDownloadUseCase).singleton(),
   getPresignedDownloadUrl: asClass(GetPresignedDownloadUrlUseCase).singleton(),
+  updateDocumentApproval: asClass(UpdateDocumentApprovalUseCase).singleton(),
 
   createEnvelope: asClass(CreateEnvelopeUseCase).singleton(),
   getEnvelopeStatus: asClass(GetEnvelopeStatusUseCase).singleton(),

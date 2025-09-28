@@ -138,6 +138,7 @@ model Document {
   mimeType     String?
   sizeBytes    Int?
   checksum     String? // e.g., SHA-256 for dedup
+  isApproved   Boolean?     // null = pending, true = approved, false = rejected
   uploadedById String? // User who uploaded
   uploadedAt   DateTime     @default(now())
   updatedAt    DateTime     @updatedAt
@@ -157,6 +158,7 @@ model Document {
   @@index([dependentId])
   @@index([kind])
   @@index([uploadedAt])
+  @@index([isApproved])
 }
 
 model Contract {

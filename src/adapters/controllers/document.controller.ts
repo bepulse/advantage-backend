@@ -4,6 +4,7 @@ import { DeleteDocumentUseCase } from "@/application/use-cases/document/delete-d
 import { UploadDocumentUseCase } from "@/application/use-cases/document/upload-document";
 import { DownloadDocumentUseCase } from "@/application/use-cases/document/download-document";
 import { GetPresignedDownloadUrlUseCase } from "@/application/use-cases/document/get-presigned-download-url";
+import { UpdateDocumentApprovalUseCase } from "@/application/use-cases/document/update-document-approval";
 import { AuditContext } from "@/application/dto/audit-context.dto";
 import IHttpServer from "@/shared/interfaces/http/http-server";
 import { HttpMethod } from "@/shared/types/http-method.enum";
@@ -16,7 +17,8 @@ export class DocumentController {
     private readonly findDocumentById: FindDocumentByIdUseCase,
     private readonly uploadDocument: UploadDocumentUseCase,
     private readonly downloadDocumentFile: DownloadDocumentUseCase,
-    private readonly getPresignedDownloadUrl: GetPresignedDownloadUrlUseCase
+    private readonly getPresignedDownloadUrl: GetPresignedDownloadUrlUseCase,
+    private readonly updateDocumentApproval: UpdateDocumentApprovalUseCase
   ) { }
 
   registerRoutes() {
@@ -73,6 +75,21 @@ export class DocumentController {
 
     this.httpServer.register(HttpMethod.DELETE, "/document/:id", async ({ params }) => {
       return await this.deleteDocument.execute(params.id);
+    });
+
+    this.httpServer.register(HttpMethod.PATCH, "/document/:id/approval", async ({ params, body, user }) => {
+      const { isApproved } = body;
+      
+      if (typeof isApproved !== 'boolean') {
+        throw new Error('isApproved must be a boolean value');
+      }
+
+      const auditContext: AuditContext = { userEmail: user?.email };
+      
+      return await this.updateDocumentApproval.execute({
+        documentId: params.id,
+        isApproved
+      }, auditContext);
     });
   }
 }
