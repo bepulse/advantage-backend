@@ -6,6 +6,7 @@ import IHttpServer from "@/shared/interfaces/http/http-server";
 import { HttpMethod } from "@/shared/types/http-method.enum";
 import { FindPendingsUseCase } from "@/application/use-cases/customer/find-pendings";
 import { FindCustomerByCPFUseCase } from "@/application/use-cases/customer/find-customer-by-cpf";
+import { CheckCustomerEligibilityUseCase } from "@/application/use-cases/customer/check-customer-eligibility";
 
 export class CustomerController {
   constructor(
@@ -15,6 +16,7 @@ export class CustomerController {
     private readonly updateCustomer: UpdateCustomerUseCase,
     private readonly findPendings: FindPendingsUseCase,
     private readonly findCustomerByCPF: FindCustomerByCPFUseCase,
+    private readonly checkCustomerEligibility: CheckCustomerEligibilityUseCase,
   ) { }
 
   registerRoutes() {
@@ -24,6 +26,10 @@ export class CustomerController {
 
     this.httpServer.register(HttpMethod.GET, "/customer/cpf/:cpf", async ({ params }) => {
       return await this.findCustomerByCPF.execute(params.cpf);
+    });
+
+    this.httpServer.register(HttpMethod.GET, "/customer/:customerId/eligibility", async ({ params }) => {
+      return await this.checkCustomerEligibility.execute(params.customerId);
     });
 
     this.httpServer.register(HttpMethod.GET, "/customer/:customerId", async ({ params }) => {

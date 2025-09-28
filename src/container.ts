@@ -46,6 +46,7 @@ import { UpdateDocumentApprovalUseCase } from './application/use-cases/document/
 import { AWSS3Service } from './infrastructure/external/aws-s3.service';
 import { FindPendingsUseCase } from './application/use-cases/customer/find-pendings';
 import { FindCustomerByCPFUseCase } from './application/use-cases/customer/find-customer-by-cpf';
+import { CheckCustomerEligibilityUseCase } from './application/use-cases/customer/check-customer-eligibility';
 
 const {
   DOCUSIGN_BASE_URL,
@@ -102,6 +103,7 @@ container.register({
   findCustomerById: asClass(FindCustomerByIdUseCase).singleton(),
   findPendings: asClass(FindPendingsUseCase).singleton(),
   findCustomerByCPF: asClass(FindCustomerByCPFUseCase).singleton(),
+  checkCustomerEligibility: asClass(CheckCustomerEligibilityUseCase).singleton(),
 
   createUser: asClass(CreateUserUseCase).singleton(),
   findUserById: asClass(FindUserByIdUseCase).singleton(),

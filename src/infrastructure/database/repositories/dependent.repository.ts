@@ -22,6 +22,12 @@ export class DependentRepository implements IDependentRepository {
       throw new NotFoundError('Dependent not found');
     }
 
+    const documents = await this.documentRepository.findByDependentId(id);
+
+    for (const document of documents) {
+      await this.documentRepository.delete(document.id);
+    }
+
     await this.prisma.dependent.delete({
       where: { id }
     });
