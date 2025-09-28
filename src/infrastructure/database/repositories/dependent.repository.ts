@@ -101,4 +101,10 @@ export class DependentRepository implements IDependentRepository {
       },
     });
   }
+
+  async findByCpf(cpf: string): Promise<Dependent | null> {
+    return await this.prisma.dependent.findUnique({
+      where: { cpf },
+    });
+  }
 }

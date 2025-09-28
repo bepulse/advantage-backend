@@ -65,6 +65,7 @@ export class CreateCustomerUseCase {
 
       return {
         id: updatedCustomer.id,
+        name: updatedCustomer.name,
         cpf: updatedCustomer.cpf,
         email: updatedCustomer.email
       };
@@ -93,6 +94,7 @@ export class CreateCustomerUseCase {
 
     return {
       id: savedCustomer.id,
+      name: savedCustomer.name,
       cpf: savedCustomer.cpf,
       email: savedCustomer.email
     };

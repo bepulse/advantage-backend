@@ -11,4 +11,5 @@ export interface IDependentRepository extends IDatabaseRepository<Dependent> {
     updateWhere(where: Prisma.DependentWhereInput, eligibility: boolean, auditContext?: AuditContext): Promise<Dependent>;
     findByIdWithDocuments(customerId: string): Promise<DependentWithDocuments[]>;
     findByCustomerId(customerId: string): Promise<Dependent[]>;
+    findByCpf(cpf: string): Promise<Dependent | null>;
 }
