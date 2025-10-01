@@ -47,6 +47,7 @@ import { AWSS3Service } from './infrastructure/external/aws-s3.service';
 import { FindPendingsUseCase } from './application/use-cases/customer/find-pendings';
 import { FindCustomerByCPFUseCase } from './application/use-cases/customer/find-customer-by-cpf';
 import { CheckCustomerEligibilityUseCase } from './application/use-cases/customer/check-customer-eligibility';
+import { HealthController } from './adapters/controllers/health.controller';
 
 const {
   DOCUSIGN_BASE_URL,
@@ -132,7 +133,7 @@ container.register({
   createRecipientView: asClass(CreateRecipientViewUseCase).singleton(),
   createEnvelopeAndGetSigningUrl: asClass(CreateEnvelopeAndGetSigningUrlUseCase).singleton(),
 
-  //Controller
+  // Controllers
   addressController: asClass(AddressController).singleton(),
   customerController: asClass(CustomerController).singleton(),
   userController: asClass(UserController).singleton(),
@@ -140,6 +141,7 @@ container.register({
   documentController: asClass(DocumentController).singleton(),
   contractController: asClass(ContractController).singleton(),
   webhookController: asClass(WebhookController).singleton(),
+  healthController: asClass(HealthController).singleton(),
 });
 
 export default container;

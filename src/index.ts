@@ -8,6 +8,7 @@ import { DocumentController } from './adapters/controllers/document.controller';
 import { ContractController } from './adapters/controllers/contract.controller';
 import { WebhookController } from './adapters/controllers/webhook.controller';
 import { AddressController } from './adapters/controllers/address.controller';
+import { HealthController } from './adapters/controllers/health.controller';
 
 const httpServer = container.resolve("httpServer");
 
@@ -18,7 +19,12 @@ const dependentController = container.resolve<DependentController>("dependentCon
 const documentController = container.resolve<DocumentController>("documentController");
 const contractController = container.resolve<ContractController>("contractController");
 const webhookController = container.resolve<WebhookController>("webhookController");
+const healthController = container.resolve<HealthController>("healthController");
 
+// Register public routes first (without authentication)
+healthController.registerRoutes();
+
+// Register protected routes (with authentication)
 addressController.registerRoutes();
 customerController.registerRoutes();
 dependentController.registerRoutes();
@@ -27,6 +33,4 @@ contractController.registerRoutes();
 webhookController.registerRoutes();
 userController.registerRoutes();
 
-httpServer.listen(process.env.PORT, '0.0.0.0');
-
-console.log(`Server is running on port ${process.env.PORT}`);
+httpServer.listen(process.env.PORT);

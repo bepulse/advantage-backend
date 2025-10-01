@@ -7,5 +7,11 @@ export default interface IHttpServer {
         callback: (req: any) => Promise<any>
     ): void
 
+    registerPublic(
+        method: HttpMethod,
+        url: string,
+        callback: (req: any) => Promise<any>
+    ): void
+
     listen(port: number): void;
 }

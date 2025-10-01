@@ -16,21 +16,18 @@ export class ExpressAdapter implements IHttpServer {
             origin: "*",
             credentials: true,
         }));
-        
-        this.upload = multer({ 
+
+        this.upload = multer({
             storage: multer.memoryStorage(),
             limits: {
                 fileSize: 10 * 1024 * 1024, // 10MB limit
             }
         });
-        
-        
-        this.app.use(AuthGuard);
     }
 
     register(method: string, url: string, callback: Function): void {
         if (url.includes('/upload')) {
-            this.app[method](url, this.upload.single('document'), async (req: any, res: any) => {
+            this.app[method](url, AuthGuard, this.upload.single('document'), async (req: any, res: any) => {
                 try {
                     const output = await callback({
                         body: req.body,
@@ -49,7 +46,7 @@ export class ExpressAdapter implements IHttpServer {
                 }
             });
         } else {
-            this.app[method](url, async (req: any, res: any) => {
+            this.app[method](url, AuthGuard, async (req: any, res: any) => {
                 try {
                     const output = await callback({
                         body: req.body,
@@ -69,7 +66,28 @@ export class ExpressAdapter implements IHttpServer {
         }
     }
 
+    registerPublic(method: string, url: string, callback: Function): void {
+        this.app[method](url, async (req: any, res: any) => {
+            try {
+                const output = await callback({
+                    body: req.body,
+                    params: req.params,
+                    query: req.query
+                });
+                res.json(output);
+            } catch (error: any) {
+                if (error instanceof HttpError) {
+                    res.status(error.statusCode).json({ message: error.message });
+                } else {
+                    res.status(500).json({ message: "Internal Server Error", innerMessage: error.message });
+                }
+            }
+        });
+    }
+
     listen(port: number): void {
-        return this.app.listen(port);
+        return this.app.listen(port, '0.0.0.0', () => {
+            console.log(`Server is listening on 0.0.0.0:${port}`);
+        });
     }
 }
