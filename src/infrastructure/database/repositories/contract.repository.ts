@@ -37,7 +37,7 @@ export class ContractRepository implements IContractRepository {
 
   async delete(id: string): Promise<void> {
     await this.prisma.contract.delete({
-      where: { id }
+      where: { customerId:id }
     });
   }
 

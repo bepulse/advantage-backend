@@ -8,4 +8,5 @@ export interface IContractRepository extends IDatabaseRepository<Contract> {
   save(data: ContractCreateInput, auditContext?: AuditContext): Promise<Contract>;
   findByEnvelopeId(envelopeId: string): Promise<Contract[]>;
   findByCustomerId(customerId: string): Promise<Contract[]>;
+  delete(customerId: string) : Promise<void>;
 }
