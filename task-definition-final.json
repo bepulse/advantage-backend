@@ -1,0 +1,42 @@
+{
+  "family": "advantage",
+  "containerDefinitions": [
+    {
+      "cpu": 0,
+      "environment": [],
+      "environmentFiles": [],
+      "essential": true,
+      "image": "816582314863.dkr.ecr.us-east-1.amazonaws.com/gar/advantage-backend:latest",
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "/ecs/advantage",
+          "awslogs-region": "us-east-1",
+          "awslogs-stream-prefix": "ecs"
+        }
+      },
+      "mountPoints": [],
+      "name": "advantage-backend",
+      "portMappings": [
+        {
+          "containerPort": 3085,
+          "hostPort": 3085,
+          "protocol": "tcp"
+        }
+      ],
+      "secrets": [],
+      "systemControls": [],
+      "volumesFrom": []
+    }
+  ],
+  "taskRoleArn": "arn:aws:iam::816582314863:role/ecsTaskRole",
+  "executionRoleArn": "arn:aws:iam::816582314863:role/ecsTaskExecutionRole",
+  "networkMode": "awsvpc",
+  "volumes": [],
+  "placementConstraints": [],
+  "requiresCompatibilities": [
+    "FARGATE"
+  ],
+  "cpu": "256",
+  "memory": "512"
+}

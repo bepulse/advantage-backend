@@ -49,7 +49,7 @@ export class CheckCustomerEligibilityUseCase {
             if (contract.status === 'completed' || contract.status === 'signed') {
                 hasValidContract = true;
             } else {
-                pendencies.push(`Contrato deve estar com status "completed" ou "signed". Status atual: ${contract.status}`);
+                pendencies.push(`Contrato ainda não foi assinado.`);
             }
         }
 

@@ -12,7 +12,6 @@ export class CreateRecipientViewUseCase {
   async execute(request: CreateRecipientViewRequest): Promise<CreateRecipientViewResponse> {
     const { envelopeId, recipientEmail, recipientName, returnUrl } = request;
 
-    // Verificar se o contrato existe
     const contracts = await this.contractRepository.findByEnvelopeId(envelopeId);
     if (contracts.length === 0) {
       throw new NotFoundError('Contrato não encontrado');
@@ -20,7 +19,6 @@ export class CreateRecipientViewUseCase {
 
     const contract = contracts[0];
 
-    // Verificar se o contrato está em status válido para assinatura
     if (contract.status === 'completed') {
       throw new Error('Contrato já foi assinado');
     }
@@ -29,7 +27,6 @@ export class CreateRecipientViewUseCase {
       throw new Error('Contrato não está disponível para assinatura');
     }
 
-    // Criar a URL de assinatura embarcada
     const signingUrl = await this.documentSignService.createRecipientView(
       envelopeId,
       recipientEmail,

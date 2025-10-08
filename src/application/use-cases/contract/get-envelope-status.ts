@@ -31,10 +31,8 @@ export class GetEnvelopeStatusUseCase {
   async execute(request: GetEnvelopeStatusRequest): Promise<GetEnvelopeStatusResponse> {
     const { envelopeId } = request;
 
-    // Buscar status do envelope no DocuSign
     const envelopeStatus = await this.documentSignService.getEnvelopeStatus(envelopeId);
 
-    // Atualizar status do contrato no banco de dados se necessário
     const contracts = await this.contractRepository.findByEnvelopeId(envelopeId);
     if (contracts.length > 0) {
       const contract = contracts[0];
