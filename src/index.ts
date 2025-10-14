@@ -1,4 +1,3 @@
-import 'module-alias/register';
 import 'dotenv/config';
 import container from "./container";
 import { CustomerController } from './adapters/controllers/customer.controller';
@@ -33,4 +32,5 @@ contractController.registerRoutes();
 webhookController.registerRoutes();
 userController.registerRoutes();
 
-httpServer.listen(process.env.PORT);
+const port = parseInt(process.env.PORT || '3085', 10);
+httpServer.listen(port);

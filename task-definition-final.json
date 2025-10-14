@@ -3,8 +3,16 @@
   "containerDefinitions": [
     {
       "cpu": 0,
-      "environment": [],
-      "environmentFiles": [],
+      "environment": [
+        { "name": "RUN_MIGRATIONS", "value": "false" },
+        { "name": "PORT", "value": "3085" }
+      ],
+      "environmentFiles": [
+        {
+          "value": "arn:aws:s3:::cartaobeneficios/advantage-backend/prd.env",
+          "type": "s3"
+        }
+      ],
       "essential": true,
       "image": "816582314863.dkr.ecr.us-east-1.amazonaws.com/gar/advantage-backend:latest",
       "logConfiguration": {

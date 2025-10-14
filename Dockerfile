@@ -21,6 +21,7 @@ FROM --platform=linux/amd64 node:22-alpine AS runner
 WORKDIR /usr/src/app
 
 ENV NODE_ENV=production
+ENV RUN_MIGRATIONS=false
 
 RUN apk update && apk upgrade --no-cache
 

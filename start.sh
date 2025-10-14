@@ -1,17 +1,21 @@
 #!/bin/sh
+set -e
 
 echo "🚀 Starting Advantage Backend..."
 
-# Executar migrações
-echo "📦 Running database migrations..."
-npx prisma migrate deploy
+# Controla execução de migrações via env RUN_MIGRATIONS (true/1 para habilitar)
+RUN_MIGRATIONS=${RUN_MIGRATIONS:-false}
 
-# Verificar se as migrações foram bem-sucedidas
-if [ $? -eq 0 ]; then
+if [ "$RUN_MIGRATIONS" = "true" ] || [ "$RUN_MIGRATIONS" = "1" ]; then
+  echo "📦 Running database migrations (RUN_MIGRATIONS=${RUN_MIGRATIONS})..."
+  if npx prisma migrate deploy; then
     echo "✅ Migrations completed successfully"
-else
+  else
     echo "❌ Migration failed"
     exit 1
+  fi
+else
+  echo "⏭️ Skipping migrations (RUN_MIGRATIONS=${RUN_MIGRATIONS})"
 fi
 
 # Iniciar a aplicação
