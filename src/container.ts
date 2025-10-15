@@ -82,9 +82,9 @@ container.register({
 
   // Services
   documentSignService: asClass(DocuSignService).singleton().inject(() => ({
-    baseUrl: DOCUSIGN_BASE_URL || 'https://demo.docusign.net/restapi',
+    baseUrl: DOCUSIGN_BASE_URL,
     integrationKey: DOCUSIGN_INTEGRATION_KEY!,
-    authBasePath: DOCUSIGN_AUTH_BASE_PATH || 'account-d.docusign.com',
+    authBasePath: DOCUSIGN_AUTH_BASE_PATH,
     userId: DOCUSIGN_USER_ID!,
     privateKey: DOCUSIGN_PRIVATE_KEY_BASE64!,
     templateId: DOCUSIGN_TEMPLATE_ID!,
