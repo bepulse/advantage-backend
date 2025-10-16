@@ -55,10 +55,11 @@ export class CreateEnvelopeAndGetSigningUrlUseCase {
             email: customer.email,
             name: customer.name,
             roleName: "customer",
-            clientUserId: customer.email,
+            clientUserId: null,
             tabs: hasDependents.length > 0 && templateTabs || null,
           },
         ],
+        status:"sent",
         customerId: customer.id,
         documentType: request.documentType,
       };
