@@ -28,7 +28,6 @@ export class DocumentController {
     });
 
     this.httpServer.register(HttpMethod.POST, "/document/upload", async ({ body, file, user }) => {
-      console.log(file);
       if (!file) {
         throw new Error('Arquivo não fornecido');
       }

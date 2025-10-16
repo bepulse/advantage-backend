@@ -32,14 +32,15 @@ export class CreateEnvelopeAndGetSigningUrlUseCase {
       const hasDependents = await this.dependentRepository.findByCustomerId(
         request.customerId
       );
-    
+
       const templateTabs = {
         textTabs: [
           {
             tabLabel: "Dependentes",
-            value: `Dependentes:\n${hasDependents.length > 0 && hasDependents
-              .map((d) => `- ${d.name} - CPF: ${d.cpf}`)
-              .join("\n")}`,
+            value: `Dependentes:\n${
+              hasDependents.length > 0 &&
+              hasDependents.map((d) => `- ${d.name} - CPF: ${d.cpf}`).join("\n")
+            }`,
             locked: "true",
             documentId: "1",
             pageNumber: "13",
@@ -55,11 +56,14 @@ export class CreateEnvelopeAndGetSigningUrlUseCase {
             email: customer.email,
             name: customer.name,
             roleName: "customer",
-            clientUserId: null,
-            tabs: hasDependents.length > 0 && templateTabs || null,
+            clientUserId: customer.email,
+            embeddedRecipientStartURL: "SIGN_AT_DOCUSIGN",
+            recipientId: "1",
+            routingOrder: "1",
+            tabs: (hasDependents.length > 0 && templateTabs) || null,
           },
         ],
-        status:"sent",
+        status: "sent",
         customerId: customer.id,
         documentType: request.documentType,
       };
