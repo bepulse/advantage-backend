@@ -62,6 +62,11 @@ const {
   AWS_S3_BUCKET_NAME
 } = process.env;
 
+  console.log(DOCUSIGN_BASE_URL)
+  console.log(DOCUSIGN_INTEGRATION_KEY)
+  console.log(DOCUSIGN_AUTH_BASE_PATH)
+  console.log(DOCUSIGN_USER_ID)
+  
 const container = createContainer({
   injectionMode: InjectionMode.CLASSIC,
   strict: true,
