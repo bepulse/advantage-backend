@@ -223,7 +223,7 @@ export class DocuSignService implements IDocumentSignService {
                 email: recipientEmail,
                 userName: recipientName,
                 returnUrl: returnUrl,
-                clientUserId: recipientEmail,
+                // clientUserId: null,
             };
 
             try {
