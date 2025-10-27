@@ -34,7 +34,7 @@ export class WebhookController {
         return { success: true, message: 'Webhook processed successfully' };
       } catch (error) {
         console.error('Error processing DocuSign webhook:', error);
-        throw { success: false, message: 'Error processing webhook' };
+        return { success: false, message: 'Error processing webhook' };
       }
     });
   }

@@ -22,6 +22,10 @@ export const AuthGuard = async (
   next: NextFunction
 ) => {
 
+  if(isPublicRoute(req.path)){
+    return next();
+  }
+
   if (isWebhook(req.path)) {
     return webhookAuth(req, res, next);
   }
@@ -57,6 +61,17 @@ export const AuthGuard = async (
       message: "Token inválido ou expirado",
     });
   }
+};
+
+const isPublicRoute = (path: string) => {
+  const publicRoutes = [
+    "/customer/:customerId/eligibility",
+  ];
+
+  return publicRoutes.some((route) => {
+    const pattern = new RegExp("^" + route.replace(/:[^/]+/g, "[^/]+") + "$");
+    return pattern.test(path);
+  });
 };
 
 const isWebhook = (path: string) => path.includes("webhook/docusign");
