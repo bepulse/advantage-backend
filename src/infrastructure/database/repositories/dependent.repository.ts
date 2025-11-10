@@ -1,25 +1,31 @@
-import { IDependentRepository, DependentWithDocuments } from "@/domain/repositories/dependent.repository";
+import {
+  IDependentRepository,
+  DependentWithDocuments,
+} from "@/domain/repositories/dependent.repository";
 import { IDocumentRepository } from "@/domain/repositories/document.repository";
 import { AuditContext } from "@/application/dto/audit-context.dto";
 import { Dependent, Prisma } from "@prisma/client";
 import { PrismaClient } from "@prisma/client/extension";
 import NotFoundError from "@/shared/errors/not-found.error";
 
-type DependentCreateInput = Omit<Dependent, 'id' | 'createdAt' | 'updatedAt' | 'createdBy' | 'updatedBy'>;
+type DependentCreateInput = Omit<
+  Dependent,
+  "id" | "createdAt" | "updatedAt" | "createdBy" | "updatedBy"
+>;
 
 export class DependentRepository implements IDependentRepository {
   constructor(
     private readonly prisma: PrismaClient,
     private readonly documentRepository: IDocumentRepository
-  ) { }
+  ) {}
 
   async delete(id: string): Promise<void> {
     const dependent = await this.prisma.dependent.findUnique({
-      where: { id }
+      where: { id },
     });
 
     if (!dependent) {
-      throw new NotFoundError('Dependent not found');
+      throw new NotFoundError("Dependent not found");
     }
 
     const documents = await this.documentRepository.findByDependentId(id);
@@ -29,7 +35,7 @@ export class DependentRepository implements IDependentRepository {
     }
 
     await this.prisma.dependent.delete({
-      where: { id }
+      where: { id },
     });
   }
 
@@ -45,17 +51,21 @@ export class DependentRepository implements IDependentRepository {
     });
   }
 
-  async findByIdWithDocuments(customerId: string): Promise<DependentWithDocuments[]> {
+  async findByIdWithDocuments(
+    customerId: string
+  ): Promise<DependentWithDocuments[]> {
     const dependents = await this.prisma.dependent.findMany({
       where: { customerId },
     });
 
     const dependentsWithDocuments = await Promise.all(
       dependents.map(async (dependent: Dependent) => {
-        const documents = await this.documentRepository.findByDependentId(dependent.id);
+        const documents = await this.documentRepository.findByDependentId(
+          dependent.id
+        );
         return {
           ...dependent,
-          documents
+          documents,
         };
       })
     );
@@ -63,33 +73,42 @@ export class DependentRepository implements IDependentRepository {
     return dependentsWithDocuments;
   }
 
-  async save(data: DependentCreateInput, auditContext?: AuditContext): Promise<Dependent> {
+  async save(
+    data: DependentCreateInput,
+    auditContext?: AuditContext
+  ): Promise<Dependent> {
     const cleanDependentData: DependentCreateInput = {
       customerId: data.customerId,
       name: data.name,
       cpf: data.cpf,
       birthDate: data.birthDate,
       eligible: data.eligible ?? false,
-      relationship: data.relationship
+      relationship: data.relationship,
     };
 
     return await this.prisma.dependent.create({
       data: {
         ...cleanDependentData,
-        ...(auditContext?.userEmail && { createdBy: auditContext.userEmail, updatedBy: auditContext.userEmail })
-      }
+        ...(auditContext?.userEmail && {
+          createdBy: auditContext.userEmail,
+          updatedBy: auditContext.userEmail,
+        }),
+      },
     });
   }
 
-  async update(data: Dependent, auditContext?: AuditContext): Promise<Dependent> {
+  async update(
+    data: Dependent,
+    auditContext?: AuditContext
+  ): Promise<Dependent> {
     const { id, createdAt, updatedAt, ...updateData } = data;
     return this.prisma.dependent.update({
       where: {
-        id
+        id,
       },
       data: {
         ...updateData,
-        ...(auditContext?.userEmail && { updatedBy: auditContext.userEmail })
+        ...(auditContext?.userEmail && { updatedBy: auditContext.userEmail }),
       },
     });
   }
@@ -103,7 +122,7 @@ export class DependentRepository implements IDependentRepository {
       where,
       data: {
         eligible: eligibility,
-        ...(auditContext?.userEmail && { updatedBy: auditContext.userEmail })
+        ...(auditContext?.userEmail && { updatedBy: auditContext.userEmail }),
       },
     });
   }
@@ -113,4 +132,16 @@ export class DependentRepository implements IDependentRepository {
       where: { cpf },
     });
   }
+
+async updateDependentsEligibility(ids: string[], eligibility: boolean): Promise<void> {
+  if (!ids || ids.length === 0) return;
+
+  await this.prisma.dependent.updateMany({
+    where: {
+      id: { in: ids },
+      eligible: { not: eligibility },
+    },
+    data: { eligible: eligibility },
+  });
+}
 }

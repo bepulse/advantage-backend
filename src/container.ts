@@ -48,6 +48,8 @@ import { FindPendingsUseCase } from './application/use-cases/customer/find-pendi
 import { FindCustomerByCPFUseCase } from './application/use-cases/customer/find-customer-by-cpf';
 import { CheckCustomerEligibilityUseCase } from './application/use-cases/customer/check-customer-eligibility';
 import { HealthController } from './adapters/controllers/health.controller';
+import { ReportController } from './adapters/controllers/report.controller';
+import { ReportService } from './application/services/report.service';
 
 const {
   DOCUSIGN_BASE_URL,
@@ -97,6 +99,8 @@ container.register({
     bucketName: AWS_S3_BUCKET_NAME!,
   })),
 
+  reportService: asClass(ReportService).singleton(),
+
   //UseCases
   updateAddress: asClass(UpdateAddressUseCase).singleton(),
   updateCustomer: asClass(UpdateCustomerUseCase).singleton(),
@@ -142,6 +146,7 @@ container.register({
   contractController: asClass(ContractController).singleton(),
   webhookController: asClass(WebhookController).singleton(),
   healthController: asClass(HealthController).singleton(),
+  reportController: asClass(ReportController).singleton(),
 });
 
 export default container;

@@ -8,6 +8,7 @@ import { ContractController } from './adapters/controllers/contract.controller';
 import { WebhookController } from './adapters/controllers/webhook.controller';
 import { AddressController } from './adapters/controllers/address.controller';
 import { HealthController } from './adapters/controllers/health.controller';
+import { ReportController } from './adapters/controllers/report.controller';
 
 const httpServer = container.resolve("httpServer");
 
@@ -19,6 +20,7 @@ const documentController = container.resolve<DocumentController>("documentContro
 const contractController = container.resolve<ContractController>("contractController");
 const webhookController = container.resolve<WebhookController>("webhookController");
 const healthController = container.resolve<HealthController>("healthController");
+const reportController = container.resolve<ReportController>("reportController");
 
 // Register public routes first (without authentication)
 healthController.registerRoutes();
@@ -31,6 +33,7 @@ documentController.registerRoutes();
 contractController.registerRoutes();
 webhookController.registerRoutes();
 userController.registerRoutes();
+reportController.registerRoutes();
 
 const port = parseInt(process.env.PORT || '3085', 10);
 httpServer.listen(port);

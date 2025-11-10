@@ -34,9 +34,18 @@ export class ExpressAdapter implements IHttpServer {
                         params: req.params,
                         query: req.query,
                         user: req.user,
-                        file: req.file
+                        file: req.file,
+                        response: res
                     });
-                    res.json(output);
+                    if (output !== undefined && output !== null) {
+                        if (Buffer.isBuffer(output) || typeof output === 'string') {
+                            res.send(output);
+                        } else {
+                            res.json(output);
+                        }
+                    } else if (!res.headersSent) {
+                        res.status(204).end();
+                    }
                 } catch (error: any) {
                     if (error instanceof HttpError) {
                         res.status(error.statusCode).json({ message: error.message });
@@ -52,9 +61,18 @@ export class ExpressAdapter implements IHttpServer {
                         body: req.body,
                         params: req.params,
                         query: req.query,
-                        user: req.user
+                        user: req.user,
+                        response: res
                     });
-                    res.json(output);
+                    if (output !== undefined && output !== null) {
+                        if (Buffer.isBuffer(output) || typeof output === 'string') {
+                            res.send(output);
+                        } else {
+                            res.json(output);
+                        }
+                    } else if (!res.headersSent) {
+                        res.status(204).end();
+                    }
                 } catch (error: any) {
                     if (error instanceof HttpError) {
                         res.status(error.statusCode).json({ message: error.message });
@@ -72,9 +90,18 @@ export class ExpressAdapter implements IHttpServer {
                 const output = await callback({
                     body: req.body,
                     params: req.params,
-                    query: req.query
+                    query: req.query,
+                    response: res
                 });
-                res.json(output);
+                if (output !== undefined && output !== null) {
+                    if (Buffer.isBuffer(output) || typeof output === 'string') {
+                        res.send(output);
+                    } else {
+                        res.json(output);
+                    }
+                } else if (!res.headersSent) {
+                    res.status(204).end();
+                }
             } catch (error: any) {
                 if (error instanceof HttpError) {
                     res.status(error.statusCode).json({ message: error.message });

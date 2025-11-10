@@ -12,4 +12,5 @@ export interface IDependentRepository extends IDatabaseRepository<Dependent> {
     findByIdWithDocuments(customerId: string): Promise<DependentWithDocuments[]>;
     findByCustomerId(customerId: string): Promise<Dependent[]>;
     findByCpf(cpf: string): Promise<Dependent | null>;
+    updateDependentsEligibility(ids: string[], eligibility: boolean) : Promise<void>;
 }
