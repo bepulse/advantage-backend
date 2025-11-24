@@ -50,6 +50,7 @@ import { CheckCustomerEligibilityUseCase } from './application/use-cases/custome
 import { HealthController } from './adapters/controllers/health.controller';
 import { ReportController } from './adapters/controllers/report.controller';
 import { ReportService } from './application/services/report.service';
+import { FindCustomerByEmailUseCase } from './application/use-cases/customer/find-customer-by-email';
 
 const {
   DOCUSIGN_BASE_URL,
@@ -108,6 +109,7 @@ container.register({
   findCustomerById: asClass(FindCustomerByIdUseCase).singleton(),
   findPendings: asClass(FindPendingsUseCase).singleton(),
   findCustomerByCPF: asClass(FindCustomerByCPFUseCase).singleton(),
+  findCustomerByEmail: asClass(FindCustomerByEmailUseCase).singleton(),
   checkCustomerEligibility: asClass(CheckCustomerEligibilityUseCase).singleton(),
 
   createUser: asClass(CreateUserUseCase).singleton(),

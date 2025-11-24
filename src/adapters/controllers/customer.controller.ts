@@ -7,6 +7,7 @@ import { HttpMethod } from "@/shared/types/http-method.enum";
 import { FindPendingsUseCase } from "@/application/use-cases/customer/find-pendings";
 import { FindCustomerByCPFUseCase } from "@/application/use-cases/customer/find-customer-by-cpf";
 import { CheckCustomerEligibilityUseCase } from "@/application/use-cases/customer/check-customer-eligibility";
+import { FindCustomerByEmailUseCase } from "@/application/use-cases/customer/find-customer-by-email";
 
 export class CustomerController {
   constructor(
@@ -16,6 +17,7 @@ export class CustomerController {
     private readonly updateCustomer: UpdateCustomerUseCase,
     private readonly findPendings: FindPendingsUseCase,
     private readonly findCustomerByCPF: FindCustomerByCPFUseCase,
+    private readonly findCustomerByEmail: FindCustomerByEmailUseCase,
     private readonly checkCustomerEligibility: CheckCustomerEligibilityUseCase,
   ) { }
 
@@ -26,6 +28,10 @@ export class CustomerController {
 
     this.httpServer.register(HttpMethod.GET, "/customer/cpf/:cpf", async ({ params }) => {
       return await this.findCustomerByCPF.execute(params.cpf);
+    });
+    
+    this.httpServer.register(HttpMethod.GET, "/customer/email/:email", async ({ params }) => {
+      return await this.findCustomerByEmail.execute(params.email);
     });
 
     this.httpServer.register(HttpMethod.GET, "/customer/:customerId/eligibility", async ({ params }) => {
