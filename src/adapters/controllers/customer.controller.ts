@@ -43,7 +43,6 @@ export class CustomerController {
     });
 
     this.httpServer.register(HttpMethod.POST, "/customer", async ({ body, user }) => {
-      console.log(body)
       const auditContext: AuditContext = { userEmail: user?.email };
       return await this.createCustomer.execute(body, auditContext);
     });

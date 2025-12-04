@@ -59,6 +59,7 @@ model Customer {
   updatedAt DateTime @updatedAt
   createdBy String? // Email of user who created this record
   updatedBy String? // Email of user who last updated this record
+  comments  String?
 
   // relations - mudança para relação 1:1
   address    Address?
@@ -186,6 +187,7 @@ model Contract {
   updatedAt    DateTime @updatedAt
   createdBy    String?
   updatedBy    String?
+  comments     String?
 
   customer  Customer?  @relation(fields: [customerId], references: [id])
 

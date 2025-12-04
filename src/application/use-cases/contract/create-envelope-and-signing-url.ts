@@ -124,6 +124,7 @@ export class CreateEnvelopeAndGetSigningUrlUseCase {
         envelopeId,
         status: "sent",
         documentType,
+        comments: null,
       },
       auditContext
     );

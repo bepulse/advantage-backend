@@ -29,7 +29,8 @@ export class CustomerRepository implements ICustomerRepository {
       cpf: customerData.cpf,
       email: customerData.email,
       phone: customerData.phone,
-      birthDate: customerData.birthDate
+      birthDate: customerData.birthDate,
+      comments: null
     };
 
     const cleanAddressData: AddressCreateInput | undefined = address ? {

@@ -124,6 +124,7 @@ export class CreateEnvelopeUseCase {
         envelopeId,
         status: "sent",
         documentType:docType,
+        comments:null,
       },
       auditContext
     );

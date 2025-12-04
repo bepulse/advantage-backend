@@ -20,7 +20,8 @@ export class CreateCustomerUseCase {
       cpf: customerRequest.cpf,
       email: customerRequest.email,
       phone: customerRequest.phone,
-      birthDate: customerRequest.birthDate ? new Date(customerRequest.birthDate) : null
+      birthDate: customerRequest.birthDate ? new Date(customerRequest.birthDate) : null,
+      comments: null
     };
 
     const existingCustomer = await this.customerRepository.findByCpfOrEmail(customer.cpf, customer.email);
