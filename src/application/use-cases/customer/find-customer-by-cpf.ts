@@ -11,15 +11,15 @@ export class FindCustomerByCPFUseCase {
 
   async execute(cpf: string): Promise<Customer> {
     const customer = await this.customerRepository.findByCpfOrEmail(cpf, "");
-
+    console.log(customer);
     if (!customer) {
       const dependent = await this.dependentRepository.findByCpf(cpf);
-
+      console.log(dependent);
       if (!dependent) {
         throw new NotFoundError("Customer not found");
       }
 
-      const profile = await this.customerRepository.findById(dependent?.id);
+      const profile = await this.customerRepository.findById(dependent?.customerId);
       
       if (!profile) {
         throw new NotFoundError("Customer not found");
