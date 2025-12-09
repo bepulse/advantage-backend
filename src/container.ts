@@ -51,6 +51,7 @@ import { HealthController } from './adapters/controllers/health.controller';
 import { ReportController } from './adapters/controllers/report.controller';
 import { ReportService } from './application/services/report.service';
 import { FindCustomerByEmailUseCase } from './application/use-cases/customer/find-customer-by-email';
+import { SearchCustomersByNameUseCase } from './application/use-cases/customer/search-customers-by-name';
 
 const {
   DOCUSIGN_BASE_URL,
@@ -71,7 +72,6 @@ const container = createContainer({
 });
 
 container.register({
-
   prisma: asValue(new PrismaClient()),
   httpServer: asClass(ExpressAdapter).singleton(),
 
@@ -110,6 +110,7 @@ container.register({
   findPendings: asClass(FindPendingsUseCase).singleton(),
   findCustomerByCPF: asClass(FindCustomerByCPFUseCase).singleton(),
   findCustomerByEmail: asClass(FindCustomerByEmailUseCase).singleton(),
+  searchCustomersByName: asClass(SearchCustomersByNameUseCase).singleton(),
   checkCustomerEligibility: asClass(CheckCustomerEligibilityUseCase).singleton(),
 
   createUser: asClass(CreateUserUseCase).singleton(),

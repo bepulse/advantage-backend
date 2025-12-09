@@ -8,6 +8,7 @@ import { FindPendingsUseCase } from "@/application/use-cases/customer/find-pendi
 import { FindCustomerByCPFUseCase } from "@/application/use-cases/customer/find-customer-by-cpf";
 import { CheckCustomerEligibilityUseCase } from "@/application/use-cases/customer/check-customer-eligibility";
 import { FindCustomerByEmailUseCase } from "@/application/use-cases/customer/find-customer-by-email";
+import { SearchCustomersByNameUseCase } from "@/application/use-cases/customer/search-customers-by-name";
 
 export class CustomerController {
   constructor(
@@ -19,6 +20,7 @@ export class CustomerController {
     private readonly findCustomerByCPF: FindCustomerByCPFUseCase,
     private readonly findCustomerByEmail: FindCustomerByEmailUseCase,
     private readonly checkCustomerEligibility: CheckCustomerEligibilityUseCase,
+    private readonly searchCustomersByName: SearchCustomersByNameUseCase,
   ) { }
 
   registerRoutes() {
@@ -32,6 +34,11 @@ export class CustomerController {
     
     this.httpServer.register(HttpMethod.GET, "/customer/email/:email", async ({ params }) => {
       return await this.findCustomerByEmail.execute(params.email);
+    });
+
+    this.httpServer.register(HttpMethod.GET, "/customers/search", async ({ query }) => {
+      const name = String(query?.name || "");
+      return await this.searchCustomersByName.execute(name);
     });
 
     this.httpServer.register(HttpMethod.GET, "/customer/:customerId/eligibility", async ({ params }) => {

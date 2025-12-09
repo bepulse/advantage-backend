@@ -99,6 +99,25 @@ export class CustomerRepository implements ICustomerRepository {
     });
   }
 
+  async searchByName(name: string): Promise<Customer[]> {
+    return await this.prisma.customer.findMany({
+      where: {
+        name: {
+          contains: name,
+          mode: 'insensitive' as any,
+        },
+      },
+      include: {
+        address: true,
+        dependents: true,
+        contract: true,
+        documents: true,
+      },
+      take: 50,
+      orderBy: { name: 'asc' },
+    });
+  }
+
   async update(data: Customer, auditContext?: AuditContext): Promise<Customer> {
     const { id, createdAt, updatedAt, ...updateData } = data;
     return await this.prisma.customer.update({
