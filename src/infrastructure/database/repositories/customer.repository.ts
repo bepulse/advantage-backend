@@ -2,18 +2,27 @@ import { ICustomerRepository } from "@/domain/repositories/customer.repository";
 import { AuditContext } from "@/application/dto/audit-context.dto";
 import { Address, Customer, PrismaClient } from "@prisma/client";
 
-type CustomerCreateInput = Omit<Customer, 'id' | 'createdAt' | 'updatedAt' | 'createdBy' | 'updatedBy'>;
-type AddressCreateInput = Omit<Address, 'customerId' | 'createdAt' | 'updatedAt' | 'createdBy' | 'updatedBy'>;
+type CustomerCreateInput = Omit<
+  Customer,
+  "id" | "createdAt" | "updatedAt" | "createdBy" | "updatedBy"
+>;
+type AddressCreateInput = Omit<
+  Address,
+  "customerId" | "createdAt" | "updatedAt" | "createdBy" | "updatedBy"
+>;
 
 export class CustomerRepository implements ICustomerRepository {
-  constructor(private prisma: PrismaClient) { }
+  constructor(private prisma: PrismaClient) {}
 
   async findById(id: string): Promise<Customer | null> {
     const customer = await this.prisma.customer.findUnique({
       where: { id },
       include: {
-        address: true
-      }
+        address: true,
+        dependents: true,
+        contract: true,
+        documents: true,
+      },
     });
 
     if (!customer) return null;
@@ -21,62 +30,72 @@ export class CustomerRepository implements ICustomerRepository {
     return customer;
   }
 
-  async save(data: CustomerCreateInput & { address?: AddressCreateInput }, auditContext?: AuditContext): Promise<Customer> {
+  async save(
+    data: CustomerCreateInput & { address?: AddressCreateInput },
+    auditContext?: AuditContext
+  ): Promise<Customer> {
     const { address, ...customerData } = data;
-  
+
     const cleanCustomerData: CustomerCreateInput = {
       name: customerData.name,
       cpf: customerData.cpf,
       email: customerData.email,
       phone: customerData.phone,
       birthDate: customerData.birthDate,
-      comments: null
+      comments: null,
     };
 
-    const cleanAddressData: AddressCreateInput | undefined = address ? {
-      type: address.type,
-      street: address.street,
-      number: address.number,
-      complement: address.complement,
-      district: address.district,
-      city: address.city,
-      state: address.state,
-      zipcode: address.zipcode,
-      country: address.country || 'BR',
-      isDefault: address.isDefault ?? true
-    } : undefined;
+    const cleanAddressData: AddressCreateInput | undefined = address
+      ? {
+          type: address.type,
+          street: address.street,
+          number: address.number,
+          complement: address.complement,
+          district: address.district,
+          city: address.city,
+          state: address.state,
+          zipcode: address.zipcode,
+          country: address.country || "BR",
+          isDefault: address.isDefault ?? true,
+        }
+      : undefined;
 
     return await this.prisma.customer.create({
       data: {
         ...cleanCustomerData,
-        ...(auditContext?.userEmail && { createdBy: auditContext.userEmail, updatedBy: auditContext.userEmail }),
-        address: cleanAddressData ? {
-          create: {
-            ...cleanAddressData,
-            ...(auditContext?.userEmail && { createdBy: auditContext.userEmail, updatedBy: auditContext.userEmail })
-          }
-        } : undefined
+        ...(auditContext?.userEmail && {
+          createdBy: auditContext.userEmail,
+          updatedBy: auditContext.userEmail,
+        }),
+        address: cleanAddressData
+          ? {
+              create: {
+                ...cleanAddressData,
+                ...(auditContext?.userEmail && {
+                  createdBy: auditContext.userEmail,
+                  updatedBy: auditContext.userEmail,
+                }),
+              },
+            }
+          : undefined,
       },
       include: {
-        address: true
-      }
+        address: true,
+      },
     });
   }
 
   async findByCpfOrEmail(cpf: string, email: string): Promise<Customer | null> {
     return await this.prisma.customer.findFirst({
       where: {
-        OR: [
-          { cpf },
-          { email }
-        ]
+        OR: [{ cpf }, { email }],
       },
       include: {
         address: true,
         dependents: true,
         contract: true,
-        documents: true
-      }
+        documents: true,
+      },
     });
   }
 
@@ -86,8 +105,8 @@ export class CustomerRepository implements ICustomerRepository {
       where: { id },
       data: {
         ...updateData,
-        ...(auditContext?.userEmail && { updatedBy: auditContext.userEmail })
-      }
+        ...(auditContext?.userEmail && { updatedBy: auditContext.userEmail }),
+      },
     });
   }
 }
