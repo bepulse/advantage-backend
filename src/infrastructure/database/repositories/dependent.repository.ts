@@ -133,6 +133,19 @@ export class DependentRepository implements IDependentRepository {
     });
   }
 
+  async searchByName(name: string): Promise<Dependent[]> {
+    return await this.prisma.dependent.findMany({
+      where: {
+        name: {
+          contains: name,
+          mode: 'insensitive' as any,
+        },
+      },
+      take: 50,
+      orderBy: { name: 'asc' },
+    });
+  }
+
 async updateDependentsEligibility(ids: string[], eligibility: boolean): Promise<void> {
   if (!ids || ids.length === 0) return;
 
