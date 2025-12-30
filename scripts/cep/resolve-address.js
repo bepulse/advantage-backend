@@ -16,7 +16,7 @@ async function ResolveAddress(cep, opts = {}) {
     backoffJitterMs = 200,
     providers = ['viacep', 'opencep', 'brasilapi'],
   } = opts;
-  const clean = sanitizeCEP(cep);
+  const clean = cep //sanitizeCEP(cep);
   if (!clean) {
     return {
       CEPFormatado: null,
