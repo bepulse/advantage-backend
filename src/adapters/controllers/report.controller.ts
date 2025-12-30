@@ -44,6 +44,21 @@ export class ReportController {
           return csv;
         }
 
+        if (String(format).toLowerCase() === "xlsx") {
+          const buffer = this.reportService.toXlsx(data);
+          if (response) {
+            response.setHeader(
+              "Content-Type",
+              "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+            );
+            response.setHeader(
+              "Content-Disposition",
+              `attachment; filename="users-created-by-operator.xlsx"`
+            );
+          }
+          return buffer;
+        }
+
         return data;
       }
     );

@@ -1,4 +1,5 @@
 import { PrismaClient } from "@prisma/client";
+import * as XLSX from "xlsx";
 
 export interface UsersCreatedByOperatorParams {
   startDate: Date;
@@ -110,5 +111,22 @@ export class ReportService {
       lines.push(values.join(","));
     }
     return lines.join("\n");
+  }
+
+  toXlsx(rows: UsersCreatedByOperatorRow[]): Buffer {
+    const data = rows.map((row) => ({
+      ID: row.id,
+      Email: row.email,
+      Função: row.role,
+      "ID Cliente": row.customerId || "",
+      "Criado em": row.createdAt.toISOString(),
+      "Criado por": row.createdBy || "",
+    }));
+
+    const worksheet = XLSX.utils.json_to_sheet(data);
+    const workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workbook, worksheet, "Relatório");
+    
+    return XLSX.write(workbook, { type: "buffer", bookType: "xlsx" });
   }
 }
