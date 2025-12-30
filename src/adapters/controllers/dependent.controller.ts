@@ -7,12 +7,14 @@ import { AuditContext } from "@/application/dto/audit-context.dto";
 import IHttpServer from "@/shared/interfaces/http/http-server";
 import { HttpMethod } from "@/shared/types/http-method.enum";
 import { DeleteDependentUseCase } from "@/application/use-cases/dependent/delete-dependent";
+import { FindDependentByCpfUseCase } from "@/application/use-cases/dependent/find-dependent-by-cpf";
 
 export class DependentController {
   constructor(
     private readonly httpServer: IHttpServer,
     private readonly createDependent: CreateDependentUseCase,
     private readonly findDependentByCustomerId: FindDependentByCustomerIdUseCase,
+    private readonly findDependentByCpf: FindDependentByCpfUseCase,
     private readonly findDependentWithDocumentsByCustomerId: FindDependentWithDocumentsByCustomerIdUseCase,
     private readonly updateDependentEligibility: UpdateDependentEligibilityUseCase,
     private readonly updateDependent: UpdateDependentUseCase,
@@ -27,6 +29,10 @@ export class DependentController {
 
     this.httpServer.register(HttpMethod.GET, "/dependent/:customerId", async ({ params }) => {
       return await this.findDependentByCustomerId.execute(params.customerId);
+    });
+
+    this.httpServer.register(HttpMethod.GET, "/dependent/cpf/:cpf", async ({ params }) => {
+      return await this.findDependentByCpf.execute(params.cpf);
     });
 
     this.httpServer.register(HttpMethod.GET, "/dependent/:customerId/with-documents", async ({ params }) => {

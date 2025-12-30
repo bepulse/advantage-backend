@@ -52,6 +52,7 @@ import { ReportController } from './adapters/controllers/report.controller';
 import { ReportService } from './application/services/report.service';
 import { FindCustomerByEmailUseCase } from './application/use-cases/customer/find-customer-by-email';
 import { SearchCustomersByNameUseCase } from './application/use-cases/customer/search-customers-by-name';
+import { FindDependentByCpfUseCase } from './application/use-cases/dependent/find-dependent-by-cpf';
 
 const {
   DOCUSIGN_BASE_URL,
@@ -121,6 +122,7 @@ container.register({
   createDependent: asClass(CreateDependentUseCase).singleton(),
   deleteDependent: asClass(DeleteDependentUseCase).singleton(),
   findDependentByCustomerId: asClass(FindDependentByCustomerIdUseCase).singleton(),
+  findDependentByCpf: asClass(FindDependentByCpfUseCase).singleton(),
   findDependentWithDocumentsByCustomerId: asClass(FindDependentWithDocumentsByCustomerIdUseCase).singleton(),
   updateDependentEligibility: asClass(UpdateDependentEligibilityUseCase).singleton(),
   updateDependent: asClass(UpdateDependentUseCase).singleton(),

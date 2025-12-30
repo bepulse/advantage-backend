@@ -22,13 +22,21 @@ export const AuthGuard = async (
   next: NextFunction
 ) => {
 
-  if(isPublicRoute(req.path)){
-    return next();
-  }
-
   if (isWebhook(req.path)) {
     return webhookAuth(req, res, next);
   }
+
+  if (isPublicRoute(req.path)) {
+     const authHeader = req.headers.authorization as string | null;
+     if (authHeader) {
+        const [scheme, token] = authHeader.split(" ");
+        if (scheme === "Bearer" && token === process.env.DOCUSIGN_WEBHOOK_KEY) {
+           return next();
+        }
+     }
+     return res.status(401).json({ message: "Token inválido ou ausente para rota protegida" });
+  }
+
 
   const authHeader = req.headers.authorization as string | null;
   if (!authHeader) {
@@ -66,6 +74,8 @@ export const AuthGuard = async (
 const isPublicRoute = (path: string) => {
   const publicRoutes = [
     "/customer/:customerId/eligibility",
+    "/dependent/cpf/:cpf",
+    "/customer/:customerId"
   ];
 
   return publicRoutes.some((route) => {
