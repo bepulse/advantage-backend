@@ -34,7 +34,6 @@ export const AuthGuard = async (
            return next();
         }
      }
-     return res.status(401).json({ message: "Token inválido ou ausente para rota protegida" });
   }
 
 
