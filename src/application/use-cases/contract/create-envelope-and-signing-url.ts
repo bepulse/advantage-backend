@@ -7,6 +7,7 @@ import {
 } from "@/application/dto/create-envelope-and-signing-url.dto";
 import { AuditContext } from "@/application/dto/audit-context.dto";
 import { IDependentRepository } from "@/domain/repositories/dependent.repository";
+import HttpError from "@/shared/errors/http.error";
 
 export class CreateEnvelopeAndGetSigningUrlUseCase {
   constructor(
@@ -71,6 +72,12 @@ export class CreateEnvelopeAndGetSigningUrlUseCase {
       const existingContracts = await this.contractRepository.findByCustomerId(
         customer.id
       );
+
+      const completedContract = existingContracts?.find(c => c.status === 'completed');
+      if (completedContract) {
+        throw new HttpError(409, "Contrato já assinado");
+      }
+
       const existingContract = existingContracts?.sort(
         (a, b) => a.createdAt.getTime() - b.createdAt.getTime()
       )?.[0];
@@ -100,6 +107,9 @@ export class CreateEnvelopeAndGetSigningUrlUseCase {
         contractId,
       };
     } catch (error) {
+      if (error instanceof HttpError) {
+        throw error;
+      }
       throw new Error(
         `Erro ao criar envelope e URL de assinatura: ${
           error instanceof Error ? error.message : "Erro desconhecido"

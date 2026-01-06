@@ -7,6 +7,7 @@ import {
   CreateEnvelopeResponse,
   CreateEnvelopeRequest,
 } from "@/application/dto/create-envelope.dto";
+import HttpError from "@/shared/errors/http.error";
 
 export class CreateEnvelopeUseCase {
   constructor(
@@ -75,6 +76,13 @@ export class CreateEnvelopeUseCase {
       const existingContracts = await this.contractRepository.findByCustomerId(
         customer.id
       );
+      console.log(existingContracts)
+      const completedContract = existingContracts?.find(c => c.status === 'completed');
+      if (completedContract) {
+        console.log(completedContract)
+        throw new HttpError(409, "Contrato já assinado");
+      }
+
       const existingContract = existingContracts?.sort(
         (a, b) => a.createdAt.getTime() - b.createdAt.getTime()
       )?.[0];
@@ -98,6 +106,9 @@ export class CreateEnvelopeUseCase {
         contractId,
       };
     } catch (error) {
+      if (error instanceof HttpError) {
+        throw error;
+      }
       throw new Error(
         `Erro ao criar envelope e URL de assinatura: ${
           error instanceof Error ? error.message : "Erro desconhecido"
