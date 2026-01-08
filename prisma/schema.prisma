@@ -60,6 +60,10 @@ model Customer {
   createdBy String? // Email of user who created this record
   updatedBy String? // Email of user who last updated this record
   comments  String?
+  isBlocked Boolean  @default(false)
+  blockReason String?
+  blockedAt DateTime?
+  blockedBy String?
 
   // relations - mudança para relação 1:1
   address    Address?

@@ -9,6 +9,8 @@ import { FindCustomerByCPFUseCase } from "@/application/use-cases/customer/find-
 import { CheckCustomerEligibilityUseCase } from "@/application/use-cases/customer/check-customer-eligibility";
 import { FindCustomerByEmailUseCase } from "@/application/use-cases/customer/find-customer-by-email";
 import { SearchCustomersByNameUseCase } from "@/application/use-cases/customer/search-customers-by-name";
+import { ToggleCustomerBlockStatusUseCase } from "@/application/use-cases/customer/toggle-customer-block-status";
+import { ToggleCustomerBlockStatusDto } from "@/application/dto/toggle-customer-block-status.dto";
 
 export class CustomerController {
   constructor(
@@ -21,6 +23,7 @@ export class CustomerController {
     private readonly findCustomerByEmail: FindCustomerByEmailUseCase,
     private readonly checkCustomerEligibility: CheckCustomerEligibilityUseCase,
     private readonly searchCustomersByName: SearchCustomersByNameUseCase,
+    private readonly toggleCustomerBlockStatus: ToggleCustomerBlockStatusUseCase,
   ) { }
 
   registerRoutes() {
@@ -57,6 +60,16 @@ export class CustomerController {
     this.httpServer.register(HttpMethod.PUT, "/customer", async ({ body, user }) => {
       const auditContext: AuditContext = { userEmail: user?.email };
       return await this.updateCustomer.execute(body, auditContext);
+    });
+
+    this.httpServer.register(HttpMethod.PATCH, "/customer/:customerId/block", async ({ params, body, user }) => {
+        const auditContext: AuditContext = { userEmail: user?.email };
+        const dto: ToggleCustomerBlockStatusDto = {
+            customerId: params.customerId,
+            isBlocked: body.isBlocked,
+            blockReason: body.blockReason
+        };
+        return await this.toggleCustomerBlockStatus.execute(dto, auditContext);
     });
   }
 }

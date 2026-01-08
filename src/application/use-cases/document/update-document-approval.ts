@@ -15,7 +15,7 @@ export interface UpdateDocumentApprovalResponse {
 }
 
 export class UpdateDocumentApprovalUseCase {
-  constructor(private documentRepository: IDocumentRepository) {}
+  constructor(private readonly documentRepository: IDocumentRepository) {}
 
   async execute(request: UpdateDocumentApprovalRequest, auditContext?: AuditContext): Promise<UpdateDocumentApprovalResponse> {
     const { documentId, isApproved } = request;
