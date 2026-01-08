@@ -12,7 +12,7 @@ type AddressCreateInput = Omit<
 >;
 
 export class CustomerRepository implements ICustomerRepository {
-  constructor(private prisma: PrismaClient) {}
+  constructor(private readonly prisma: PrismaClient) {}
 
   async findById(id: string): Promise<Customer | null> {
     const customer = await this.prisma.customer.findUnique({
@@ -43,6 +43,10 @@ export class CustomerRepository implements ICustomerRepository {
       phone: customerData.phone,
       birthDate: customerData.birthDate,
       comments: null,
+      isBlocked: false,
+      blockReason: null,
+      blockedAt: null,
+      blockedBy: null,
     };
 
     const cleanAddressData: AddressCreateInput | undefined = address
@@ -124,6 +128,20 @@ export class CustomerRepository implements ICustomerRepository {
       where: { id },
       data: {
         ...updateData,
+        ...(auditContext?.userEmail && { updatedBy: auditContext.userEmail }),
+      },
+    });
+  }
+
+  async updateBlockStatus(data: Pick<Customer, 'id' | 'isBlocked' | 'blockReason' | 'blockedAt' | 'blockedBy'>, auditContext?: AuditContext): Promise<void> {
+    const { id, isBlocked, blockReason, blockedAt, blockedBy } = data;
+    await this.prisma.customer.update({
+      where: { id },
+      data: {
+        isBlocked,
+        blockReason,
+        blockedAt,
+        blockedBy,
         ...(auditContext?.userEmail && { updatedBy: auditContext.userEmail }),
       },
     });

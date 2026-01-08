@@ -12,6 +12,8 @@ export interface CustomerEligibilityResponse {
     contractStatus?: string;
     hasDependents: boolean;
     approvedDocuments: boolean;
+    isBlocked: boolean;
+    blockReason?: string | null;
     dependentsWithPendencies: Array<{
       dependentId: string;
       dependentName: string;
@@ -36,6 +38,11 @@ export class CheckCustomerEligibilityUseCase {
     }
 
     const pendencies: string[] = [];
+
+    if (customer.isBlocked) {
+      pendencies.push(`Cliente bloqueado: ${customer.blockReason || "Sem motivo informado"}`);
+    }
+
     let hasValidContract = false;
     let contractStatus: string | undefined;
 
@@ -134,7 +141,7 @@ export class CheckCustomerEligibilityUseCase {
     }
 
     const isEligible =
-      hasValidContract && dependentsWithPendencies.length === 0;
+      !customer.isBlocked && hasValidContract && dependentsWithPendencies.length === 0;
 
     return {
       isEligible,
@@ -144,6 +151,8 @@ export class CheckCustomerEligibilityUseCase {
         contractStatus,
         hasDependents,
         approvedDocuments,
+        isBlocked: customer.isBlocked,
+        blockReason: customer.blockReason,
         dependentsWithPendencies,
       },
     };

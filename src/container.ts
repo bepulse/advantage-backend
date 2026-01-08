@@ -53,6 +53,7 @@ import { ReportService } from './application/services/report.service';
 import { FindCustomerByEmailUseCase } from './application/use-cases/customer/find-customer-by-email';
 import { SearchCustomersByNameUseCase } from './application/use-cases/customer/search-customers-by-name';
 import { FindDependentByCpfUseCase } from './application/use-cases/dependent/find-dependent-by-cpf';
+import { ToggleCustomerBlockStatusUseCase } from './application/use-cases/customer/toggle-customer-block-status';
 
 const {
   DOCUSIGN_BASE_URL,
@@ -113,6 +114,7 @@ container.register({
   findCustomerByEmail: asClass(FindCustomerByEmailUseCase).singleton(),
   searchCustomersByName: asClass(SearchCustomersByNameUseCase).singleton(),
   checkCustomerEligibility: asClass(CheckCustomerEligibilityUseCase).singleton(),
+  toggleCustomerBlockStatus: asClass(ToggleCustomerBlockStatusUseCase).singleton(),
 
   createUser: asClass(CreateUserUseCase).singleton(),
   findUserById: asClass(FindUserByIdUseCase).singleton(),

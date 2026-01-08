@@ -21,7 +21,11 @@ export class CreateCustomerUseCase {
       email: customerRequest.email,
       phone: customerRequest.phone,
       birthDate: customerRequest.birthDate ? new Date(customerRequest.birthDate) : null,
-      comments: null
+      comments: null,
+      isBlocked: false,
+      blockReason: null,
+      blockedAt: null,
+      blockedBy: null
     };
 
     const existingCustomer = await this.customerRepository.findByCpfOrEmail(customer.cpf, customer.email);
@@ -29,6 +33,10 @@ export class CreateCustomerUseCase {
     if (existingCustomer) {
       const updatedCustomer = await this.customerRepository.update({
         ...customer,
+        isBlocked: existingCustomer.isBlocked,
+        blockReason: existingCustomer.blockReason,
+        blockedAt: existingCustomer.blockedAt,
+        blockedBy: existingCustomer.blockedBy,
         id: existingCustomer.id,
         createdAt: existingCustomer.createdAt,
         updatedAt: existingCustomer.updatedAt,
