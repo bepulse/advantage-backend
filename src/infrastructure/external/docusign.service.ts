@@ -260,4 +260,26 @@ export class DocuSignService implements IDocumentSignService {
             }
         });
     }
+
+    async voidEnvelope(envelopeId: string, reason: string): Promise<void> {
+        return this.executeWithRetry(async () => {
+            const { DOCUSIGN_ACCOUNT_ID } = process.env;
+            if (!DOCUSIGN_ACCOUNT_ID) throw new Error('DOCUSIGN_ACCOUNT_ID not set');
+
+            const envelope: DSEnvelope = {
+                status: 'voided',
+                voidedReason: reason
+            };
+
+            try {
+                await this.envelopesApi.update(DOCUSIGN_ACCOUNT_ID, envelopeId, { envelope });
+                console.log(`Envelope ${envelopeId} voided successfully.`);
+            } catch (error: any) {
+                const errorMessage = error.response?.data?.message ||
+                    error.response?.data?.errorDetails?.[0]?.message ||
+                    error.message;
+                throw new Error(`DocuSign Void Envelope Error (${error.response?.status}): ${errorMessage}`);
+            }
+        });
+    }
 }

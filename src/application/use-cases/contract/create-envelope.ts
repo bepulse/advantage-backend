@@ -38,9 +38,10 @@ export class CreateEnvelopeUseCase {
         textTabs: [
           {
             tabLabel: "Dependentes",
-            value: `Dependentes:\n${
-              hasDependents.length > 0 &&
-              hasDependents.map((d) => `- ${d.name} - CPF: ${d.cpf}`).join("\n")
+            value: `Titular: ${customer.name} - CPF: ${customer.cpf}\n\nDependentes:\n${
+              hasDependents.length > 0
+                ? hasDependents.map((d) => `- ${d.name} - CPF: ${d.cpf}`).join("\n")
+                : ""
             }`,
             locked: "true",
             documentId: "1",
