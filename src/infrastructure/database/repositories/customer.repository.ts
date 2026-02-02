@@ -123,7 +123,7 @@ export class CustomerRepository implements ICustomerRepository {
   }
 
   async update(data: Customer, auditContext?: AuditContext): Promise<Customer> {
-    const { id, createdAt, updatedAt, ...updateData } = data;
+    const { id, createdAt, updatedAt, cpf, ...updateData } = data;
     return await this.prisma.customer.update({
       where: { id },
       data: {
