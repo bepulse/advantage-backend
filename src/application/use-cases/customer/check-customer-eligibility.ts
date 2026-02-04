@@ -43,24 +43,24 @@ export class CheckCustomerEligibilityUseCase {
       pendencies.push(`Cliente bloqueado: ${customer.blockReason || "Sem motivo informado"}`);
     }
 
-    let hasValidContract = false;
+    let hasValidContract = true;
     let contractStatus: string | undefined;
 
-    const contracts = await this.contractRepository.findByCustomerId(
-      customerId
-    );
-    if (contracts.length === 0) {
-      pendencies.push("Cliente não possui contrato");
-    } else {
-      const contract = contracts[0];
-      contractStatus = contract.status;
+    // const contracts = await this.contractRepository.findByCustomerId(
+    //   customerId
+    // );
+    // if (contracts.length === 0) {
+    //   pendencies.push("Cliente não possui contrato");
+    // } else {
+    //   const contract = contracts[0];
+    //   contractStatus = contract.status;
 
-      if (contract.status === "completed" || contract.status === "signed") {
-        hasValidContract = true;
-      } else {
-        pendencies.push(`Contrato ainda não foi assinado.`);
-      }
-    }
+    //   if (contract.status === "completed" || contract.status === "signed") {
+    //     hasValidContract = true;
+    //   } else {
+    //     pendencies.push(`Contrato ainda não foi assinado.`);
+    //   }
+    // }
 
     const dependents = await this.dependentRepository.findByCustomerId(
       customerId
@@ -89,21 +89,28 @@ export class CheckCustomerEligibilityUseCase {
         }
       }
 
-      if (missingDocuments || unapprovedDocuments.length > 0) {
+      // 5 days grace period for missing documents
+      const daysSinceCreation = (new Date().getTime() - new Date(dependent.createdAt).getTime()) / (1000 * 60 * 60 * 24);
+      const isGracePeriod = daysSinceCreation <= 5;
+
+      const hasMissingDocPendency = missingDocuments && !isGracePeriod;
+      const hasUnapprovedDocPendency = unapprovedDocuments.length > 0;
+
+      if (hasMissingDocPendency || hasUnapprovedDocPendency) {
         approvedDocuments = false;
 
         dependentsWithPendencies.push({
           dependentId: dependent.id,
           dependentName: dependent.name,
-          missingDocuments,
+          missingDocuments: hasMissingDocPendency,
           unapprovedDocuments,
         });
 
-        if (missingDocuments) {
+        if (hasMissingDocPendency) {
           pendencies.push(`Dependente ${dependent.name} não possui documentos`);
         }
 
-        if (unapprovedDocuments.length > 0) {
+        if (hasUnapprovedDocPendency) {
           pendencies.push(
             `Dependente ${
               dependent.name
