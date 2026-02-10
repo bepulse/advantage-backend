@@ -1,0 +1,1955 @@
+Backup created at 2026-02-10T17:32:51.064Z
+Total contracts found: 61
+--------------------------------------------------
+Contract ID: 221aabc1-1fc4-4240-9255-2466b6fe9081
+Customer: Ricardo Ferreira Saraiva (carolmathiesen@hotmail.com)
+Data: {
+  "id": "221aabc1-1fc4-4240-9255-2466b6fe9081",
+  "customerId": "f21d319f-b587-4581-9eda-f72be4f78a69",
+  "envelopeId": "67eaaab8-86f6-4eb5-a92e-bb11bf94c9ef",
+  "status": "delivered",
+  "documentType": "contract",
+  "createdAt": "2026-01-22T13:58:59.726Z",
+  "updatedAt": "2026-01-22T13:59:20.042Z",
+  "createdBy": "aluana.quim@grupoanarosa.com.br",
+  "updatedBy": "system@docusign.webhook",
+  "comments": null,
+  "customer": {
+    "id": "f21d319f-b587-4581-9eda-f72be4f78a69",
+    "name": "Ricardo Ferreira Saraiva",
+    "cpf": "34214845897",
+    "birthDate": "1985-02-04T00:00:00.000Z",
+    "email": "carolmathiesen@hotmail.com",
+    "phone": "(11) 96816-8494",
+    "createdAt": "2026-01-22T13:50:17.355Z",
+    "updatedAt": "2026-01-22T13:50:17.355Z",
+    "createdBy": "aluana.quim@grupoanarosa.com.br",
+    "updatedBy": "aluana.quim@grupoanarosa.com.br",
+    "comments": null,
+    "isBlocked": false,
+    "blockReason": null,
+    "blockedAt": null,
+    "blockedBy": null
+  }
+}
+--------------------------------------------------
+Contract ID: beb908ba-6b5e-4bd7-9449-e5606b42bba2
+Customer: MAYRA AIASHI SERIKAWA (mayraserikwa@gmail.com)
+Data: {
+  "id": "beb908ba-6b5e-4bd7-9449-e5606b42bba2",
+  "customerId": "d819d683-b636-48f9-a835-239175e3e7c5",
+  "envelopeId": "3ba4e122-e706-4d78-9a64-d6edd818ad79",
+  "status": "delivered",
+  "documentType": "contract",
+  "createdAt": "2026-01-22T14:31:49.425Z",
+  "updatedAt": "2026-01-22T14:32:09.761Z",
+  "createdBy": "regina.silva@grupoanarosa.com.br",
+  "updatedBy": "system@docusign.webhook",
+  "comments": null,
+  "customer": {
+    "id": "d819d683-b636-48f9-a835-239175e3e7c5",
+    "name": "MAYRA AIASHI SERIKAWA",
+    "cpf": "06108416882",
+    "birthDate": "1966-04-24T00:00:00.000Z",
+    "email": "mayraserikwa@gmail.com",
+    "phone": "11965051796",
+    "createdAt": "2026-01-22T12:29:29.700Z",
+    "updatedAt": "2026-01-27T12:46:55.632Z",
+    "createdBy": "regina.silva@grupoanarosa.com.br",
+    "updatedBy": "regina.silva@grupoanarosa.com.br",
+    "comments": null,
+    "isBlocked": false,
+    "blockReason": null,
+    "blockedAt": null,
+    "blockedBy": null
+  }
+}
+--------------------------------------------------
+Contract ID: 46065f8b-81b3-498e-be37-9871ebff33de
+Customer: VALDETE DA SILVA BANQUIERI (VALBANQUIERI@GMAIL.COM)
+Data: {
+  "id": "46065f8b-81b3-498e-be37-9871ebff33de",
+  "customerId": "46f4053c-b02f-4ff8-8be6-8a0ece10a508",
+  "envelopeId": "b0be0db5-ce9e-49d0-b172-809703491ac9",
+  "status": "delivered",
+  "documentType": "contract",
+  "createdAt": "2026-01-22T14:48:01.806Z",
+  "updatedAt": "2026-01-22T14:48:23.168Z",
+  "createdBy": "elisabete.lima@grupoanarosa.com.br",
+  "updatedBy": "system@docusign.webhook",
+  "comments": null,
+  "customer": {
+    "id": "46f4053c-b02f-4ff8-8be6-8a0ece10a508",
+    "name": "VALDETE DA SILVA BANQUIERI",
+    "cpf": "32056606844",
+    "birthDate": "1962-06-10T00:00:00.000Z",
+    "email": "VALBANQUIERI@GMAIL.COM",
+    "phone": "11972105855",
+    "createdAt": "2026-01-22T14:46:08.919Z",
+    "updatedAt": "2026-01-22T14:46:08.919Z",
+    "createdBy": "elisabete.lima@grupoanarosa.com.br",
+    "updatedBy": "elisabete.lima@grupoanarosa.com.br",
+    "comments": null,
+    "isBlocked": false,
+    "blockReason": null,
+    "blockedAt": null,
+    "blockedBy": null
+  }
+}
+--------------------------------------------------
+Contract ID: a415fc2b-4fc9-456f-bc54-a2c32f4ad686
+Customer: MARIA DE FATIMA DO O (fatima.sbc@yahoo.com.br)
+Data: {
+  "id": "a415fc2b-4fc9-456f-bc54-a2c32f4ad686",
+  "customerId": "17eb5f50-4cf7-4f0c-9cba-d8aa5400ccaf",
+  "envelopeId": "dda424f2-4be6-47c2-b913-f30eefdc9fa3",
+  "status": "delivered",
+  "documentType": "contract",
+  "createdAt": "2026-01-23T16:22:17.343Z",
+  "updatedAt": "2026-01-23T16:22:37.842Z",
+  "createdBy": "daniele.silva@grupoanarosa.com.br",
+  "updatedBy": "system@docusign.webhook",
+  "comments": null,
+  "customer": {
+    "id": "17eb5f50-4cf7-4f0c-9cba-d8aa5400ccaf",
+    "name": "MARIA DE FATIMA DO O",
+    "cpf": "08021811803",
+    "birthDate": "1960-09-06T00:00:00.000Z",
+    "email": "fatima.sbc@yahoo.com.br",
+    "phone": "1199669-5485",
+    "createdAt": "2026-01-23T16:21:39.496Z",
+    "updatedAt": "2026-01-23T16:21:39.496Z",
+    "createdBy": "daniele.silva@grupoanarosa.com.br",
+    "updatedBy": "daniele.silva@grupoanarosa.com.br",
+    "comments": null,
+    "isBlocked": false,
+    "blockReason": null,
+    "blockedAt": null,
+    "blockedBy": null
+  }
+}
+--------------------------------------------------
+Contract ID: 8bffa498-ede4-41a0-8d16-621941303838
+Customer: pedro giao pinelli  (pedrogpinelli@gmail.com)
+Data: {
+  "id": "8bffa498-ede4-41a0-8d16-621941303838",
+  "customerId": "bdfed258-829a-4e78-8eb0-34e0b13393f9",
+  "envelopeId": "7ce51318-6beb-4906-a98d-710a8d6c1616",
+  "status": "delivered",
+  "documentType": "contract",
+  "createdAt": "2026-01-22T21:43:20.171Z",
+  "updatedAt": "2026-01-22T21:43:41.339Z",
+  "createdBy": "daniele.silva@grupoanarosa.com.br",
+  "updatedBy": "system@docusign.webhook",
+  "comments": null,
+  "customer": {
+    "id": "bdfed258-829a-4e78-8eb0-34e0b13393f9",
+    "name": "pedro giao pinelli ",
+    "cpf": "44519310881",
+    "birthDate": "2000-09-28T00:00:00.000Z",
+    "email": "pedrogpinelli@gmail.com",
+    "phone": "11989540276",
+    "createdAt": "2026-01-22T21:43:07.996Z",
+    "updatedAt": "2026-01-22T21:43:07.996Z",
+    "createdBy": "daniele.silva@grupoanarosa.com.br",
+    "updatedBy": "daniele.silva@grupoanarosa.com.br",
+    "comments": null,
+    "isBlocked": false,
+    "blockReason": null,
+    "blockedAt": null,
+    "blockedBy": null
+  }
+}
+--------------------------------------------------
+Contract ID: 635bf2a0-30d7-434f-a5ea-23727d52036b
+Customer: ARIEL SOUZA (SOUARIEL@GMAIL.COM)
+Data: {
+  "id": "635bf2a0-30d7-434f-a5ea-23727d52036b",
+  "customerId": "a91f5afd-66cf-47f1-9ec9-f0b77760ce23",
+  "envelopeId": "985a2098-e842-4b01-9c51-6b5b38b3e01a",
+  "status": "delivered",
+  "documentType": "contract",
+  "createdAt": "2026-01-22T21:46:35.832Z",
+  "updatedAt": "2026-01-22T21:46:56.704Z",
+  "createdBy": "viviane.teixeira@grupoanarosa.com.br",
+  "updatedBy": "system@docusign.webhook",
+  "comments": null,
+  "customer": {
+    "id": "a91f5afd-66cf-47f1-9ec9-f0b77760ce23",
+    "name": "ARIEL SOUZA",
+    "cpf": "49383475803",
+    "birthDate": "1998-07-22T00:00:00.000Z",
+    "email": "SOUARIEL@GMAIL.COM",
+    "phone": "11972722523",
+    "createdAt": "2026-01-22T21:42:02.001Z",
+    "updatedAt": "2026-02-05T22:32:37.605Z",
+    "createdBy": "viviane.teixeira@grupoanarosa.com.br",
+    "updatedBy": "gisele.oliveira@grupoanarosa.com.br",
+    "comments": null,
+    "isBlocked": false,
+    "blockReason": null,
+    "blockedAt": null,
+    "blockedBy": null
+  }
+}
+--------------------------------------------------
+Contract ID: 3f4bae52-b6cb-4e1d-be47-653f8d1276fe
+Customer: DIRCE GARCIA AMARAL (dircegarciaamaral@gmail.com)
+Data: {
+  "id": "3f4bae52-b6cb-4e1d-be47-653f8d1276fe",
+  "customerId": "3ddf6ab3-32b0-499d-8ba0-19697c9c1d7f",
+  "envelopeId": "ad855b1c-a0db-43c6-a835-575b9920792b",
+  "status": "delivered",
+  "documentType": "contract",
+  "createdAt": "2026-01-26T12:39:58.786Z",
+  "updatedAt": "2026-01-26T12:40:19.243Z",
+  "createdBy": "fernanda.firbeda@grupoanarosa.com.br",
+  "updatedBy": "system@docusign.webhook",
+  "comments": null,
+  "customer": {
+    "id": "3ddf6ab3-32b0-499d-8ba0-19697c9c1d7f",
+    "name": "DIRCE GARCIA AMARAL",
+    "cpf": "24868112813",
+    "birthDate": "1948-07-09T00:00:00.000Z",
+    "email": "dircegarciaamaral@gmail.com",
+    "phone": "11982295042",
+    "createdAt": "2026-01-26T12:38:50.701Z",
+    "updatedAt": "2026-01-26T12:38:50.701Z",
+    "createdBy": "fernanda.firbeda@grupoanarosa.com.br",
+    "updatedBy": "fernanda.firbeda@grupoanarosa.com.br",
+    "comments": null,
+    "isBlocked": false,
+    "blockReason": null,
+    "blockedAt": null,
+    "blockedBy": null
+  }
+}
+--------------------------------------------------
+Contract ID: a6f89663-a4a4-41b2-b440-3da448d271cf
+Customer: FLAVIA HELENA SANCHES ROCHA (flaviahelenasanches@bol.com.br)
+Data: {
+  "id": "a6f89663-a4a4-41b2-b440-3da448d271cf",
+  "customerId": "2414ad3a-7303-49f3-ad2f-c9c3ef89f8aa",
+  "envelopeId": "6f76ecd3-b2da-4dcf-b4d7-bcb74b6d291b",
+  "status": "delivered",
+  "documentType": "contract",
+  "createdAt": "2026-01-26T18:53:59.558Z",
+  "updatedAt": "2026-01-26T18:54:21.000Z",
+  "createdBy": "dionne.jardim@grupoanarosa.com.br",
+  "updatedBy": "system@docusign.webhook",
+  "comments": null,
+  "customer": {
+    "id": "2414ad3a-7303-49f3-ad2f-c9c3ef89f8aa",
+    "name": "FLAVIA HELENA SANCHES ROCHA",
+    "cpf": "06947041805",
+    "birthDate": "1963-04-27T00:00:00.000Z",
+    "email": "flaviahelenasanches@bol.com.br",
+    "phone": "11984038524",
+    "createdAt": "2026-01-26T18:52:53.666Z",
+    "updatedAt": "2026-01-26T18:52:53.666Z",
+    "createdBy": "dionne.jardim@grupoanarosa.com.br",
+    "updatedBy": "dionne.jardim@grupoanarosa.com.br",
+    "comments": null,
+    "isBlocked": false,
+    "blockReason": null,
+    "blockedAt": null,
+    "blockedBy": null
+  }
+}
+--------------------------------------------------
+Contract ID: 30f12663-d843-4e74-a30c-b74464e69652
+Customer: Nancy Rodrigues  (nancyrodrigues1942@gmail.com)
+Data: {
+  "id": "30f12663-d843-4e74-a30c-b74464e69652",
+  "customerId": "0b5eef07-f94a-4113-81a3-ba065a65354f",
+  "envelopeId": "c7804c55-688a-4e8c-b97f-68fbc89a28d9",
+  "status": "delivered",
+  "documentType": "contract",
+  "createdAt": "2026-01-28T18:16:31.326Z",
+  "updatedAt": "2026-01-28T18:16:51.983Z",
+  "createdBy": "regina.silva@grupoanarosa.com.br",
+  "updatedBy": "system@docusign.webhook",
+  "comments": null,
+  "customer": {
+    "id": "0b5eef07-f94a-4113-81a3-ba065a65354f",
+    "name": "Nancy Rodrigues ",
+    "cpf": "34554807800",
+    "birthDate": "1942-01-07T00:00:00.000Z",
+    "email": "nancyrodrigues1942@gmail.com",
+    "phone": "11996279937",
+    "createdAt": "2026-01-28T18:16:21.345Z",
+    "updatedAt": "2026-01-28T18:41:46.379Z",
+    "createdBy": "regina.silva@grupoanarosa.com.br",
+    "updatedBy": "regina.silva@grupoanarosa.com.br",
+    "comments": null,
+    "isBlocked": false,
+    "blockReason": null,
+    "blockedAt": null,
+    "blockedBy": null
+  }
+}
+--------------------------------------------------
+Contract ID: 7618f326-acff-435c-b5bb-49b13ef56de8
+Customer: ANA ROSA DE SOUZA LORIANO (ana2nene@hotamil.com)
+Data: {
+  "id": "7618f326-acff-435c-b5bb-49b13ef56de8",
+  "customerId": "82a9647e-bc4e-4954-99b9-2f3364f88bd2",
+  "envelopeId": "22b89b16-1798-4b47-9258-98200eaa4d63",
+  "status": "delivered",
+  "documentType": "contract",
+  "createdAt": "2026-01-29T11:54:38.130Z",
+  "updatedAt": "2026-01-29T11:54:59.498Z",
+  "createdBy": "regina.silva@grupoanarosa.com.br",
+  "updatedBy": "system@docusign.webhook",
+  "comments": null,
+  "customer": {
+    "id": "82a9647e-bc4e-4954-99b9-2f3364f88bd2",
+    "name": "ANA ROSA DE SOUZA LORIANO",
+    "cpf": "15689614807",
+    "birthDate": "1968-10-23T00:00:00.000Z",
+    "email": "ana2nene@hotamil.com",
+    "phone": "11963629580",
+    "createdAt": "2026-01-29T11:50:40.647Z",
+    "updatedAt": "2026-01-29T14:45:06.210Z",
+    "createdBy": "regina.silva@grupoanarosa.com.br",
+    "updatedBy": "regina.silva@grupoanarosa.com.br",
+    "comments": null,
+    "isBlocked": false,
+    "blockReason": null,
+    "blockedAt": null,
+    "blockedBy": null
+  }
+}
+--------------------------------------------------
+Contract ID: 26ba36b8-5deb-46e1-89e1-3faa8a5d52cc
+Customer: aristides de oliveira  (ari.projecao@gmail.com)
+Data: {
+  "id": "26ba36b8-5deb-46e1-89e1-3faa8a5d52cc",
+  "customerId": "78a24e7d-f292-4427-8e35-2dc56989ff70",
+  "envelopeId": "3b8b36bc-fe84-45c0-906c-e475a5af7d4c",
+  "status": "delivered",
+  "documentType": "contract",
+  "createdAt": "2026-01-29T12:22:22.653Z",
+  "updatedAt": "2026-01-29T12:22:43.441Z",
+  "createdBy": "norma.vignoti@grupoanarosa.com.br",
+  "updatedBy": "system@docusign.webhook",
+  "comments": null,
+  "customer": {
+    "id": "78a24e7d-f292-4427-8e35-2dc56989ff70",
+    "name": "aristides de oliveira ",
+    "cpf": "02863037870",
+    "birthDate": "1960-11-25T00:00:00.000Z",
+    "email": "ari.projecao@gmail.com",
+    "phone": "11989122531",
+    "createdAt": "2026-01-29T12:21:47.381Z",
+    "updatedAt": "2026-01-30T13:23:39.816Z",
+    "createdBy": "norma.vignoti@grupoanarosa.com.br",
+    "updatedBy": "norma.vignoti@grupoanarosa.com.br",
+    "comments": null,
+    "isBlocked": false,
+    "blockReason": null,
+    "blockedAt": null,
+    "blockedBy": null
+  }
+}
+--------------------------------------------------
+Contract ID: 16ac41c2-b25b-4f7c-a185-97cb1a9330b4
+Customer: ZENITH FRANCISCA DE ANDRADE  (ZENITHANDRADE@HOTMAIL.COM)
+Data: {
+  "id": "16ac41c2-b25b-4f7c-a185-97cb1a9330b4",
+  "customerId": "159bb979-695e-4012-9618-9e8488a8f8e5",
+  "envelopeId": "d0bc4184-ae83-422c-be9b-654d0992dab6",
+  "status": "delivered",
+  "documentType": "contract",
+  "createdAt": "2026-01-29T15:10:18.098Z",
+  "updatedAt": "2026-01-29T15:10:39.092Z",
+  "createdBy": "regina.silva@grupoanarosa.com.br",
+  "updatedBy": "system@docusign.webhook",
+  "comments": null,
+  "customer": {
+    "id": "159bb979-695e-4012-9618-9e8488a8f8e5",
+    "name": "ZENITH FRANCISCA DE ANDRADE ",
+    "cpf": "95736255634",
+    "birthDate": "1968-05-21T00:00:00.000Z",
+    "email": "ZENITHANDRADE@HOTMAIL.COM",
+    "phone": "11982693794",
+    "createdAt": "2026-01-29T15:10:03.321Z",
+    "updatedAt": "2026-01-29T15:20:51.590Z",
+    "createdBy": "regina.silva@grupoanarosa.com.br",
+    "updatedBy": "regina.silva@grupoanarosa.com.br",
+    "comments": null,
+    "isBlocked": false,
+    "blockReason": null,
+    "blockedAt": null,
+    "blockedBy": null
+  }
+}
+--------------------------------------------------
+Contract ID: 54be7fa4-263a-4975-8b87-38fc0b2b5a41
+Customer: LUCIA MARA LOPES MEGNA (GSPMEGNA@GMAIL.COM)
+Data: {
+  "id": "54be7fa4-263a-4975-8b87-38fc0b2b5a41",
+  "customerId": "9630b3ac-9da1-4488-9879-d7166a742914",
+  "envelopeId": "206b6ce8-db28-409f-b78f-20b61b0c42d0",
+  "status": "delivered",
+  "documentType": "contract",
+  "createdAt": "2026-01-29T15:44:43.730Z",
+  "updatedAt": "2026-01-29T15:45:05.014Z",
+  "createdBy": "regina.silva@grupoanarosa.com.br",
+  "updatedBy": "system@docusign.webhook",
+  "comments": null,
+  "customer": {
+    "id": "9630b3ac-9da1-4488-9879-d7166a742914",
+    "name": "LUCIA MARA LOPES MEGNA",
+    "cpf": "99123797800",
+    "birthDate": "1956-10-08T00:00:00.000Z",
+    "email": "GSPMEGNA@GMAIL.COM",
+    "phone": "11996535883",
+    "createdAt": "2026-01-29T15:43:10.897Z",
+    "updatedAt": "2026-01-29T16:08:40.057Z",
+    "createdBy": "regina.silva@grupoanarosa.com.br",
+    "updatedBy": "regina.silva@grupoanarosa.com.br",
+    "comments": null,
+    "isBlocked": false,
+    "blockReason": null,
+    "blockedAt": null,
+    "blockedBy": null
+  }
+}
+--------------------------------------------------
+Contract ID: bc2b6dc5-65ae-4e63-95f2-02ff17b674f0
+Customer: HUMBERTO CESAR CARNIELLI (humbertocarnielli@gmail.com)
+Data: {
+  "id": "bc2b6dc5-65ae-4e63-95f2-02ff17b674f0",
+  "customerId": "e7cd55af-1a02-4843-bc55-d2a438fa8693",
+  "envelopeId": "b3720f05-af0e-45af-856a-8fd1cac64276",
+  "status": "delivered",
+  "documentType": "contract",
+  "createdAt": "2026-01-29T17:48:08.346Z",
+  "updatedAt": "2026-01-29T17:48:28.888Z",
+  "createdBy": "regina.silva@grupoanarosa.com.br",
+  "updatedBy": "system@docusign.webhook",
+  "comments": null,
+  "customer": {
+    "id": "e7cd55af-1a02-4843-bc55-d2a438fa8693",
+    "name": "HUMBERTO CESAR CARNIELLI",
+    "cpf": "10750475870",
+    "birthDate": "1967-08-28T00:00:00.000Z",
+    "email": "humbertocarnielli@gmail.com",
+    "phone": "11960592808",
+    "createdAt": "2026-01-29T17:47:54.144Z",
+    "updatedAt": "2026-01-29T18:10:21.602Z",
+    "createdBy": "regina.silva@grupoanarosa.com.br",
+    "updatedBy": "regina.silva@grupoanarosa.com.br",
+    "comments": null,
+    "isBlocked": false,
+    "blockReason": null,
+    "blockedAt": null,
+    "blockedBy": null
+  }
+}
+--------------------------------------------------
+Contract ID: 09d74509-c06c-42bf-8f6e-192591dfc263
+Customer: EDSON DA COSTA PEREIRA (PEREIRACOSTA30613@GMAIL.COM)
+Data: {
+  "id": "09d74509-c06c-42bf-8f6e-192591dfc263",
+  "customerId": "987bde5f-0ec8-4de6-99e9-9aa41ea2510f",
+  "envelopeId": "6b2531b0-a07a-4058-b18a-894e5011052a",
+  "status": "delivered",
+  "documentType": "contract",
+  "createdAt": "2026-02-02T13:16:45.138Z",
+  "updatedAt": "2026-02-02T13:17:06.681Z",
+  "createdBy": "caroline.bisi@grupoanarosa.com.br",
+  "updatedBy": "system@docusign.webhook",
+  "comments": null,
+  "customer": {
+    "id": "987bde5f-0ec8-4de6-99e9-9aa41ea2510f",
+    "name": "EDSON DA COSTA PEREIRA",
+    "cpf": "87426692868",
+    "birthDate": "1957-08-10T00:00:00.000Z",
+    "email": "PEREIRACOSTA30613@GMAIL.COM",
+    "phone": "98180-9216",
+    "createdAt": "2026-02-02T13:14:28.069Z",
+    "updatedAt": "2026-02-03T13:58:12.735Z",
+    "createdBy": "caroline.bisi@grupoanarosa.com.br",
+    "updatedBy": "caroline.bisi@grupoanarosa.com.br",
+    "comments": null,
+    "isBlocked": false,
+    "blockReason": null,
+    "blockedAt": null,
+    "blockedBy": null
+  }
+}
+--------------------------------------------------
+Contract ID: b96e3038-4540-4ab5-a2ec-825743e58a99
+Customer: SILMARA MACIEL RUI (SMACIELRUI@GMAIL.COM)
+Data: {
+  "id": "b96e3038-4540-4ab5-a2ec-825743e58a99",
+  "customerId": "3e241cc1-1eda-4e8c-9673-645581f9d35a",
+  "envelopeId": "d893fef4-b829-43f5-a9bb-276f865c9b6e",
+  "status": "delivered",
+  "documentType": "contract",
+  "createdAt": "2026-02-02T15:18:18.226Z",
+  "updatedAt": "2026-02-02T15:18:38.977Z",
+  "createdBy": "fernanda.firbeda@grupoanarosa.com.br",
+  "updatedBy": "system@docusign.webhook",
+  "comments": null,
+  "customer": {
+    "id": "3e241cc1-1eda-4e8c-9673-645581f9d35a",
+    "name": "SILMARA MACIEL RUI",
+    "cpf": "26439044889",
+    "birthDate": "1977-07-04T00:00:00.000Z",
+    "email": "SMACIELRUI@GMAIL.COM",
+    "phone": "11982837277",
+    "createdAt": "2026-02-02T15:18:10.871Z",
+    "updatedAt": "2026-02-02T20:16:56.931Z",
+    "createdBy": "fernanda.firbeda@grupoanarosa.com.br",
+    "updatedBy": "fernanda.firbeda@grupoanarosa.com.br",
+    "comments": null,
+    "isBlocked": false,
+    "blockReason": null,
+    "blockedAt": null,
+    "blockedBy": null
+  }
+}
+--------------------------------------------------
+Contract ID: 25c622ec-71db-4f8e-a323-a5f938838dd0
+Customer: CLEIDE MARIA BUENSE STOPA  (sandrarstopa@hotmial.com)
+Data: {
+  "id": "25c622ec-71db-4f8e-a323-a5f938838dd0",
+  "customerId": "98ec0786-1dd8-4175-b58f-7cf137a5853b",
+  "envelopeId": "ce697de1-c08e-4ee4-bce5-1b44d16b2fd8",
+  "status": "delivered",
+  "documentType": "contract",
+  "createdAt": "2026-02-05T11:54:50.214Z",
+  "updatedAt": "2026-02-05T11:55:11.584Z",
+  "createdBy": "regina.silva@grupoanarosa.com.br",
+  "updatedBy": "system@docusign.webhook",
+  "comments": null,
+  "customer": {
+    "id": "98ec0786-1dd8-4175-b58f-7cf137a5853b",
+    "name": "CLEIDE MARIA BUENSE STOPA ",
+    "cpf": "24731569800",
+    "birthDate": "1943-02-27T00:00:00.000Z",
+    "email": "sandrarstopa@hotmial.com",
+    "phone": "1199992982092",
+    "createdAt": "2026-02-05T11:54:40.259Z",
+    "updatedAt": "2026-02-05T12:14:34.165Z",
+    "createdBy": "regina.silva@grupoanarosa.com.br",
+    "updatedBy": "regina.silva@grupoanarosa.com.br",
+    "comments": null,
+    "isBlocked": false,
+    "blockReason": null,
+    "blockedAt": null,
+    "blockedBy": null
+  }
+}
+--------------------------------------------------
+Contract ID: dbff9ea8-a1bf-42ed-964e-bab8d53a7d7a
+Customer: VERA LUCIA GONZAGA DOS SANTOS LOPES  (lopesvera84@gmail.com)
+Data: {
+  "id": "dbff9ea8-a1bf-42ed-964e-bab8d53a7d7a",
+  "customerId": "c8680370-9a2d-4faf-ad69-add241ab9098",
+  "envelopeId": "0fb6d5c9-7c0e-4fc9-b54a-fbdbac749461",
+  "status": "delivered",
+  "documentType": "contract",
+  "createdAt": "2026-02-03T18:42:42.776Z",
+  "updatedAt": "2026-02-03T18:43:03.497Z",
+  "createdBy": "regina.silva@grupoanarosa.com.br",
+  "updatedBy": "system@docusign.webhook",
+  "comments": null,
+  "customer": {
+    "id": "c8680370-9a2d-4faf-ad69-add241ab9098",
+    "name": "VERA LUCIA GONZAGA DOS SANTOS LOPES ",
+    "cpf": "06938025886",
+    "birthDate": "1966-11-30T00:00:00.000Z",
+    "email": "lopesvera84@gmail.com",
+    "phone": "11995529014",
+    "createdAt": "2026-02-03T18:42:26.522Z",
+    "updatedAt": "2026-02-03T18:42:26.522Z",
+    "createdBy": "regina.silva@grupoanarosa.com.br",
+    "updatedBy": "regina.silva@grupoanarosa.com.br",
+    "comments": null,
+    "isBlocked": false,
+    "blockReason": null,
+    "blockedAt": null,
+    "blockedBy": null
+  }
+}
+--------------------------------------------------
+Contract ID: 7ae98ffb-0ebe-4fe8-ad0c-d971706ee138
+Customer: LUCAS RIBEIRO CORREIA (lucaass.correa@hotmail.com)
+Data: {
+  "id": "7ae98ffb-0ebe-4fe8-ad0c-d971706ee138",
+  "customerId": "e05591f8-91d1-4891-b5aa-2c559c80f670",
+  "envelopeId": "cf7b9977-335c-4568-a3e5-bb91742a6e5c",
+  "status": "sent",
+  "documentType": "contract-operator",
+  "createdAt": "2026-02-05T12:48:27.413Z",
+  "updatedAt": "2026-02-05T12:48:48.239Z",
+  "createdBy": "fernanda.firbeda@grupoanarosa.com.br",
+  "updatedBy": "system@docusign.webhook",
+  "comments": null,
+  "customer": {
+    "id": "e05591f8-91d1-4891-b5aa-2c559c80f670",
+    "name": "LUCAS RIBEIRO CORREIA",
+    "cpf": "43838191846",
+    "birthDate": "1995-11-20T00:00:00.000Z",
+    "email": "lucaass.correa@hotmail.com",
+    "phone": "11910746284",
+    "createdAt": "2026-01-28T14:05:59.733Z",
+    "updatedAt": "2026-02-05T12:48:16.862Z",
+    "createdBy": "fernanda.firbeda@grupoanarosa.com.br",
+    "updatedBy": "fernanda.firbeda@grupoanarosa.com.br",
+    "comments": null,
+    "isBlocked": false,
+    "blockReason": null,
+    "blockedAt": null,
+    "blockedBy": null
+  }
+}
+--------------------------------------------------
+Contract ID: 74f1b14c-d8dd-4bc7-93d2-da724b1bd013
+Customer: JOSE EDSO DA SILVA PISSAIA (edsonpissaia.junior@gmail.com)
+Data: {
+  "id": "74f1b14c-d8dd-4bc7-93d2-da724b1bd013",
+  "customerId": "9efdf968-8d05-481f-a3e8-5f2bd8ca3b94",
+  "envelopeId": "29a5d1aa-70bd-48e7-853a-ac36a82c0461",
+  "status": "delivered",
+  "documentType": "contract",
+  "createdAt": "2026-02-05T15:08:48.408Z",
+  "updatedAt": "2026-02-05T15:09:09.933Z",
+  "createdBy": "catia.rondi@grupoanarosa.com.br",
+  "updatedBy": "system@docusign.webhook",
+  "comments": null,
+  "customer": {
+    "id": "9efdf968-8d05-481f-a3e8-5f2bd8ca3b94",
+    "name": "JOSE EDSO DA SILVA PISSAIA",
+    "cpf": "35517784852",
+    "birthDate": "1989-03-16T00:00:00.000Z",
+    "email": "edsonpissaia.junior@gmail.com",
+    "phone": "11943041722",
+    "createdAt": "2026-02-05T15:08:41.109Z",
+    "updatedAt": "2026-02-05T15:16:46.889Z",
+    "createdBy": "catia.rondi@grupoanarosa.com.br",
+    "updatedBy": "catia.rondi@grupoanarosa.com.br",
+    "comments": null,
+    "isBlocked": false,
+    "blockReason": null,
+    "blockedAt": null,
+    "blockedBy": null
+  }
+}
+--------------------------------------------------
+Contract ID: 89100230-2171-4f1e-bc37-c1eaa77e2d6a
+Customer: DINÁ CABRAL MARQUES (DINASILVACABRAL83@GMAIL.COM)
+Data: {
+  "id": "89100230-2171-4f1e-bc37-c1eaa77e2d6a",
+  "customerId": "71f99afa-182d-4dbe-bb36-c7af3e5738a7",
+  "envelopeId": "0d915643-24f2-4cd9-acb4-0ae4d40ff4db",
+  "status": "sent",
+  "documentType": "contract",
+  "createdAt": "2026-02-05T17:54:36.056Z",
+  "updatedAt": "2026-02-05T17:54:57.581Z",
+  "createdBy": "fernanda.firbeda@grupoanarosa.com.br",
+  "updatedBy": "system@docusign.webhook",
+  "comments": null,
+  "customer": {
+    "id": "71f99afa-182d-4dbe-bb36-c7af3e5738a7",
+    "name": "DINÁ CABRAL MARQUES",
+    "cpf": "31340467844",
+    "birthDate": "1983-03-20T00:00:00.000Z",
+    "email": "DINASILVACABRAL83@GMAIL.COM",
+    "phone": "11966898242",
+    "createdAt": "2026-02-05T17:54:05.979Z",
+    "updatedAt": "2026-02-05T17:54:05.979Z",
+    "createdBy": "fernanda.firbeda@grupoanarosa.com.br",
+    "updatedBy": "fernanda.firbeda@grupoanarosa.com.br",
+    "comments": null,
+    "isBlocked": false,
+    "blockReason": null,
+    "blockedAt": null,
+    "blockedBy": null
+  }
+}
+--------------------------------------------------
+Contract ID: b748e5f6-8a83-4a53-ab2a-b51c630e17ed
+Customer: LUIZ EDUARDO REZENDE DE CASTRO (eduwap@hotmail.com)
+Data: {
+  "id": "b748e5f6-8a83-4a53-ab2a-b51c630e17ed",
+  "customerId": "35a395fc-abf1-479a-b1c7-95b79e6bf0c8",
+  "envelopeId": "ac949d5e-6c8c-445a-a1a6-65762cdd836d",
+  "status": "sent",
+  "documentType": "contract-operator",
+  "createdAt": "2026-02-06T10:49:18.483Z",
+  "updatedAt": "2026-02-06T10:49:39.838Z",
+  "createdBy": "norma.vignoti@grupoanarosa.com.br",
+  "updatedBy": "system@docusign.webhook",
+  "comments": null,
+  "customer": {
+    "id": "35a395fc-abf1-479a-b1c7-95b79e6bf0c8",
+    "name": "LUIZ EDUARDO REZENDE DE CASTRO",
+    "cpf": "12805021851",
+    "birthDate": "1969-11-30T00:00:00.000Z",
+    "email": "eduwap@hotmail.com",
+    "phone": "11993331154",
+    "createdAt": "2026-02-06T10:49:07.183Z",
+    "updatedAt": "2026-02-06T17:37:31.156Z",
+    "createdBy": "norma.vignoti@grupoanarosa.com.br",
+    "updatedBy": "edilene.silva@grupoanarosa.com.br",
+    "comments": null,
+    "isBlocked": false,
+    "blockReason": null,
+    "blockedAt": null,
+    "blockedBy": null
+  }
+}
+--------------------------------------------------
+Contract ID: ed48e357-c811-4720-a66d-7e180dbf3d5d
+Customer: MARCIA ERMELINDA MONTEIRO DA SILVA (marciamonteiro1968@hotmail.com)
+Data: {
+  "id": "ed48e357-c811-4720-a66d-7e180dbf3d5d",
+  "customerId": "2e76f1ec-21b5-4ba8-90d2-c6f17169f28f",
+  "envelopeId": "f46b9093-986d-4a00-91d9-c20fcf6b8243",
+  "status": "sent",
+  "documentType": "contract",
+  "createdAt": "2026-02-06T10:55:59.922Z",
+  "updatedAt": "2026-02-06T10:56:21.446Z",
+  "createdBy": "ellen.morais@grupoanarosa.com.br",
+  "updatedBy": "system@docusign.webhook",
+  "comments": null,
+  "customer": {
+    "id": "2e76f1ec-21b5-4ba8-90d2-c6f17169f28f",
+    "name": "MARCIA ERMELINDA MONTEIRO DA SILVA",
+    "cpf": "11969645806",
+    "birthDate": "1968-02-18T00:00:00.000Z",
+    "email": "marciamonteiro1968@hotmail.com",
+    "phone": "11 996613151",
+    "createdAt": "2026-02-06T10:55:51.950Z",
+    "updatedAt": "2026-02-06T10:55:51.950Z",
+    "createdBy": "ellen.morais@grupoanarosa.com.br",
+    "updatedBy": "ellen.morais@grupoanarosa.com.br",
+    "comments": null,
+    "isBlocked": false,
+    "blockReason": null,
+    "blockedAt": null,
+    "blockedBy": null
+  }
+}
+--------------------------------------------------
+Contract ID: 4c7196be-ab1d-48f5-911d-12c84d990093
+Customer: Marilene Silva Ril (marilinesilvaaa789@gmail.com)
+Data: {
+  "id": "4c7196be-ab1d-48f5-911d-12c84d990093",
+  "customerId": "edc8e826-4105-4fce-b843-22071697eb38",
+  "envelopeId": "0bbd05b8-37e9-49e7-ac1d-cb3e18f23c6e",
+  "status": "sent",
+  "documentType": "contract-operator",
+  "createdAt": "2026-02-06T11:05:59.817Z",
+  "updatedAt": "2026-02-06T11:06:21.242Z",
+  "createdBy": "cibele.chicone@grupoanarosa.com.br",
+  "updatedBy": "system@docusign.webhook",
+  "comments": null,
+  "customer": {
+    "id": "edc8e826-4105-4fce-b843-22071697eb38",
+    "name": "Marilene Silva Ril",
+    "cpf": "01146118317",
+    "birthDate": "1983-04-23T00:00:00.000Z",
+    "email": "marilinesilvaaa789@gmail.com",
+    "phone": "11958143808",
+    "createdAt": "2026-02-06T11:04:42.830Z",
+    "updatedAt": "2026-02-09T13:51:51.646Z",
+    "createdBy": "cibele.chicone@grupoanarosa.com.br",
+    "updatedBy": "catia.rondi@grupoanarosa.com.br",
+    "comments": null,
+    "isBlocked": false,
+    "blockReason": null,
+    "blockedAt": null,
+    "blockedBy": null
+  }
+}
+--------------------------------------------------
+Contract ID: 3fc424d4-66fd-44a8-98fc-49e2ad0bab1c
+Customer: CLAUDINEI CORREA DE ALMEIDA (ZENILDACAPAS@GMAIL.COM)
+Data: {
+  "id": "3fc424d4-66fd-44a8-98fc-49e2ad0bab1c",
+  "customerId": "d6055ab6-5e80-4c59-969c-dad8194d4e85",
+  "envelopeId": "f5207f42-8976-4abf-a7a1-21331afcb9da",
+  "status": "sent",
+  "documentType": "contract",
+  "createdAt": "2026-02-06T11:52:55.451Z",
+  "updatedAt": "2026-02-06T11:53:17.064Z",
+  "createdBy": "elisabete.lima@grupoanarosa.com.br",
+  "updatedBy": "system@docusign.webhook",
+  "comments": null,
+  "customer": {
+    "id": "d6055ab6-5e80-4c59-969c-dad8194d4e85",
+    "name": "CLAUDINEI CORREA DE ALMEIDA",
+    "cpf": "76880788904",
+    "birthDate": "1969-09-10T00:00:00.000Z",
+    "email": "ZENILDACAPAS@GMAIL.COM",
+    "phone": "11953577989",
+    "createdAt": "2026-02-06T11:52:47.613Z",
+    "updatedAt": "2026-02-06T11:52:47.613Z",
+    "createdBy": "elisabete.lima@grupoanarosa.com.br",
+    "updatedBy": "elisabete.lima@grupoanarosa.com.br",
+    "comments": null,
+    "isBlocked": false,
+    "blockReason": null,
+    "blockedAt": null,
+    "blockedBy": null
+  }
+}
+--------------------------------------------------
+Contract ID: 5f2f8ec1-c021-4e74-92b9-638d3dcd286e
+Customer: Priscila Oliveira Modesto (modestooliver@live.com)
+Data: {
+  "id": "5f2f8ec1-c021-4e74-92b9-638d3dcd286e",
+  "customerId": "d5afd7e1-fdc4-49ff-8e13-9f0f7969f4e6",
+  "envelopeId": "c4178d30-6e49-48c1-b6ae-ece0ffb30fd7",
+  "status": "sent",
+  "documentType": "contract",
+  "createdAt": "2026-02-07T13:40:50.653Z",
+  "updatedAt": "2026-02-07T13:41:12.095Z",
+  "createdBy": "elisabete.lima@grupoanarosa.com.br",
+  "updatedBy": "system@docusign.webhook",
+  "comments": null,
+  "customer": {
+    "id": "d5afd7e1-fdc4-49ff-8e13-9f0f7969f4e6",
+    "name": "Priscila Oliveira Modesto",
+    "cpf": "32684909806",
+    "birthDate": "1984-03-13T00:00:00.000Z",
+    "email": "modestooliver@live.com",
+    "phone": "modestooliver@live.com",
+    "createdAt": "2026-01-23T13:03:04.401Z",
+    "updatedAt": "2026-02-07T14:24:50.392Z",
+    "createdBy": "alessandra.gomes@grupoanarosa.com.br",
+    "updatedBy": "elisabete.lima@grupoanarosa.com.br",
+    "comments": null,
+    "isBlocked": false,
+    "blockReason": null,
+    "blockedAt": null,
+    "blockedBy": null
+  }
+}
+--------------------------------------------------
+Contract ID: 94d97d98-7f68-4532-8910-7975be27af55
+Customer: GISELE ALVES SOARES DE ARAUJO (giselenaildesinger2023@gmail.com)
+Data: {
+  "id": "94d97d98-7f68-4532-8910-7975be27af55",
+  "customerId": "69dc12ac-3781-4eea-ba1e-fd3bc4798b2a",
+  "envelopeId": "53f8d65f-e892-4eed-96bb-ce61770fbfae",
+  "status": "sent",
+  "documentType": "contract-operator",
+  "createdAt": "2026-02-06T12:28:29.777Z",
+  "updatedAt": "2026-02-06T12:28:50.288Z",
+  "createdBy": "norma.vignoti@grupoanarosa.com.br",
+  "updatedBy": "system@docusign.webhook",
+  "comments": null,
+  "customer": {
+    "id": "69dc12ac-3781-4eea-ba1e-fd3bc4798b2a",
+    "name": "GISELE ALVES SOARES DE ARAUJO",
+    "cpf": "43440426890",
+    "birthDate": "1994-10-25T00:00:00.000Z",
+    "email": "giselenaildesinger2023@gmail.com",
+    "phone": "11972387131",
+    "createdAt": "2026-02-02T14:36:38.661Z",
+    "updatedAt": "2026-02-06T12:28:20.726Z",
+    "createdBy": "norma.vignoti@grupoanarosa.com.br",
+    "updatedBy": "norma.vignoti@grupoanarosa.com.br",
+    "comments": null,
+    "isBlocked": false,
+    "blockReason": null,
+    "blockedAt": null,
+    "blockedBy": null
+  }
+}
+--------------------------------------------------
+Contract ID: a1cd849a-0bb0-475d-8c6a-1b0fe5175678
+Customer: LUCIA APARECIDA DE ALMEIDA REDONDARO (LUCIAPARECIDAALMEIDAREDONDARO@HOTMAIL.COM)
+Data: {
+  "id": "a1cd849a-0bb0-475d-8c6a-1b0fe5175678",
+  "customerId": "049b92df-5ccd-4933-8c51-2cb8adc87eae",
+  "envelopeId": "10e0b8f6-6974-4472-882d-ac831c775128",
+  "status": "sent",
+  "documentType": "contract-operator",
+  "createdAt": "2026-02-06T15:21:06.781Z",
+  "updatedAt": "2026-02-06T15:21:28.186Z",
+  "createdBy": "anapaula.carrasco@grupoanarosa.com.br",
+  "updatedBy": "system@docusign.webhook",
+  "comments": null,
+  "customer": {
+    "id": "049b92df-5ccd-4933-8c51-2cb8adc87eae",
+    "name": "LUCIA APARECIDA DE ALMEIDA REDONDARO",
+    "cpf": "32733167804",
+    "birthDate": "1959-05-03T00:00:00.000Z",
+    "email": "LUCIAPARECIDAALMEIDAREDONDARO@HOTMAIL.COM",
+    "phone": "11997012032",
+    "createdAt": "2026-02-06T15:18:33.212Z",
+    "updatedAt": "2026-02-06T15:18:33.212Z",
+    "createdBy": "anapaula.carrasco@grupoanarosa.com.br",
+    "updatedBy": "anapaula.carrasco@grupoanarosa.com.br",
+    "comments": null,
+    "isBlocked": false,
+    "blockReason": null,
+    "blockedAt": null,
+    "blockedBy": null
+  }
+}
+--------------------------------------------------
+Contract ID: e531b471-890c-4e7f-bfac-dfdd1034e2f6
+Customer: Raimundo da Silva Mota (mota_raimundo@yahoo.com.br)
+Data: {
+  "id": "e531b471-890c-4e7f-bfac-dfdd1034e2f6",
+  "customerId": "71e7e416-3775-4e72-9d92-12fa3f5f887b",
+  "envelopeId": "b87080ae-c6c7-4d91-9f52-695607736d80",
+  "status": "sent",
+  "documentType": "contract-operator",
+  "createdAt": "2026-02-06T16:41:16.292Z",
+  "updatedAt": "2026-02-06T16:41:37.670Z",
+  "createdBy": "anapaula.carrasco@grupoanarosa.com.br",
+  "updatedBy": "system@docusign.webhook",
+  "comments": null,
+  "customer": {
+    "id": "71e7e416-3775-4e72-9d92-12fa3f5f887b",
+    "name": "Raimundo da Silva Mota",
+    "cpf": "00587901870",
+    "birthDate": "1958-07-30T00:00:00.000Z",
+    "email": "mota_raimundo@yahoo.com.br",
+    "phone": "11976372894",
+    "createdAt": "2026-02-06T16:41:06.611Z",
+    "updatedAt": "2026-02-06T16:41:06.611Z",
+    "createdBy": "anapaula.carrasco@grupoanarosa.com.br",
+    "updatedBy": "anapaula.carrasco@grupoanarosa.com.br",
+    "comments": null,
+    "isBlocked": false,
+    "blockReason": null,
+    "blockedAt": null,
+    "blockedBy": null
+  }
+}
+--------------------------------------------------
+Contract ID: 0baf7d2d-0983-413f-8c3b-7bc6ed4616cd
+Customer: BEATRIZ QUITÉRIA ARAUJO SILVA (beatrizquiteri@gmail.com)
+Data: {
+  "id": "0baf7d2d-0983-413f-8c3b-7bc6ed4616cd",
+  "customerId": "ea991c95-0be2-4fbf-966e-99440773e929",
+  "envelopeId": "7327a94b-6544-4c92-b8fe-51b39e6352da",
+  "status": "sent",
+  "documentType": "contract-operator",
+  "createdAt": "2026-02-06T18:18:53.336Z",
+  "updatedAt": "2026-02-06T18:19:14.860Z",
+  "createdBy": "viviane.teixeira@grupoanarosa.com.br",
+  "updatedBy": "system@docusign.webhook",
+  "comments": null,
+  "customer": {
+    "id": "ea991c95-0be2-4fbf-966e-99440773e929",
+    "name": "BEATRIZ QUITÉRIA ARAUJO SILVA",
+    "cpf": "43518772864",
+    "birthDate": "2000-03-21T00:00:00.000Z",
+    "email": "beatrizquiteri@gmail.com",
+    "phone": "11967739414",
+    "createdAt": "2026-02-06T18:17:45.142Z",
+    "updatedAt": "2026-02-10T16:54:22.228Z",
+    "createdBy": "viviane.teixeira@grupoanarosa.com.br",
+    "updatedBy": "viviane.teixeira@grupoanarosa.com.br",
+    "comments": null,
+    "isBlocked": false,
+    "blockReason": null,
+    "blockedAt": null,
+    "blockedBy": null
+  }
+}
+--------------------------------------------------
+Contract ID: 831c6c1f-38ac-4f99-8f71-de6ba3b7caad
+Customer: anderson do nascimento santos (anderson093@outlook.com)
+Data: {
+  "id": "831c6c1f-38ac-4f99-8f71-de6ba3b7caad",
+  "customerId": "d3968bdc-f3b3-4a85-b510-f0b4ebdce244",
+  "envelopeId": "e1995cd4-b208-47bf-83bc-92192963ca18",
+  "status": "sent",
+  "documentType": "contract",
+  "createdAt": "2026-02-06T20:01:37.571Z",
+  "updatedAt": "2026-02-06T20:01:58.956Z",
+  "createdBy": "elisabete.lima@grupoanarosa.com.br",
+  "updatedBy": "system@docusign.webhook",
+  "comments": null,
+  "customer": {
+    "id": "d3968bdc-f3b3-4a85-b510-f0b4ebdce244",
+    "name": "anderson do nascimento santos",
+    "cpf": "42934000877",
+    "birthDate": "1993-02-23T00:00:00.000Z",
+    "email": "anderson093@outlook.com",
+    "phone": "11999888543",
+    "createdAt": "2026-02-06T19:56:03.210Z",
+    "updatedAt": "2026-02-06T19:56:03.210Z",
+    "createdBy": "elisabete.lima@grupoanarosa.com.br",
+    "updatedBy": "elisabete.lima@grupoanarosa.com.br",
+    "comments": null,
+    "isBlocked": false,
+    "blockReason": null,
+    "blockedAt": null,
+    "blockedBy": null
+  }
+}
+--------------------------------------------------
+Contract ID: 19fbacb6-c085-4245-80a0-c69ea7f4bd50
+Customer: MOACIR SALVARANI (SALVARANIMOACIR10@GMAIL.COM)
+Data: {
+  "id": "19fbacb6-c085-4245-80a0-c69ea7f4bd50",
+  "customerId": "5fe1dba4-9abb-4eda-b381-58cb49d8f828",
+  "envelopeId": "106a5c12-7ebb-45bc-8753-fa50a5d2f4b4",
+  "status": "sent",
+  "documentType": "contract",
+  "createdAt": "2026-02-06T20:19:43.628Z",
+  "updatedAt": "2026-02-06T20:20:04.189Z",
+  "createdBy": "fernanda.firbeda@grupoanarosa.com.br",
+  "updatedBy": "system@docusign.webhook",
+  "comments": null,
+  "customer": {
+    "id": "5fe1dba4-9abb-4eda-b381-58cb49d8f828",
+    "name": "MOACIR SALVARANI",
+    "cpf": "04752747847",
+    "birthDate": "1963-11-03T00:00:00.000Z",
+    "email": "SALVARANIMOACIR10@GMAIL.COM",
+    "phone": "11970399647",
+    "createdAt": "2026-02-06T20:18:17.582Z",
+    "updatedAt": "2026-02-06T20:18:17.582Z",
+    "createdBy": "fernanda.firbeda@grupoanarosa.com.br",
+    "updatedBy": "fernanda.firbeda@grupoanarosa.com.br",
+    "comments": null,
+    "isBlocked": false,
+    "blockReason": null,
+    "blockedAt": null,
+    "blockedBy": null
+  }
+}
+--------------------------------------------------
+Contract ID: a012a1e4-dc3a-4956-affb-17da092e1553
+Customer: Antônio  Conceição  Andrade  sobrinho (rosysantos008@gmail.com)
+Data: {
+  "id": "a012a1e4-dc3a-4956-affb-17da092e1553",
+  "customerId": "2851cb26-89e1-406c-a743-c8e41882275c",
+  "envelopeId": "03dcf435-c907-421e-9be0-c2eba69c686b",
+  "status": "delivered",
+  "documentType": "contract",
+  "createdAt": "2026-02-06T20:49:37.777Z",
+  "updatedAt": "2026-02-06T20:49:59.373Z",
+  "createdBy": "kamilly.silva@grupoanarosa.com.br",
+  "updatedBy": "system@docusign.webhook",
+  "comments": null,
+  "customer": {
+    "id": "2851cb26-89e1-406c-a743-c8e41882275c",
+    "name": "Antônio  Conceição  Andrade  sobrinho",
+    "cpf": "13297263830",
+    "birthDate": "1972-09-28T00:00:00.000Z",
+    "email": "rosysantos008@gmail.com",
+    "phone": "11986614082",
+    "createdAt": "2026-02-06T20:46:24.262Z",
+    "updatedAt": "2026-02-06T20:48:06.846Z",
+    "createdBy": "kamilly.silva@grupoanarosa.com.br",
+    "updatedBy": "kamilly.silva@grupoanarosa.com.br",
+    "comments": null,
+    "isBlocked": false,
+    "blockReason": null,
+    "blockedAt": null,
+    "blockedBy": null
+  }
+}
+--------------------------------------------------
+Contract ID: 05f4ce81-c9df-4dac-a023-d047a6e9d89e
+Customer: DALVA MARIA PORTO SERAFIM (DALVA.PORTOSERAFIM@GMAIL.COM)
+Data: {
+  "id": "05f4ce81-c9df-4dac-a023-d047a6e9d89e",
+  "customerId": "ef4927c2-2d43-4ee6-93f5-addd14c8d6f5",
+  "envelopeId": "2bda9237-f94c-4d21-912c-31646616cc22",
+  "status": "sent",
+  "documentType": "contract",
+  "createdAt": "2026-02-07T11:40:50.466Z",
+  "updatedAt": "2026-02-07T11:41:11.114Z",
+  "createdBy": "elisabete.lima@grupoanarosa.com.br",
+  "updatedBy": "system@docusign.webhook",
+  "comments": null,
+  "customer": {
+    "id": "ef4927c2-2d43-4ee6-93f5-addd14c8d6f5",
+    "name": "DALVA MARIA PORTO SERAFIM",
+    "cpf": "27113176844",
+    "birthDate": "1966-10-25T00:00:00.000Z",
+    "email": "DALVA.PORTOSERAFIM@GMAIL.COM",
+    "phone": "11947322667",
+    "createdAt": "2026-02-07T11:40:21.512Z",
+    "updatedAt": "2026-02-07T11:40:21.512Z",
+    "createdBy": "elisabete.lima@grupoanarosa.com.br",
+    "updatedBy": "elisabete.lima@grupoanarosa.com.br",
+    "comments": null,
+    "isBlocked": false,
+    "blockReason": null,
+    "blockedAt": null,
+    "blockedBy": null
+  }
+}
+--------------------------------------------------
+Contract ID: c0ccaf4e-5a3b-4909-8a80-afd015e7aec1
+Customer: ANTONIO SERGIO DE LIMA (SERGIO.LIMA0205@GMAIL.COM)
+Data: {
+  "id": "c0ccaf4e-5a3b-4909-8a80-afd015e7aec1",
+  "customerId": "ed2cb53d-4538-431c-b78d-232d811bcede",
+  "envelopeId": "4360993f-525d-4f5d-b753-d49ad960ee5e",
+  "status": "sent",
+  "documentType": "contract",
+  "createdAt": "2026-02-07T13:50:57.216Z",
+  "updatedAt": "2026-02-07T13:51:18.384Z",
+  "createdBy": "elisabete.lima@grupoanarosa.com.br",
+  "updatedBy": "system@docusign.webhook",
+  "comments": null,
+  "customer": {
+    "id": "ed2cb53d-4538-431c-b78d-232d811bcede",
+    "name": "ANTONIO SERGIO DE LIMA",
+    "cpf": "00876983824",
+    "birthDate": "1957-04-02T00:00:00.000Z",
+    "email": "SERGIO.LIMA0205@GMAIL.COM",
+    "phone": "11995951306",
+    "createdAt": "2025-12-04T20:04:36.019Z",
+    "updatedAt": "2026-02-07T13:49:30.972Z",
+    "createdBy": null,
+    "updatedBy": "elisabete.lima@grupoanarosa.com.br",
+    "comments": null,
+    "isBlocked": false,
+    "blockReason": null,
+    "blockedAt": null,
+    "blockedBy": null
+  }
+}
+--------------------------------------------------
+Contract ID: 62271052-f59f-4c70-83a9-ac85bf2ccf11
+Customer: VICENTINA DE ANTUNES DE CAMARGO (VICENGUIMA57@GMAIL.COM)
+Data: {
+  "id": "62271052-f59f-4c70-83a9-ac85bf2ccf11",
+  "customerId": "ad7c9b69-a3f5-46c4-a715-92e459b37acb",
+  "envelopeId": "961fee12-37f3-48d3-bf0c-ac90957be011",
+  "status": "sent",
+  "documentType": "contract",
+  "createdAt": "2026-02-07T14:07:51.170Z",
+  "updatedAt": "2026-02-07T14:08:11.843Z",
+  "createdBy": "elisabete.lima@grupoanarosa.com.br",
+  "updatedBy": "system@docusign.webhook",
+  "comments": null,
+  "customer": {
+    "id": "ad7c9b69-a3f5-46c4-a715-92e459b37acb",
+    "name": "VICENTINA DE ANTUNES DE CAMARGO",
+    "cpf": "27742638835",
+    "birthDate": "1957-01-12T00:00:00.000Z",
+    "email": "VICENGUIMA57@GMAIL.COM",
+    "phone": "11979596515",
+    "createdAt": "2026-02-07T14:07:43.247Z",
+    "updatedAt": "2026-02-07T14:07:43.247Z",
+    "createdBy": "elisabete.lima@grupoanarosa.com.br",
+    "updatedBy": "elisabete.lima@grupoanarosa.com.br",
+    "comments": null,
+    "isBlocked": false,
+    "blockReason": null,
+    "blockedAt": null,
+    "blockedBy": null
+  }
+}
+--------------------------------------------------
+Contract ID: 330e7435-0023-4ad1-a0c0-59e580c9f656
+Customer: Magali Mérida (magalimerid@gmail.com)
+Data: {
+  "id": "330e7435-0023-4ad1-a0c0-59e580c9f656",
+  "customerId": "7a59e52f-2016-4f28-96ba-6fe09290f534",
+  "envelopeId": "c1cf6050-d531-46cf-a253-69c873f4d684",
+  "status": "delivered",
+  "documentType": "contract",
+  "createdAt": "2026-02-07T15:01:27.393Z",
+  "updatedAt": "2026-02-07T15:01:48.153Z",
+  "createdBy": "luiza.souza@grupoanarosa.com.br",
+  "updatedBy": "system@docusign.webhook",
+  "comments": null,
+  "customer": {
+    "id": "7a59e52f-2016-4f28-96ba-6fe09290f534",
+    "name": "Magali Mérida",
+    "cpf": "69176124800",
+    "birthDate": "1955-01-30T00:00:00.000Z",
+    "email": "magalimerid@gmail.com",
+    "phone": "11981456079",
+    "createdAt": "2026-02-07T15:01:17.041Z",
+    "updatedAt": "2026-02-07T15:01:17.041Z",
+    "createdBy": "luiza.souza@grupoanarosa.com.br",
+    "updatedBy": "luiza.souza@grupoanarosa.com.br",
+    "comments": null,
+    "isBlocked": false,
+    "blockReason": null,
+    "blockedAt": null,
+    "blockedBy": null
+  }
+}
+--------------------------------------------------
+Contract ID: 3442b810-311d-41bc-af12-ede42c27008f
+Customer: RONALDO PINTO (RONAPTO687208@GMAIL.COM)
+Data: {
+  "id": "3442b810-311d-41bc-af12-ede42c27008f",
+  "customerId": "fe721498-7629-4de9-ab26-0a84464421c5",
+  "envelopeId": "97678f25-25c2-495a-a8af-c0dcf2e5e8af",
+  "status": "sent",
+  "documentType": "contract",
+  "createdAt": "2026-02-07T15:09:07.311Z",
+  "updatedAt": "2026-02-07T15:09:27.984Z",
+  "createdBy": "elisabete.lima@grupoanarosa.com.br",
+  "updatedBy": "system@docusign.webhook",
+  "comments": null,
+  "customer": {
+    "id": "fe721498-7629-4de9-ab26-0a84464421c5",
+    "name": "RONALDO PINTO",
+    "cpf": "10094139881",
+    "birthDate": "1968-12-25T00:00:00.000Z",
+    "email": "RONAPTO687208@GMAIL.COM",
+    "phone": "11976313408",
+    "createdAt": "2026-02-07T15:03:01.805Z",
+    "updatedAt": "2026-02-07T15:03:01.805Z",
+    "createdBy": "elisabete.lima@grupoanarosa.com.br",
+    "updatedBy": "elisabete.lima@grupoanarosa.com.br",
+    "comments": null,
+    "isBlocked": false,
+    "blockReason": null,
+    "blockedAt": null,
+    "blockedBy": null
+  }
+}
+--------------------------------------------------
+Contract ID: 6c49319d-2fab-49b5-8c90-a3a196642085
+Customer: RAIMUNDO DE MACEDO SOUSA (SUELIELOI15@GMAIL.COM)
+Data: {
+  "id": "6c49319d-2fab-49b5-8c90-a3a196642085",
+  "customerId": "9300c299-40da-4c6b-bf6f-0c39680e6bcb",
+  "envelopeId": "7459f180-c856-4c26-b20a-bc16c2aacbd3",
+  "status": "sent",
+  "documentType": "contract",
+  "createdAt": "2026-02-07T15:39:05.346Z",
+  "updatedAt": "2026-02-07T15:39:26.903Z",
+  "createdBy": "elisabete.lima@grupoanarosa.com.br",
+  "updatedBy": "system@docusign.webhook",
+  "comments": null,
+  "customer": {
+    "id": "9300c299-40da-4c6b-bf6f-0c39680e6bcb",
+    "name": "RAIMUNDO DE MACEDO SOUSA",
+    "cpf": "05020462870",
+    "birthDate": "1961-11-25T00:00:00.000Z",
+    "email": "SUELIELOI15@GMAIL.COM",
+    "phone": "11996067905",
+    "createdAt": "2026-02-07T15:35:50.312Z",
+    "updatedAt": "2026-02-07T15:35:50.312Z",
+    "createdBy": "elisabete.lima@grupoanarosa.com.br",
+    "updatedBy": "elisabete.lima@grupoanarosa.com.br",
+    "comments": null,
+    "isBlocked": false,
+    "blockReason": null,
+    "blockedAt": null,
+    "blockedBy": null
+  }
+}
+--------------------------------------------------
+Contract ID: 338e4851-6a20-48d6-9775-f232d44b3768
+Customer: ELAINE ANDRADE COSTA (FILHOSELAINE@GMAIL.COM)
+Data: {
+  "id": "338e4851-6a20-48d6-9775-f232d44b3768",
+  "customerId": "131f16a4-867a-47df-9c17-5bac0880276f",
+  "envelopeId": "cfb991ac-cec0-47ae-9941-d58cda86e95f",
+  "status": "sent",
+  "documentType": "contract",
+  "createdAt": "2026-02-09T12:00:28.313Z",
+  "updatedAt": "2026-02-09T12:00:48.905Z",
+  "createdBy": "elisabete.lima@grupoanarosa.com.br",
+  "updatedBy": "system@docusign.webhook",
+  "comments": null,
+  "customer": {
+    "id": "131f16a4-867a-47df-9c17-5bac0880276f",
+    "name": "ELAINE ANDRADE COSTA",
+    "cpf": "11952855829",
+    "birthDate": "1968-11-14T00:00:00.000Z",
+    "email": "FILHOSELAINE@GMAIL.COM",
+    "phone": "11974855423",
+    "createdAt": "2026-02-09T12:00:09.378Z",
+    "updatedAt": "2026-02-09T12:00:09.378Z",
+    "createdBy": "elisabete.lima@grupoanarosa.com.br",
+    "updatedBy": "elisabete.lima@grupoanarosa.com.br",
+    "comments": null,
+    "isBlocked": false,
+    "blockReason": null,
+    "blockedAt": null,
+    "blockedBy": null
+  }
+}
+--------------------------------------------------
+Contract ID: 04df62cf-a91d-4627-aa71-a4b365e3f576
+Customer: SARA MARTINS DA SILVA (SARAMS@HOTMAIL.COM)
+Data: {
+  "id": "04df62cf-a91d-4627-aa71-a4b365e3f576",
+  "customerId": "31a01f94-94f0-4b71-a075-a13044736da0",
+  "envelopeId": "9e76205e-0d1a-49ab-8f17-ffef54d7f784",
+  "status": "sent",
+  "documentType": "contract",
+  "createdAt": "2026-02-09T12:53:17.049Z",
+  "updatedAt": "2026-02-09T12:53:38.571Z",
+  "createdBy": "fernanda.firbeda@grupoanarosa.com.br",
+  "updatedBy": "system@docusign.webhook",
+  "comments": null,
+  "customer": {
+    "id": "31a01f94-94f0-4b71-a075-a13044736da0",
+    "name": "SARA MARTINS DA SILVA",
+    "cpf": "51702242811",
+    "birthDate": "2002-01-25T00:00:00.000Z",
+    "email": "SARAMS@HOTMAIL.COM",
+    "phone": "11956028692",
+    "createdAt": "2026-02-09T12:53:07.693Z",
+    "updatedAt": "2026-02-09T12:53:07.693Z",
+    "createdBy": "fernanda.firbeda@grupoanarosa.com.br",
+    "updatedBy": "fernanda.firbeda@grupoanarosa.com.br",
+    "comments": null,
+    "isBlocked": false,
+    "blockReason": null,
+    "blockedAt": null,
+    "blockedBy": null
+  }
+}
+--------------------------------------------------
+Contract ID: ef870692-7b53-439c-b486-1d0cd621f12a
+Customer: NADIR PALHARES DE LIMA (SANTOS.ALANA@HOTMAIL.COM)
+Data: {
+  "id": "ef870692-7b53-439c-b486-1d0cd621f12a",
+  "customerId": "e98911b4-24dc-4c4c-a07b-b9e29868b333",
+  "envelopeId": "7dcc60c7-988e-483b-a605-8ace4dcdbc26",
+  "status": "sent",
+  "documentType": "contract",
+  "createdAt": "2026-02-09T13:19:40.451Z",
+  "updatedAt": "2026-02-09T13:20:01.735Z",
+  "createdBy": "elisabete.lima@grupoanarosa.com.br",
+  "updatedBy": "system@docusign.webhook",
+  "comments": null,
+  "customer": {
+    "id": "e98911b4-24dc-4c4c-a07b-b9e29868b333",
+    "name": "NADIR PALHARES DE LIMA",
+    "cpf": "35820668863",
+    "birthDate": "1941-03-18T00:00:00.000Z",
+    "email": "SANTOS.ALANA@HOTMAIL.COM",
+    "phone": "11954461699",
+    "createdAt": "2026-02-09T13:18:14.125Z",
+    "updatedAt": "2026-02-09T13:18:14.125Z",
+    "createdBy": "elisabete.lima@grupoanarosa.com.br",
+    "updatedBy": "elisabete.lima@grupoanarosa.com.br",
+    "comments": null,
+    "isBlocked": false,
+    "blockReason": null,
+    "blockedAt": null,
+    "blockedBy": null
+  }
+}
+--------------------------------------------------
+Contract ID: af3c6d15-9311-405e-a66e-da23b3acbed0
+Customer: CLEUZA MARIA SBIZZERA (CLEUZASBIZZ@ICLOUD.COM)
+Data: {
+  "id": "af3c6d15-9311-405e-a66e-da23b3acbed0",
+  "customerId": "6769b75a-38df-4434-85c2-7a97c91f1a4a",
+  "envelopeId": "5fc08770-41f9-4236-9730-0c2a4b07597d",
+  "status": "sent",
+  "documentType": "contract",
+  "createdAt": "2026-02-09T13:44:03.862Z",
+  "updatedAt": "2026-02-09T13:44:24.653Z",
+  "createdBy": "elisabete.lima@grupoanarosa.com.br",
+  "updatedBy": "system@docusign.webhook",
+  "comments": null,
+  "customer": {
+    "id": "6769b75a-38df-4434-85c2-7a97c91f1a4a",
+    "name": "CLEUZA MARIA SBIZZERA",
+    "cpf": "99686031804",
+    "birthDate": "1957-10-23T00:00:00.000Z",
+    "email": "CLEUZASBIZZ@ICLOUD.COM",
+    "phone": "11998578670",
+    "createdAt": "2026-02-09T13:43:56.478Z",
+    "updatedAt": "2026-02-09T13:43:56.478Z",
+    "createdBy": "elisabete.lima@grupoanarosa.com.br",
+    "updatedBy": "elisabete.lima@grupoanarosa.com.br",
+    "comments": null,
+    "isBlocked": false,
+    "blockReason": null,
+    "blockedAt": null,
+    "blockedBy": null
+  }
+}
+--------------------------------------------------
+Contract ID: 8867ecb6-5d08-4498-b628-042c4f04f658
+Customer: JANETE MARANGONI BASTOS  (JANETENORAH1@GMAIL.COM)
+Data: {
+  "id": "8867ecb6-5d08-4498-b628-042c4f04f658",
+  "customerId": "c5c45885-4e84-4252-a762-bde9a888a172",
+  "envelopeId": "2b0ae40d-e326-4c7f-8786-f6e9c0c995b6",
+  "status": "delivered",
+  "documentType": "contract",
+  "createdAt": "2026-02-09T13:48:04.738Z",
+  "updatedAt": "2026-02-09T13:48:26.168Z",
+  "createdBy": "regina.silva@grupoanarosa.com.br",
+  "updatedBy": "system@docusign.webhook",
+  "comments": null,
+  "customer": {
+    "id": "c5c45885-4e84-4252-a762-bde9a888a172",
+    "name": "JANETE MARANGONI BASTOS ",
+    "cpf": "31047510804",
+    "birthDate": "1960-12-17T00:00:00.000Z",
+    "email": "JANETENORAH1@GMAIL.COM",
+    "phone": "11987310000",
+    "createdAt": "2026-02-09T13:47:08.767Z",
+    "updatedAt": "2026-02-09T13:47:57.896Z",
+    "createdBy": "regina.silva@grupoanarosa.com.br",
+    "updatedBy": "regina.silva@grupoanarosa.com.br",
+    "comments": null,
+    "isBlocked": false,
+    "blockReason": null,
+    "blockedAt": null,
+    "blockedBy": null
+  }
+}
+--------------------------------------------------
+Contract ID: b99f5140-0f0f-4c51-a828-29af9ac530cc
+Customer: CATHARINA DA SILVA SBIZZERA (CLEUZASBIZZ@ICLAUD.COM)
+Data: {
+  "id": "b99f5140-0f0f-4c51-a828-29af9ac530cc",
+  "customerId": "cbbc93bd-1bbf-4391-8cc1-2429a02ad122",
+  "envelopeId": "16fbd4c7-1eb2-4a68-9a7c-8e8150b50c6b",
+  "status": "sent",
+  "documentType": "contract",
+  "createdAt": "2026-02-09T13:49:26.115Z",
+  "updatedAt": "2026-02-09T13:49:47.188Z",
+  "createdBy": "elisabete.lima@grupoanarosa.com.br",
+  "updatedBy": "system@docusign.webhook",
+  "comments": null,
+  "customer": {
+    "id": "cbbc93bd-1bbf-4391-8cc1-2429a02ad122",
+    "name": "CATHARINA DA SILVA SBIZZERA",
+    "cpf": "24902409860",
+    "birthDate": "1933-07-06T00:00:00.000Z",
+    "email": "CLEUZASBIZZ@ICLAUD.COM",
+    "phone": "11998578670",
+    "createdAt": "2026-02-09T13:49:20.034Z",
+    "updatedAt": "2026-02-09T13:49:20.034Z",
+    "createdBy": "elisabete.lima@grupoanarosa.com.br",
+    "updatedBy": "elisabete.lima@grupoanarosa.com.br",
+    "comments": null,
+    "isBlocked": false,
+    "blockReason": null,
+    "blockedAt": null,
+    "blockedBy": null
+  }
+}
+--------------------------------------------------
+Contract ID: 74a81e66-5d82-4d7f-884b-a67b07c679ca
+Customer: MARGARETE APARECIDA DA SILVA MATTOS (MARGARETE.MATTOS666@GMAIL.COM)
+Data: {
+  "id": "74a81e66-5d82-4d7f-884b-a67b07c679ca",
+  "customerId": "496b7039-5cbe-4af5-98f7-2d6571e97a12",
+  "envelopeId": "407df280-b4b3-4488-b10d-b083b7e29f3a",
+  "status": "sent",
+  "documentType": "contract",
+  "createdAt": "2026-02-09T14:11:41.915Z",
+  "updatedAt": "2026-02-09T14:12:02.803Z",
+  "createdBy": "fernanda.firbeda@grupoanarosa.com.br",
+  "updatedBy": "system@docusign.webhook",
+  "comments": null,
+  "customer": {
+    "id": "496b7039-5cbe-4af5-98f7-2d6571e97a12",
+    "name": "MARGARETE APARECIDA DA SILVA MATTOS",
+    "cpf": "35800527806",
+    "birthDate": "1966-06-05T00:00:00.000Z",
+    "email": "MARGARETE.MATTOS666@GMAIL.COM",
+    "phone": "11999466633",
+    "createdAt": "2026-02-09T14:11:32.316Z",
+    "updatedAt": "2026-02-09T18:33:50.026Z",
+    "createdBy": "fernanda.firbeda@grupoanarosa.com.br",
+    "updatedBy": "fernanda.firbeda@grupoanarosa.com.br",
+    "comments": null,
+    "isBlocked": false,
+    "blockReason": null,
+    "blockedAt": null,
+    "blockedBy": null
+  }
+}
+--------------------------------------------------
+Contract ID: 8a1137d3-61fe-4cdc-92e5-662e7b155d2e
+Customer: ANGELINA SILVESTRE DA SILVA (ANGELINA.SILVESTRE.1944@GMAIL.COM)
+Data: {
+  "id": "8a1137d3-61fe-4cdc-92e5-662e7b155d2e",
+  "customerId": "3e1e2fb4-f1eb-40d8-ad77-a99e6b5861ac",
+  "envelopeId": "f07d4dee-64c2-4780-a7ce-96bcfbb69263",
+  "status": "sent",
+  "documentType": "contract",
+  "createdAt": "2026-02-09T14:31:42.454Z",
+  "updatedAt": "2026-02-09T14:32:03.809Z",
+  "createdBy": "fernanda.firbeda@grupoanarosa.com.br",
+  "updatedBy": "system@docusign.webhook",
+  "comments": null,
+  "customer": {
+    "id": "3e1e2fb4-f1eb-40d8-ad77-a99e6b5861ac",
+    "name": "ANGELINA SILVESTRE DA SILVA",
+    "cpf": "25768887806",
+    "birthDate": "1944-09-25T00:00:00.000Z",
+    "email": "ANGELINA.SILVESTRE.1944@GMAIL.COM",
+    "phone": "11999466633",
+    "createdAt": "2026-02-09T14:31:33.624Z",
+    "updatedAt": "2026-02-09T18:35:36.886Z",
+    "createdBy": "fernanda.firbeda@grupoanarosa.com.br",
+    "updatedBy": "fernanda.firbeda@grupoanarosa.com.br",
+    "comments": null,
+    "isBlocked": false,
+    "blockReason": null,
+    "blockedAt": null,
+    "blockedBy": null
+  }
+}
+--------------------------------------------------
+Contract ID: c9d398b4-75e0-46a7-9932-d8138e3d17aa
+Customer: Mariana Tavares (mariana.mtvrs@gmail.com)
+Data: {
+  "id": "c9d398b4-75e0-46a7-9932-d8138e3d17aa",
+  "customerId": "893831fd-b257-4ce7-a0f9-760b63c02663",
+  "envelopeId": "27691147-c614-4a76-a3b2-082f4e5493bc",
+  "status": "sent",
+  "documentType": "contract-operator",
+  "createdAt": "2026-02-09T14:58:24.961Z",
+  "updatedAt": "2026-02-09T14:58:45.766Z",
+  "createdBy": "alessandra.gomes@grupoanarosa.com.br",
+  "updatedBy": "system@docusign.webhook",
+  "comments": null,
+  "customer": {
+    "id": "893831fd-b257-4ce7-a0f9-760b63c02663",
+    "name": "Mariana Tavares",
+    "cpf": "38765522818",
+    "birthDate": "1989-12-05T00:00:00.000Z",
+    "email": "mariana.mtvrs@gmail.com",
+    "phone": "11986003832",
+    "createdAt": "2026-02-09T14:58:17.839Z",
+    "updatedAt": "2026-02-09T14:58:17.839Z",
+    "createdBy": "alessandra.gomes@grupoanarosa.com.br",
+    "updatedBy": "alessandra.gomes@grupoanarosa.com.br",
+    "comments": null,
+    "isBlocked": false,
+    "blockReason": null,
+    "blockedAt": null,
+    "blockedBy": null
+  }
+}
+--------------------------------------------------
+Contract ID: 7c244cf4-4785-4fb2-be8b-c4c0418571f4
+Customer: Rita Aparecida Jacob Munhos (RITAJACOB04@GMAIL.COM)
+Data: {
+  "id": "7c244cf4-4785-4fb2-be8b-c4c0418571f4",
+  "customerId": "3f37c566-3da1-4643-a03c-98a79cc3162e",
+  "envelopeId": "37182537-4e44-43b2-a347-8c4604b27e22",
+  "status": "sent",
+  "documentType": "contract-operator",
+  "createdAt": "2026-02-09T18:40:00.760Z",
+  "updatedAt": "2026-02-09T18:40:22.359Z",
+  "createdBy": "alessandra.gomes@grupoanarosa.com.br",
+  "updatedBy": "system@docusign.webhook",
+  "comments": null,
+  "customer": {
+    "id": "3f37c566-3da1-4643-a03c-98a79cc3162e",
+    "name": "Rita Aparecida Jacob Munhos",
+    "cpf": "52102858804",
+    "birthDate": "1953-06-04T00:00:00.000Z",
+    "email": "RITAJACOB04@GMAIL.COM",
+    "phone": "1198609-5260",
+    "createdAt": "2026-01-22T19:07:10.634Z",
+    "updatedAt": "2026-02-09T18:39:56.313Z",
+    "createdBy": "alessandra.gomes@grupoanarosa.com.br",
+    "updatedBy": "alessandra.gomes@grupoanarosa.com.br",
+    "comments": null,
+    "isBlocked": false,
+    "blockReason": null,
+    "blockedAt": null,
+    "blockedBy": null
+  }
+}
+--------------------------------------------------
+Contract ID: 423b4ac5-29c9-4a18-aaa5-78620795d61b
+Customer: DANIELA  CAVARZAN (DANICAVARZAN@HOTMAIL.COM)
+Data: {
+  "id": "423b4ac5-29c9-4a18-aaa5-78620795d61b",
+  "customerId": "31e354cd-656b-4513-b4b2-3905a4075afd",
+  "envelopeId": "2341b048-c617-4d66-b72a-e9269b6679d2",
+  "status": "sent",
+  "documentType": "contract-operator",
+  "createdAt": "2026-02-09T18:48:49.229Z",
+  "updatedAt": "2026-02-09T18:49:09.981Z",
+  "createdBy": "elisabete.lima@grupoanarosa.com.br",
+  "updatedBy": "system@docusign.webhook",
+  "comments": null,
+  "customer": {
+    "id": "31e354cd-656b-4513-b4b2-3905a4075afd",
+    "name": "DANIELA  CAVARZAN",
+    "cpf": "25345120803",
+    "birthDate": "1976-07-01T00:00:00.000Z",
+    "email": "DANICAVARZAN@HOTMAIL.COM",
+    "phone": "11991470624",
+    "createdAt": "2026-02-09T18:48:41.768Z",
+    "updatedAt": "2026-02-09T18:48:41.768Z",
+    "createdBy": "elisabete.lima@grupoanarosa.com.br",
+    "updatedBy": "elisabete.lima@grupoanarosa.com.br",
+    "comments": null,
+    "isBlocked": false,
+    "blockReason": null,
+    "blockedAt": null,
+    "blockedBy": null
+  }
+}
+--------------------------------------------------
+Contract ID: 1f3cd930-05a0-4e5d-ab88-e580a8a54e93
+Customer: ROSEANE NOGUEIRA DA SILVA (ROSEANE.NOGUEIRA@GMAIL.COM)
+Data: {
+  "id": "1f3cd930-05a0-4e5d-ab88-e580a8a54e93",
+  "customerId": "afa1275e-1451-4b40-be91-151f64a26d17",
+  "envelopeId": "cf56390e-3c72-4460-92b3-94b4e58e259c",
+  "status": "sent",
+  "documentType": "contract-operator",
+  "createdAt": "2026-02-09T19:17:00.239Z",
+  "updatedAt": "2026-02-09T19:17:20.783Z",
+  "createdBy": "elisabete.lima@grupoanarosa.com.br",
+  "updatedBy": "system@docusign.webhook",
+  "comments": null,
+  "customer": {
+    "id": "afa1275e-1451-4b40-be91-151f64a26d17",
+    "name": "ROSEANE NOGUEIRA DA SILVA",
+    "cpf": "11891952838",
+    "birthDate": "1972-07-23T00:00:00.000Z",
+    "email": "ROSEANE.NOGUEIRA@GMAIL.COM",
+    "phone": "11917583374",
+    "createdAt": "2026-02-09T19:16:33.276Z",
+    "updatedAt": "2026-02-09T19:16:33.276Z",
+    "createdBy": "elisabete.lima@grupoanarosa.com.br",
+    "updatedBy": "elisabete.lima@grupoanarosa.com.br",
+    "comments": null,
+    "isBlocked": false,
+    "blockReason": null,
+    "blockedAt": null,
+    "blockedBy": null
+  }
+}
+--------------------------------------------------
+Contract ID: 9f63bb70-0635-4b04-a3d7-875be6ba1bd4
+Customer: ELIANA APARECIDA BERTOLOTTI (Suenybarnei998@gmai.com)
+Data: {
+  "id": "9f63bb70-0635-4b04-a3d7-875be6ba1bd4",
+  "customerId": "72e84f3f-8728-4aea-890f-c376a3fe3984",
+  "envelopeId": "27425138-cda6-4071-b9f3-825a08740362",
+  "status": "sent",
+  "documentType": "contract",
+  "createdAt": "2026-02-10T15:51:03.342Z",
+  "updatedAt": "2026-02-10T15:51:24.905Z",
+  "createdBy": "rafaela.menegheti@grupoanarosa.com.br",
+  "updatedBy": "system@docusign.webhook",
+  "comments": null,
+  "customer": {
+    "id": "72e84f3f-8728-4aea-890f-c376a3fe3984",
+    "name": "ELIANA APARECIDA BERTOLOTTI",
+    "cpf": "06039140801",
+    "birthDate": "1959-09-03T00:00:00.000Z",
+    "email": "Suenybarnei998@gmai.com",
+    "phone": "11978292116",
+    "createdAt": "2026-02-10T15:48:15.310Z",
+    "updatedAt": "2026-02-10T16:20:16.600Z",
+    "createdBy": "rafaela.menegheti@grupoanarosa.com.br",
+    "updatedBy": "rafaela.menegheti@grupoanarosa.com.br",
+    "comments": null,
+    "isBlocked": false,
+    "blockReason": null,
+    "blockedAt": null,
+    "blockedBy": null
+  }
+}
+--------------------------------------------------
+Contract ID: 51430861-cf0e-4175-bcaa-103f6e86ffac
+Customer: Clovis Bevilacqua (clovisbevilacqua@hotmail.com)
+Data: {
+  "id": "51430861-cf0e-4175-bcaa-103f6e86ffac",
+  "customerId": "fa506265-49b6-4076-92e3-e2ff93bfde98",
+  "envelopeId": "a89a5432-2781-4641-ad34-4e3ce6ac5846",
+  "status": "sent",
+  "documentType": "contract-operator",
+  "createdAt": "2026-02-10T12:30:06.509Z",
+  "updatedAt": "2026-02-10T12:30:27.991Z",
+  "createdBy": "elisabete.lima@grupoanarosa.com.br",
+  "updatedBy": "system@docusign.webhook",
+  "comments": null,
+  "customer": {
+    "id": "fa506265-49b6-4076-92e3-e2ff93bfde98",
+    "name": "Clovis Bevilacqua",
+    "cpf": "11549072870",
+    "birthDate": "1969-05-07T00:00:00.000Z",
+    "email": "clovisbevilacqua@hotmail.com",
+    "phone": "11947019104",
+    "createdAt": "2026-02-04T22:20:58.510Z",
+    "updatedAt": "2026-02-10T12:26:27.750Z",
+    "createdBy": "clovisbevilacqua@hotmail.com",
+    "updatedBy": "elisabete.lima@grupoanarosa.com.br",
+    "comments": null,
+    "isBlocked": false,
+    "blockReason": null,
+    "blockedAt": null,
+    "blockedBy": null
+  }
+}
+--------------------------------------------------
+Contract ID: a0fc3740-bfaf-4fdf-8dd7-9751bd23377e
+Customer: MATHEUS DOS SANROS JACINTHO (PENSADOR_JACINTO@YAHOO.COM.BR)
+Data: {
+  "id": "a0fc3740-bfaf-4fdf-8dd7-9751bd23377e",
+  "customerId": "a1a5d75e-b20c-4084-936e-ca94ac97d7a3",
+  "envelopeId": "2488bd0d-4bd8-4d40-8f9b-07ec1fd8814d",
+  "status": "delivered",
+  "documentType": "contract",
+  "createdAt": "2026-02-10T12:41:49.426Z",
+  "updatedAt": "2026-02-10T12:42:10.864Z",
+  "createdBy": "regina.silva@grupoanarosa.com.br",
+  "updatedBy": "system@docusign.webhook",
+  "comments": null,
+  "customer": {
+    "id": "a1a5d75e-b20c-4084-936e-ca94ac97d7a3",
+    "name": "MATHEUS DOS SANROS JACINTHO",
+    "cpf": "43291721861",
+    "birthDate": "1996-11-12T00:00:00.000Z",
+    "email": "PENSADOR_JACINTO@YAHOO.COM.BR",
+    "phone": "11974334009",
+    "createdAt": "2026-02-10T12:41:43.902Z",
+    "updatedAt": "2026-02-10T12:58:00.912Z",
+    "createdBy": "regina.silva@grupoanarosa.com.br",
+    "updatedBy": "regina.silva@grupoanarosa.com.br",
+    "comments": null,
+    "isBlocked": false,
+    "blockReason": null,
+    "blockedAt": null,
+    "blockedBy": null
+  }
+}
+--------------------------------------------------
+Contract ID: da64a67e-3c6e-4bfe-b39c-ace27f8d5bf7
+Customer: Edilene Belarmino dos Santos (carollimasantos88@gmail.com)
+Data: {
+  "id": "da64a67e-3c6e-4bfe-b39c-ace27f8d5bf7",
+  "customerId": "a0449cf1-53ed-4c36-859c-98f7515826f3",
+  "envelopeId": "2cd8a55d-e79f-46d3-b752-e50cddebfbfd",
+  "status": "sent",
+  "documentType": "contract-operator",
+  "createdAt": "2026-02-10T12:48:25.882Z",
+  "updatedAt": "2026-02-10T12:48:46.442Z",
+  "createdBy": "anapaula.carrasco@grupoanarosa.com.br",
+  "updatedBy": "system@docusign.webhook",
+  "comments": null,
+  "customer": {
+    "id": "a0449cf1-53ed-4c36-859c-98f7515826f3",
+    "name": "Edilene Belarmino dos Santos",
+    "cpf": "34630420886",
+    "birthDate": "1979-04-20T00:00:00.000Z",
+    "email": "carollimasantos88@gmail.com",
+    "phone": "11975071588",
+    "createdAt": "2026-02-10T12:47:33.584Z",
+    "updatedAt": "2026-02-10T12:47:33.584Z",
+    "createdBy": "anapaula.carrasco@grupoanarosa.com.br",
+    "updatedBy": "anapaula.carrasco@grupoanarosa.com.br",
+    "comments": null,
+    "isBlocked": false,
+    "blockReason": null,
+    "blockedAt": null,
+    "blockedBy": null
+  }
+}
+--------------------------------------------------
+Contract ID: 5778ce02-7d73-44e1-8e34-1f3514a36bc9
+Customer: SABRINA FRANCOZO DE LIMA  (SASAFRALI85@GMAIL.COM)
+Data: {
+  "id": "5778ce02-7d73-44e1-8e34-1f3514a36bc9",
+  "customerId": "e7e3473a-7674-4612-8e4e-1395b0fc8a62",
+  "envelopeId": "4ef10f87-f6a6-433c-8b8c-fc7d677da9b8",
+  "status": "delivered",
+  "documentType": "contract",
+  "createdAt": "2026-02-10T16:14:42.551Z",
+  "updatedAt": "2026-02-10T16:15:03.068Z",
+  "createdBy": "regina.silva@grupoanarosa.com.br",
+  "updatedBy": "system@docusign.webhook",
+  "comments": null,
+  "customer": {
+    "id": "e7e3473a-7674-4612-8e4e-1395b0fc8a62",
+    "name": "SABRINA FRANCOZO DE LIMA ",
+    "cpf": "37007987842",
+    "birthDate": "1985-05-15T00:00:00.000Z",
+    "email": "SASAFRALI85@GMAIL.COM",
+    "phone": "11974648110",
+    "createdAt": "2026-02-10T16:14:24.467Z",
+    "updatedAt": "2026-02-10T16:14:24.467Z",
+    "createdBy": "regina.silva@grupoanarosa.com.br",
+    "updatedBy": "regina.silva@grupoanarosa.com.br",
+    "comments": null,
+    "isBlocked": false,
+    "blockReason": null,
+    "blockedAt": null,
+    "blockedBy": null
+  }
+}
+--------------------------------------------------
+Contract ID: b713d680-5af8-4f87-bcf4-3b0f27259dd2
+Customer: IAN ANTONY AZEVEDO MARINHO (IANANTONY2022@GMAIL.COM)
+Data: {
+  "id": "b713d680-5af8-4f87-bcf4-3b0f27259dd2",
+  "customerId": "45933d2d-8a6f-451a-9daf-b1b110e09ba7",
+  "envelopeId": "321373e4-5c27-460b-9ad9-d8ba73a0c7cd",
+  "status": "sent",
+  "documentType": "contract-operator",
+  "createdAt": "2026-02-10T14:39:05.943Z",
+  "updatedAt": "2026-02-10T14:39:27.132Z",
+  "createdBy": "elisabete.lima@grupoanarosa.com.br",
+  "updatedBy": "system@docusign.webhook",
+  "comments": null,
+  "customer": {
+    "id": "45933d2d-8a6f-451a-9daf-b1b110e09ba7",
+    "name": "IAN ANTONY AZEVEDO MARINHO",
+    "cpf": "45307651805",
+    "birthDate": "2022-10-05T00:00:00.000Z",
+    "email": "IANANTONY2022@GMAIL.COM",
+    "phone": "11994091782",
+    "createdAt": "2026-02-10T14:38:55.808Z",
+    "updatedAt": "2026-02-10T14:38:55.808Z",
+    "createdBy": "elisabete.lima@grupoanarosa.com.br",
+    "updatedBy": "elisabete.lima@grupoanarosa.com.br",
+    "comments": null,
+    "isBlocked": false,
+    "blockReason": null,
+    "blockedAt": null,
+    "blockedBy": null
+  }
+}
+--------------------------------------------------
+Contract ID: 1603aacb-13b2-464d-9674-ca2e255efe37
+Customer: IRANI SILVA RIOS (MRIOS1313@GMAIL.COM)
+Data: {
+  "id": "1603aacb-13b2-464d-9674-ca2e255efe37",
+  "customerId": "202813d1-b77e-4c67-8f3f-d58743c18d0a",
+  "envelopeId": "b8662510-4ef3-4e82-b3f4-f75d94151845",
+  "status": "sent",
+  "documentType": "contract-operator",
+  "createdAt": "2026-02-10T17:06:07.209Z",
+  "updatedAt": "2026-02-10T17:06:27.804Z",
+  "createdBy": "elisabete.lima@grupoanarosa.com.br",
+  "updatedBy": "system@docusign.webhook",
+  "comments": null,
+  "customer": {
+    "id": "202813d1-b77e-4c67-8f3f-d58743c18d0a",
+    "name": "IRANI SILVA RIOS",
+    "cpf": "15608587880",
+    "birthDate": "1961-03-20T00:00:00.000Z",
+    "email": "MRIOS1313@GMAIL.COM",
+    "phone": "11969502858",
+    "createdAt": "2026-02-10T17:05:49.583Z",
+    "updatedAt": "2026-02-10T17:27:12.416Z",
+    "createdBy": "elisabete.lima@grupoanarosa.com.br",
+    "updatedBy": "devpupo@gmail.com",
+    "comments": null,
+    "isBlocked": false,
+    "blockReason": null,
+    "blockedAt": null,
+    "blockedBy": null
+  }
+}
+--------------------------------------------------
+Contract ID: fcb3ae54-6c3d-43a3-bb74-8a574a5827c5
+Customer: Rosana Donizeti Silva (rosana.donizeti73@gmail.com)
+Data: {
+  "id": "fcb3ae54-6c3d-43a3-bb74-8a574a5827c5",
+  "customerId": "b034645a-f0bd-4f3f-be21-1658e82a66c7",
+  "envelopeId": "2b56f61c-e258-4a27-92d0-94c3239876dd",
+  "status": "sent",
+  "documentType": "contract-operator",
+  "createdAt": "2026-02-10T17:12:40.102Z",
+  "updatedAt": "2026-02-10T17:13:01.660Z",
+  "createdBy": "anapaula.carrasco@grupoanarosa.com.br",
+  "updatedBy": "system@docusign.webhook",
+  "comments": null,
+  "customer": {
+    "id": "b034645a-f0bd-4f3f-be21-1658e82a66c7",
+    "name": "Rosana Donizeti Silva",
+    "cpf": "16370159840",
+    "birthDate": "1973-04-18T00:00:00.000Z",
+    "email": "rosana.donizeti73@gmail.com",
+    "phone": "11986244127",
+    "createdAt": "2026-02-10T17:12:33.203Z",
+    "updatedAt": "2026-02-10T17:12:33.203Z",
+    "createdBy": "anapaula.carrasco@grupoanarosa.com.br",
+    "updatedBy": "anapaula.carrasco@grupoanarosa.com.br",
+    "comments": null,
+    "isBlocked": false,
+    "blockReason": null,
+    "blockedAt": null,
+    "blockedBy": null
+  }
+}
+--------------------------------------------------
+Contract ID: 4ac151d4-decf-46b9-9126-5abfb614cec0
+Customer: JUCILEIA DE LIMA CARDOSO (LEIACARDOSO794@GMAIL.COM)
+Data: {
+  "id": "4ac151d4-decf-46b9-9126-5abfb614cec0",
+  "customerId": "93cbc09b-fda2-435b-ab63-9d88821f1683",
+  "envelopeId": "47f0ae0b-a622-4dab-b99d-e367ed244c21",
+  "status": "delivered",
+  "documentType": "contract",
+  "createdAt": "2026-02-10T17:28:54.745Z",
+  "updatedAt": "2026-02-10T17:29:16.220Z",
+  "createdBy": "elisabete.lima@grupoanarosa.com.br",
+  "updatedBy": "system@docusign.webhook",
+  "comments": null,
+  "customer": {
+    "id": "93cbc09b-fda2-435b-ab63-9d88821f1683",
+    "name": "JUCILEIA DE LIMA CARDOSO",
+    "cpf": "93125887100",
+    "birthDate": "1981-04-15T00:00:00.000Z",
+    "email": "LEIACARDOSO794@GMAIL.COM",
+    "phone": "11981940518",
+    "createdAt": "2026-02-10T17:26:29.040Z",
+    "updatedAt": "2026-02-10T17:26:29.040Z",
+    "createdBy": "elisabete.lima@grupoanarosa.com.br",
+    "updatedBy": "elisabete.lima@grupoanarosa.com.br",
+    "comments": null,
+    "isBlocked": false,
+    "blockReason": null,
+    "blockedAt": null,
+    "blockedBy": null
+  }
+}
+--------------------------------------------------
+Contract ID: 7b5c838c-8919-4fce-9f64-19695aa76d40
+Customer: MARIA NELIAN RIBEIRO QUINTINO RUIZ (MARIANELIEANRIBEIRO@GMAIL.COM)
+Data: {
+  "id": "7b5c838c-8919-4fce-9f64-19695aa76d40",
+  "customerId": "72acdd1e-eca5-4449-9a35-c8459c752de1",
+  "envelopeId": "64050b8b-b007-4538-8f02-95077eaa41f9",
+  "status": "delivered",
+  "documentType": "contract",
+  "createdAt": "2026-02-10T17:30:53.410Z",
+  "updatedAt": "2026-02-10T17:31:14.744Z",
+  "createdBy": "jainy.nascimento@grupoanarosa.com.br",
+  "updatedBy": "system@docusign.webhook",
+  "comments": null,
+  "customer": {
+    "id": "72acdd1e-eca5-4449-9a35-c8459c752de1",
+    "name": "MARIA NELIAN RIBEIRO QUINTINO RUIZ",
+    "cpf": "04576140809",
+    "birthDate": "1958-09-18T00:00:00.000Z",
+    "email": "MARIANELIEANRIBEIRO@GMAIL.COM",
+    "phone": "11958938389",
+    "createdAt": "2026-02-10T17:30:42.183Z",
+    "updatedAt": "2026-02-10T17:30:42.183Z",
+    "createdBy": "jainy.nascimento@grupoanarosa.com.br",
+    "updatedBy": "jainy.nascimento@grupoanarosa.com.br",
+    "comments": null,
+    "isBlocked": false,
+    "blockReason": null,
+    "blockedAt": null,
+    "blockedBy": null
+  }
+}
+--------------------------------------------------
