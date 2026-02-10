@@ -43,6 +43,7 @@ enum DocumentKind {
   CNH
   PROOF_OF_ADDRESS
   MARRIAGE_CERTIFICATE
+  BIRTH_CERTIFICATE
   OTHER
 
   @@schema("advantage")

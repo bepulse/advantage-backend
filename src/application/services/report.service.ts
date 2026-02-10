@@ -9,15 +9,51 @@ export interface UsersCreatedByOperatorParams {
 
 export interface UsersCreatedByOperatorRow {
   id: string;
+  name: string;
   email: string;
-  role: string;
-  customerId?: string | null;
+  cpf: string;
   createdAt: Date;
-  createdBy?: string | null;
+  createdBy: string | null;
+}
+
+export interface DependentPendingDocumentRow {
+  dependentName: string;
+  dependentCpf: string;
+  customerCpf: string;
+  status: string;
 }
 
 export class ReportService {
   constructor(private readonly prisma: PrismaClient) {}
+
+  async dependentsWithPendingDocuments(): Promise<DependentPendingDocumentRow[]> {
+    const dependents = await this.prisma.dependent.findMany({
+      where: {
+        documents: {
+          none: {
+            isApproved: true,
+          },
+        },
+      },
+      include: {
+        customer: true,
+        documents: true,
+      },
+      orderBy: {
+        name: "asc",
+      },
+    });
+
+    return dependents.map((dep: any) => {
+      const hasDocuments = dep.documents && dep.documents.length > 0;
+      return {
+        dependentName: dep.name,
+        dependentCpf: dep.cpf || "",
+        customerCpf: dep.customer?.cpf || "",
+        status: hasDocuments ? "documento pendente de aprovação" : "sem documento",
+      };
+    });
+  }
 
   async usersCreatedByOperators(params: UsersCreatedByOperatorParams): Promise<UsersCreatedByOperatorRow[]> {
     const { startDate, endDate, operatorEmail } = params;
@@ -34,14 +70,7 @@ export class ReportService {
       operatorEmails = operators.map((o: { email: string }) => o.email);
     }
 
-    const users: {
-      id: string;
-      email: string;
-      role: string;
-      customerId: string | null;
-      createdAt: Date;
-      createdBy: string | null;
-    }[] = await this.prisma.user.findMany({
+    const customers = await this.prisma.customer.findMany({
       where: {
         createdAt: {
           gte: startDate,
@@ -53,38 +82,31 @@ export class ReportService {
       },
       select: {
         id: true,
+        name: true,
         email: true,
-        role: true,
-        customerId: true,
+        cpf: true,
         createdAt: true,
         createdBy: true,
       },
       orderBy: { createdAt: "asc" },
     });
 
-    return users.map((u: {
-      id: string;
-      email: string;
-      role: string;
-      customerId: string | null;
-      createdAt: Date;
-      createdBy: string | null;
-    }) => ({
-      id: u.id,
-      email: u.email,
-      role: u.role,
-      customerId: u.customerId,
-      createdAt: u.createdAt,
-      createdBy: u.createdBy,
+    return customers.map((c) => ({
+      id: c.id,
+      name: c.name,
+      email: c.email,
+      cpf: c.cpf,
+      createdAt: c.createdAt,
+      createdBy: c.createdBy,
     }));
   }
 
   toCsv(rows: UsersCreatedByOperatorRow[]): string {
     const headers = [
       "id",
+      "name",
       "email",
-      "role",
-      "customerId",
+      "cpf",
       "createdAt",
       "createdBy",
     ];
@@ -102,9 +124,9 @@ export class ReportService {
     for (const row of rows) {
       const values = [
         row.id,
+        row.name,
         row.email,
-        row.role,
-        row.customerId || "",
+        row.cpf,
         row.createdAt.toISOString(),
         row.createdBy || "",
       ].map(escape);
@@ -116,9 +138,9 @@ export class ReportService {
   toXlsx(rows: UsersCreatedByOperatorRow[]): Buffer {
     const data = rows.map((row) => ({
       ID: row.id,
+      Nome: row.name,
       Email: row.email,
-      Função: row.role,
-      "ID Cliente": row.customerId || "",
+      CPF: row.cpf,
       "Criado em": row.createdAt.toISOString(),
       "Criado por": row.createdBy || "",
     }));
@@ -126,6 +148,49 @@ export class ReportService {
     const worksheet = XLSX.utils.json_to_sheet(data);
     const workbook = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(workbook, worksheet, "Relatório");
+    
+    return XLSX.write(workbook, { type: "buffer", bookType: "xlsx" });
+  }
+
+  dependentsToCsv(rows: DependentPendingDocumentRow[]): string {
+    const headers = [
+      "dependentName",
+      "dependentCpf",
+      "customerCpf",
+      "status",
+    ];
+
+    const escape = (val: any) => {
+      if (val === null || val === undefined) return "";
+      const str = String(val);
+      const escaped = str.replace(/"/g, '""');
+      return /[",\n]/.test(escaped) ? `"${escaped}"` : escaped;
+    };
+
+    const lines = [headers.join(",")];
+    for (const row of rows) {
+      const values = [
+        row.dependentName,
+        row.dependentCpf,
+        row.customerCpf,
+        row.status,
+      ].map(escape);
+      lines.push(values.join(","));
+    }
+    return lines.join("\n");
+  }
+
+  dependentsToXlsx(rows: DependentPendingDocumentRow[]): Buffer {
+    const data = rows.map((row) => ({
+      "Nome Dependente": row.dependentName,
+      "CPF Dependente": row.dependentCpf,
+      "CPF Titular": row.customerCpf,
+      "Status": row.status,
+    }));
+
+    const worksheet = XLSX.utils.json_to_sheet(data);
+    const workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workbook, worksheet, "Dependentes");
     
     return XLSX.write(workbook, { type: "buffer", bookType: "xlsx" });
   }

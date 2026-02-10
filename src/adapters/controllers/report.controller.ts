@@ -62,5 +62,44 @@ export class ReportController {
         return data;
       }
     );
+
+    this.httpServer.register(
+      HttpMethod.GET,
+      "/reports/dependents-pending-documents",
+      async ({ query, response }) => {
+        const { format } = query || {};
+
+        const data = await this.reportService.dependentsWithPendingDocuments();
+
+        if (String(format).toLowerCase() === "csv") {
+          const csv = this.reportService.dependentsToCsv(data);
+          if (response) {
+            response.setHeader("Content-Type", "text/csv; charset=utf-8");
+            response.setHeader(
+              "Content-Disposition",
+              `attachment; filename="dependents-pending-documents.csv"`
+            );
+          }
+          return csv;
+        }
+
+        if (String(format).toLowerCase() === "xlsx") {
+          const buffer = this.reportService.dependentsToXlsx(data);
+          if (response) {
+            response.setHeader(
+              "Content-Type",
+              "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+            );
+            response.setHeader(
+              "Content-Disposition",
+              `attachment; filename="dependents-pending-documents.xlsx"`
+            );
+          }
+          return buffer;
+        }
+
+        return data;
+      }
+    );
   }
 }
