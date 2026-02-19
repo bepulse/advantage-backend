@@ -83,7 +83,7 @@ export class CreateEnvelopeAndGetSigningUrlUseCase {
         (a, b) => a.createdAt.getTime() - b.createdAt.getTime()
       )?.[0];
 
-      const { envelopeId, contractId } = existingContract
+      let { envelopeId, contractId } = existingContract
         ? {
             envelopeId: existingContract.envelopeId,
             contractId: existingContract.id,
@@ -95,18 +95,69 @@ export class CreateEnvelopeAndGetSigningUrlUseCase {
             auditContext
           );
 
-      const signingUrl = await this.documentSignService.createRecipientView(
-        envelopeId,
-        customer.email,
-        customer.name,
-        request.returnUrl
-      );
+      try {
+        const signingUrl = await this.documentSignService.createRecipientView(
+          envelopeId,
+          customer.email,
+          customer.name,
+          request.returnUrl
+        );
 
-      return {
-        envelopeId,
-        signingUrl,
-        contractId,
-      };
+        return {
+          envelopeId,
+          signingUrl,
+          contractId,
+        };
+      } catch (error: any) {
+        const message =
+          error instanceof Error ? error.message : String(error);
+        const isInvalidRecipientError =
+          message.includes("DocuSign Recipient View Error") &&
+          message.includes(
+            "The recipient you have identified is not a valid recipient of the specified envelope"
+          );
+
+        if (!isInvalidRecipientError) {
+          throw error;
+        }
+
+        const contracts = await this.contractRepository.findByEnvelopeId(
+          envelopeId
+        );
+
+        const contract = contracts[0];
+
+        if (contract && contract.status !== "completed") {
+          if (contract.customerId) {
+            await this.contractRepository.delete(contract.customerId);
+          }
+
+          const recreated = await this.createNewContract(
+            customer.id,
+            envelopeDefinition,
+            request.documentType,
+            auditContext
+          );
+
+          envelopeId = recreated.envelopeId;
+          contractId = recreated.contractId;
+
+          const signingUrl = await this.documentSignService.createRecipientView(
+            envelopeId,
+            customer.email,
+            customer.name,
+            request.returnUrl
+          );
+
+          return {
+            envelopeId,
+            signingUrl,
+            contractId,
+          };
+        }
+
+        throw error;
+      }
     } catch (error) {
       if (error instanceof HttpError) {
         throw error;

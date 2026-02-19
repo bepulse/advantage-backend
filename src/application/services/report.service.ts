@@ -23,6 +23,18 @@ export interface DependentPendingDocumentRow {
   status: string;
 }
 
+export interface TotalsReportParams {
+  startDate?: Date;
+  endDate?: Date;
+  planId?: string;
+}
+
+export interface TotalsReportResult {
+  totalCustomers: number;
+  totalDependents: number;
+  totalOverall: number;
+}
+
 export class ReportService {
   constructor(private readonly prisma: PrismaClient) {}
 
@@ -70,12 +82,17 @@ export class ReportService {
       operatorEmails = operators.map((o: { email: string }) => o.email);
     }
 
+    const dateFilter: any = {};
+    if (startDate) {
+      dateFilter.gte = this.startOfDay(startDate);
+    }
+    if (endDate) {
+      dateFilter.lt = this.nextDayStart(endDate);
+    }
+
     const customers = await this.prisma.customer.findMany({
       where: {
-        createdAt: {
-          gte: startDate,
-          lte: endDate,
-        },
+        ...(Object.keys(dateFilter).length > 0 ? { createdAt: dateFilter } : {}),
         ...(operatorEmails && operatorEmails.length > 0
           ? { createdBy: { in: operatorEmails } }
           : {}),
@@ -193,5 +210,95 @@ export class ReportService {
     XLSX.utils.book_append_sheet(workbook, worksheet, "Dependentes");
     
     return XLSX.write(workbook, { type: "buffer", bookType: "xlsx" });
+  }
+
+  async totals(params: TotalsReportParams = {}): Promise<TotalsReportResult> {
+    const { startDate, endDate, planId } = params;
+
+    const customerWhere: any = {
+      users: {
+        some: { role: "CUSTOMER" },
+      },
+    };
+
+    if (startDate || endDate) {
+      const dateFilter: any = {};
+      if (startDate) {
+        dateFilter.gte = this.startOfDay(startDate);
+      }
+      if (endDate) {
+        dateFilter.lt = this.nextDayStart(endDate);
+      }
+      customerWhere.createdAt = dateFilter;
+    }
+
+    if (planId) {
+      const subscriptions = await this.prisma.$queryRaw<
+        { customerId: string | null }[]
+      >`SELECT "customerId" FROM checkout."Subscription" WHERE "planId" = ${planId}`;
+
+      const customerIdsFromPlan = subscriptions
+        .map((s) => s.customerId)
+        .filter((id): id is string => !!id);
+
+      if (customerIdsFromPlan.length === 0) {
+        return {
+          totalCustomers: 0,
+          totalDependents: 0,
+          totalOverall: 0,
+        };
+      }
+
+      customerWhere.id = { in: customerIdsFromPlan };
+    }
+
+    const customers = await this.prisma.customer.findMany({
+      where: customerWhere,
+      select: { id: true },
+    });
+
+    if (customers.length === 0) {
+      return {
+        totalCustomers: 0,
+        totalDependents: 0,
+        totalOverall: 0,
+      };
+    }
+
+    const customerIds = customers.map((c) => c.id);
+
+    const totalCustomers = customerIds.length;
+
+    const totalDependents = await this.prisma.dependent.count({
+      where: {
+        customerId: { in: customerIds },
+      },
+    });
+
+    return {
+      totalCustomers,
+      totalDependents,
+      totalOverall: totalCustomers + totalDependents,
+    };
+  }
+
+  private startOfDay(date: Date): Date {
+    return new Date(
+      Date.UTC(
+        date.getUTCFullYear(),
+        date.getUTCMonth(),
+        date.getUTCDate()
+      )
+    );
+  }
+
+  private nextDayStart(date: Date): Date {
+    return new Date(
+      Date.UTC(
+        date.getUTCFullYear(),
+        date.getUTCMonth(),
+        date.getUTCDate() + 1
+      )
+    );
   }
 }

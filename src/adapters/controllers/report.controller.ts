@@ -22,8 +22,8 @@ export class ReportController {
         const start = new Date(String(startDate));
         const end = new Date(String(endDate));
 
-        if (isNaN(start.getTime()) || isNaN(end.getTime())) {
-          throw new Error("Invalid startDate or endDate format");
+        if (Number.isNaN(start.getTime()) || Number.isNaN(end.getTime())) {
+          throw new TypeError("Invalid startDate or endDate format");
         }
 
         const data = await this.reportService.usersCreatedByOperators({
@@ -99,6 +99,40 @@ export class ReportController {
         }
 
         return data;
+      }
+    );
+
+    this.httpServer.register(
+      HttpMethod.GET,
+      "/reports/totals",
+      async ({ query }) => {
+        const { startDate, endDate, planId } = query || {};
+
+        const params: {
+          startDate?: Date;
+          endDate?: Date;
+          planId?: string;
+        } = {};
+
+        if (startDate) {
+          const d = new Date(String(startDate));
+          if (!Number.isNaN(d.getTime())) {
+            params.startDate = d;
+          }
+        }
+
+        if (endDate) {
+          const d = new Date(String(endDate));
+          if (!Number.isNaN(d.getTime())) {
+            params.endDate = d;
+          }
+        }
+
+        if (planId) {
+          params.planId = String(planId);
+        }
+
+        return await this.reportService.totals(params);
       }
     );
   }

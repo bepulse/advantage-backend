@@ -14,9 +14,13 @@ const prisma = new PrismaClient();
 // API Configuration
 const API_URL = 'https://api.anarosabeneficios.com/contract/create-and-sign';
 const RETURN_URL = 'https://www.anarosabeneficios.com/contract-success';
-const AUTH_TOKEN = 'eyJraWQiOiJVeGhpOHJnWll2Ymh0MVZNVkY4QWFaUnNiZnY4a3ZrU0ZxZ3BHOU5NR1NvPSIsImFsZyI6IlJTMjU2In0.eyJzdWIiOiI0NGE4NzRhOC0wMDYxLTcwZjAtOGJjNi0yZDZhYzFjZmM5YmQiLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiaXNzIjoiaHR0cHM6XC9cL2NvZ25pdG8taWRwLnVzLWVhc3QtMS5hbWF6b25hd3MuY29tXC91cy1lYXN0LTFfTXRmOWs4TU0wIiwiY29nbml0bzp1c2VybmFtZSI6IjQ0YTg3NGE4LTAwNjEtNzBmMC04YmM2LTJkNmFjMWNmYzliZCIsIm9yaWdpbl9qdGkiOiI4MTk1ODdjZi1mMjE0LTQ2M2MtYWJhNy1kNTExYmU4Yzc4OWQiLCJhdWQiOiI0OHRrOWpub3F0NW9zN2NybmNvazd2Z2Z2aSIsImV2ZW50X2lkIjoiOTQ4MmE1ZTQtZjM4NC00MGRjLTk4Y2YtZTc0ODJhNmZiNjc5IiwidG9rZW5fdXNlIjoiaWQiLCJhdXRoX3RpbWUiOjE3NzA3NDQzNTEsImV4cCI6MTc3MDc0Nzk1MSwiaWF0IjoxNzcwNzQ0MzUxLCJqdGkiOiI1YTg4OGEzZi1mNzRmLTRkMmItODRhZS03NjA2ZTU3YmQ5ODkiLCJlbWFpbCI6ImRldnB1cG9AZ21haWwuY29tIn0.v-QX4aDrjgThlduczy0gcNO5Wqnqd5Zr7A7zwL_F6Y6txvGo40tRcuF3HpyXi_fX0pJzvpTMqfTN-gcYCdU3QumuqAYnNKmTOnoVvgEPfdRIKICI9FfIB0nE8WNHAIbqe8g-cmlUWTjT0aZSHpNe_1M5uiQ27r7Xfww_pCM2CKDyKoab61Jaym2AmFkWNs3kwrmbQH002Y_g3GkcCJsCT9GTJQRba84SWxGsZP7DeH2HsAR6cCNVzFXsjCCbbasPnpSyHxbsYXdHYbInRu3ynSHY3_qVb466HNit_suCOObOuktyxmtNGc2jVLxFGZMMipbla_qeuPQUqmbOzcnHvw';
+const AUTH_TOKEN = 'eyJraWQiOiJVeGhpOHJnWll2Ymh0MVZNVkY4QWFaUnNiZnY4a3ZrU0ZxZ3BHOU5NR1NvPSIsImFsZyI6IlJTMjU2In0.eyJzdWIiOiI0NGE4NzRhOC0wMDYxLTcwZjAtOGJjNi0yZDZhYzFjZmM5YmQiLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiaXNzIjoiaHR0cHM6XC9cL2NvZ25pdG8taWRwLnVzLWVhc3QtMS5hbWF6b25hd3MuY29tXC91cy1lYXN0LTFfTXRmOWs4TU0wIiwiY29nbml0bzp1c2VybmFtZSI6IjQ0YTg3NGE4LTAwNjEtNzBmMC04YmM2LTJkNmFjMWNmYzliZCIsIm9yaWdpbl9qdGkiOiI4NmYxMDZkNC1iNDNmLTQ0ZDUtYWJmNy0yOWZhNWQ3MGVkMzYiLCJhdWQiOiI0OHRrOWpub3F0NW9zN2NybmNvazd2Z2Z2aSIsImV2ZW50X2lkIjoiMmFmMWQxYjAtNzRlOC00YzBmLWExZWQtZWNkOTI0Yjc3NTI2IiwidG9rZW5fdXNlIjoiaWQiLCJhdXRoX3RpbWUiOjE3NzE0MzQzMTIsImV4cCI6MTc3MTUxMjEzMCwiaWF0IjoxNzcxNTA4NTMwLCJqdGkiOiIxNGQyMzhjMy1jZWVkLTRmYzEtOGMyMC03YjY2MGI4NTFkOWMiLCJlbWFpbCI6ImRldnB1cG9AZ21haWwuY29tIn0.DjW34wDkBalnU4Zef4tAc_R10K7SsQb-B9iPFAFNKFbhet-DOqCxz900Dw5-9JXSPMCvdCMEIYl5-ePPpE6yYb-ffyzW0y6KHbByK2fA8fEC180qwJCaLc3bSdFOlHZGLkoODCfBM4Em_Bs50YxYpEi5wJqO3vp9wwGTZ3mCb0GlGdtd-rG1jpmTDGPGFvzHxf1I2yJx83HJqa0SNMCNdA_-HuJkCFZTxl5JF6UF6GgP3J3lyA6RJkqtGx-IFgBzVhB7optwS9QkA8ltkMxOJ0wyKLBOR3ZCjaeObYew8K7kY-yaAwZKj3IVxh1KEfT1lajhtPn2O77cp8s6epu2KQ';
 
 const BACKUP_FILE = 'deleted_contracts_backup.txt';
+
+async function sleep(ms: number) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+}
 
 async function main() {
     const args = process.argv.slice(2);
@@ -50,7 +54,6 @@ async function main() {
             return;
         }
 
-        // Backup preparation
         let backupContent = `Backup created at ${new Date().toISOString()}\n`;
         backupContent += `Total contracts found: ${contracts.length}\n`;
         backupContent += '--------------------------------------------------\n';
@@ -71,7 +74,6 @@ async function main() {
             console.log(`Processing customer: ${customer.name} (${customer.email}) - Contract ID: ${contract.id}`);
 
             if (isDryRun) {
-                console.log(`[DRY-RUN] Would DELETE contract ${contract.id}`);
                 console.log(`[DRY-RUN] Would CALL API for Customer ID ${customer.id}`);
                 console.log(`[DRY-RUN] API Payload:`, {
                     customerId: customer.id,
@@ -79,18 +81,6 @@ async function main() {
                     returnUrl: RETURN_URL
                 });
             } else {
-                // 1. Delete the contract from database
-                try {
-                    await prisma.contract.delete({
-                        where: { id: contract.id }
-                    });
-                    console.log(`✅ Deleted contract ${contract.id} from database.`);
-                } catch (delErr) {
-                    console.error(`❌ Failed to delete contract ${contract.id}:`, delErr);
-                    continue; // Skip API call if delete fails? Or try anyway? Let's skip to be safe.
-                }
-
-                // 2. Call the external API
                 try {
                     const response = await axios.post(
                         API_URL,
@@ -117,11 +107,11 @@ async function main() {
                         console.error(`   Error:`, apiErr.message);
                     }
                 }
+
+                await sleep(3000);
             }
         }
 
-        // Write backup file if not dry run (or maybe even in dry run just to show?)
-        // The user asked to "log all records that were deleted".
         if (!isDryRun) {
             fs.writeFileSync(BACKUP_FILE, backupContent);
             console.log(`\nBackup saved to ${BACKUP_FILE}`);
