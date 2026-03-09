@@ -3,14 +3,17 @@ import IHttpServer from '@/shared/interfaces/http/http-server';
 import HttpError from '@/shared/errors/http.error';
 import cors from 'cors';
 import multer from 'multer';
-import { AuthGuard } from '../middlewares/auth.middleware';
+import { IUserRepository } from '@/domain/repositories/user.repository';
+import { createAuthGuard } from '../middlewares/auth.middleware';
 
 export class ExpressAdapter implements IHttpServer {
     app: any;
     private upload: multer.Multer;
+    private authMiddleware: any;
 
-    constructor() {
+    constructor(private readonly userRepository: IUserRepository) {
         this.app = express();
+        this.authMiddleware = createAuthGuard(this.userRepository);
         this.app.use(express.json());
         this.app.use(cors({
             origin: "*",
@@ -27,7 +30,7 @@ export class ExpressAdapter implements IHttpServer {
 
     register(method: string, url: string, callback: Function): void {
         if (url.includes('/upload')) {
-            this.app[method](url, AuthGuard, this.upload.single('document'), async (req: any, res: any) => {
+            this.app[method](url, this.authMiddleware, this.upload.single('document'), async (req: any, res: any) => {
                 try {
                     const output = await callback({
                         body: req.body,
@@ -55,7 +58,7 @@ export class ExpressAdapter implements IHttpServer {
                 }
             });
         } else {
-            this.app[method](url, AuthGuard, async (req: any, res: any) => {
+            this.app[method](url, this.authMiddleware, async (req: any, res: any) => {
                 try {
                     const output = await callback({
                         body: req.body,

@@ -54,6 +54,9 @@ import { FindCustomerByEmailUseCase } from './application/use-cases/customer/fin
 import { SearchCustomersByNameUseCase } from './application/use-cases/customer/search-customers-by-name';
 import { FindDependentByCpfUseCase } from './application/use-cases/dependent/find-dependent-by-cpf';
 import { ToggleCustomerBlockStatusUseCase } from './application/use-cases/customer/toggle-customer-block-status';
+import { CreateUserAdminUseCase } from './application/use-cases/user/create-user-admin';
+import { AdminUpdateUserPasswordUseCase } from './application/use-cases/user/admin-update-user-password';
+import { CognitoUserService } from './infrastructure/external/cognito-user.service';
 
 const {
   DOCUSIGN_BASE_URL,
@@ -65,7 +68,8 @@ const {
   AWS_REGION,
   AWS_ACCESS_KEY_ID,
   AWS_SECRET_ACCESS_KEY,
-  AWS_S3_BUCKET_NAME
+  AWS_S3_BUCKET_NAME,
+  COGNITO_USER_POOL_ID
 } = process.env;
 
 const container = createContainer({
@@ -102,9 +106,28 @@ container.register({
     bucketName: AWS_S3_BUCKET_NAME!,
   })),
 
+  cognitoUserService: asClass(CognitoUserService).singleton().inject(() => ({
+    region: AWS_REGION || 'us-east-1',
+    accessKeyId: AWS_ACCESS_KEY_ID!,
+    secretAccessKey: AWS_SECRET_ACCESS_KEY!,
+    userPoolId: COGNITO_USER_POOL_ID!,
+  })),
+
   reportService: asClass(ReportService).singleton(),
 
   //UseCases
+  createUserAdmin: asClass(CreateUserAdminUseCase).singleton().inject(() => ({
+    region: AWS_REGION || 'us-east-1',
+    accessKeyId: AWS_ACCESS_KEY_ID!,
+    secretAccessKey: AWS_SECRET_ACCESS_KEY!,
+    userPoolId: COGNITO_USER_POOL_ID!,
+  })),
+  adminUpdateUserPassword: asClass(AdminUpdateUserPasswordUseCase).singleton().inject(() => ({
+    region: AWS_REGION || 'us-east-1',
+    accessKeyId: AWS_ACCESS_KEY_ID!,
+    secretAccessKey: AWS_SECRET_ACCESS_KEY!,
+    userPoolId: COGNITO_USER_POOL_ID!,
+  })),
   updateAddress: asClass(UpdateAddressUseCase).singleton(),
   updateCustomer: asClass(UpdateCustomerUseCase).singleton(),
   createCustomer: asClass(CreateCustomerUseCase).singleton(),

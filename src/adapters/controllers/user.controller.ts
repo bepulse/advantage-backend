@@ -1,4 +1,6 @@
 import { CreateUserUseCase } from "@/application/use-cases/user/create-user";
+import { CreateUserAdminUseCase } from "@/application/use-cases/user/create-user-admin";
+import { AdminUpdateUserPasswordUseCase } from "@/application/use-cases/user/admin-update-user-password";
 import { FindUserByEmailUseCase } from "@/application/use-cases/user/find-user-by-email";
 import { FindUserByIdUseCase } from "@/application/use-cases/user/find-user-by-id";
 import { UpdateUserUseCase } from "@/application/use-cases/user/update-user";
@@ -10,6 +12,8 @@ export class UserController {
   constructor(
     private readonly httpServer: IHttpServer,
     private readonly createUser: CreateUserUseCase,
+    private readonly createUserAdmin: CreateUserAdminUseCase,
+    private readonly adminUpdateUserPassword: AdminUpdateUserPasswordUseCase,
     private readonly updateUser: UpdateUserUseCase,
     private readonly findUserById: FindUserByIdUseCase,
     private readonly findUserByEmail: FindUserByEmailUseCase
@@ -19,6 +23,22 @@ export class UserController {
     this.httpServer.register(HttpMethod.POST, "/user", async ({ body, user }) => {
       const auditContext: AuditContext = { userEmail: user?.email };
       return await this.createUser.execute(body, auditContext);
+    });
+
+    this.httpServer.register(HttpMethod.POST, "/user/admin", async ({ body, user }) => {
+      if (user?.role !== "ADMIN") {
+        throw new Error("Only ADMIN users can access this endpoint");
+      }
+      const auditContext: AuditContext = { userEmail: user?.email };
+      return await this.createUserAdmin.execute(body, auditContext);
+    });
+
+    this.httpServer.register(HttpMethod.PUT, "/user/admin/password", async ({ body, user }) => {
+      if (user?.role !== "ADMIN") {
+        throw new Error("Only ADMIN users can access this endpoint");
+      }
+      await this.adminUpdateUserPassword.execute(body);
+      return { message: "Password updated successfully" };
     });
 
     this.httpServer.register(HttpMethod.PUT, "/user", async ({ body, user }) => {

@@ -1,6 +1,7 @@
 import "@/shared/types/http-request";
 import { CognitoJwtVerifier } from "aws-jwt-verify";
 import { CognitoIdTokenPayload } from "aws-jwt-verify/jwt-model";
+import { IUserRepository } from "@/domain/repositories/user.repository";
 import { NextFunction, Request, Response } from "express";
 import * as crypto from "crypto";
 
@@ -16,7 +17,8 @@ const jwtVerifier = CognitoJwtVerifier.create({
   clientId: process.env.COGNITO_CLIENT_ID!,
 });
 
-export const AuthGuard = async (
+
+export const createAuthGuard = (userRepository: IUserRepository) => async (
   req: Request,
   res: Response,
   next: NextFunction
@@ -60,6 +62,13 @@ export const AuthGuard = async (
       email: payload.email as string,
       username: payload["cognito:username"] as string,
     };
+
+    if (req.user.email) {
+      const user = await userRepository.findByEmail(req.user.email);
+      if (user) {
+        req.user.role = user.role;
+      }
+    }
 
     next();
   } catch (error) {
