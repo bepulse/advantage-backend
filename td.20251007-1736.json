@@ -15,7 +15,7 @@
       ],
       "environmentFiles": [
         {
-          "value": "arn:aws:s3:::cartaobeneficios/advantage-backend/prd.env",
+          "value": "arn:aws:s3:::garenvs/advantage-backend/prd.env",
           "type": "s3"
         }
       ],

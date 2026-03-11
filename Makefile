@@ -45,7 +45,7 @@ taskdef:
 		sed -e 's#"image": ".*"#"image": "$(ECR_URI):$(TAG)"#' task-definition-final.json > td.$(TAG).json; \
 	fi
 
-ecs-deploy:
+ecs-deploy: taskdef
 	@echo "> Registrando nova task definition"
 	@TD_ARN=$$(aws ecs register-task-definition --cli-input-json file://td.$(TAG).json --region $(AWS_REGION) --query 'taskDefinition.taskDefinitionArn' --output text); \
 		echo "Nova task: $$TD_ARN"; \
